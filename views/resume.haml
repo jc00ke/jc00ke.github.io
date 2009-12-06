@@ -1,65 +1,41 @@
 .resume
-    %h1
-        = @resume['info']['name']
-    .info
-        = @resume['info']['address']
-        |
-        = @resume['info']['phone_number']
-        |
-        = @resume['info']['email']
+    %h1= @resume['info']['name']
+    .info= "#{@info['address']} | #{@info['phone_number']} | #{@info['email']}"
 
-    %h2
-        qualifications
-    %p
-        = @resume['qualifications']
+    %h2 qualifications
+    %p= @resume['qualifications']
 
-    %h2
-        experience
+    %h2 experience
     - @resume['experience'].each do |e|
         .company
-            %h3.name
-                = e['name']
-            .date
-                = e['date_employed']
+            %h3.name= e['name']
+            .date= e['date_employed']
             - e['clients'].each do |c|
                 .client
-                    %h4
-                        = c['name']
+                    %h4= c['name']
                     .projects
-                        = c['projects'].each do |p|
+                        - c['projects'].each do |p|
                             .project
-                                %h5
-                                    = p['name']
-                                .role
-                                    = p['role']
+                                %h5= p['name']
+                                .role= p['role']
                                 %ul.details
                                     - p['details'].each do |d|
-                                        %li
-                                            = d
-    %h2
-        educatiion
+                                        %li= d
+    %h2 educatiion
     %dl
         - @resume['education'].each do |ed|
-            %dt
-                = ed['school']
-            %dd
-    %h2
-        ongoing
+            %dt= ed['school']
+            %dd= "#{ed['years']} - #{ed['degree']}"
+    %h2 ongoing
     %dl
         - @resume['ongoing'].each do |o|
-            %dt
-                = o['group']
-            %dd
-                = o['desc']
+            %dt= o['group']
+            %dd= o['desc']
 
-    %h2
-        skills
+    %h2 skills
     %table{ :border => 0, :cellpadding => 3, :cellspacing => 0 }
         - @resume['skills'].each do |s|
             %tr
-                %td
-                    = s['name']
-                %td
-                    = s['level']
-                %td
-                    = s['years']
+                %td= s['name']
+                %td= s['level']
+                %td= s['years']

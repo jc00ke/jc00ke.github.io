@@ -15,6 +15,7 @@ end
 
 get '/resume' do
     @resume = File.open('public/resume.yml') { |y| YAML::load y }
+    @info   = @resume['info']
     haml :resume
 end
 
