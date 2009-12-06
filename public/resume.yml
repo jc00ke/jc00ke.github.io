@@ -4,43 +4,55 @@ info:
   phone_number: 662-452-0053
   address: 4361 SE Raymond St, Portland, OR 97206
   email: jesse@jc00ke.com
-  
+
 qualifications: Well rounded, detailed oriented, senior software engineer with a strong background developing complex, data driven websites and web based application. Extensive experience with both front end and back end development. Extremely knowledgeable in current Microsoft technologies. Focusing on developing skills in Ruby. Seasoned in deployments on both Microsoft and Linux platforms.
-  
+
 experience:
+
 - name: jc00ke llc
   date_employed: 2009 - present
   clients:
-    - name: Carver Climbing Club
-    - projects:
-      name: Membership Renewal Drive System
+  - name: Carver Climbing Club
+    projects:
+    - name: Membership Renewal Drive System
       role: Consultant
       details:
-        - Currently bidding on a project to help a local climbing club with a membership renewal drive that will bring all member records into a web application built with Ruby on Rails
-        - Helping stakeholders understand how technology can benefit the club
-        - Designed workflow for offline/online membership renewal as part of project proposal
-    - name: Portland Rock Gym
-    - projects:
-        name: Email Marketing System
-        role: Consultant
-        details:
-        - Designed scheduled task to email members a notification that their membership will be expiring soon
-        - Built the system in Ruby, on Windows, using the Sequel database library and the Rake task system
-        - Interfaced the system with Microsoft's Retail Management System (RMS) backend database (SQL Server 2005 Express) and helped client understand the schema of the database
-    - name: Brightworks
-    - projects:
-        name: Website Audit
-        role: Consultant
-        details:
-        - Performed a website audit for client to help them understand both qualitative and technical pros and cons of their current website
-        - Delivered the audit within 2 business days of being hired in accordance with client's immediate time line
-    - name: Personal Projects
-    - projects:
-        name: Springee
-        role: Lead Developer
-        details:
-        - Springee is an online persona management application that will allow users to manage all their social networking and contact information in one place. This will allow users to share one link that serves as their online contact card.
-        - Building with Rails 2.3.5, MongoDB (through MongoHQ) and Heroku
-
-- name: Swipht Technologies
-  date_employed: 2005 - 2009
+      - Currently bidding on a project to help a local climbing club with a membership renewal drive that will bring all member records into a web application built with Ruby on Rails
+      - Helping stakeholders understand how technology can benefit the club
+      - Designed workflow for offline/online membership renewal as part of project proposal            
+  - name: Portland Rock Gym
+    projects:
+    - name: Email Marketing System
+      role: Consultant
+      details:
+      - Designed scheduled task to email members a notification that their membership will be expiring soon
+      - Built the system in Ruby, on Windows, using the Sequel database library and the Rake task system
+      - Interfaced the system with Microsoft's Retail Management System (RMS) backend database (SQL Server 2005 Express) and helped client understand the schema of the database
+  - name: Brightworks
+    projects:
+    - name: Website Audit
+      role: Consultant
+      details:
+      - Performed a website audit for client to help them understand both qualitative and technical pros and cons of their current website
+      - Delivered the audit within 2 business days of being hired in accordance with client's immediate time line
+  - name: Personal Projects
+    projects:
+    - name: Springee
+      role: Lead Developer
+      details:
+          - Springee is an online persona management application that will allow users to manage all their social networking and contact information in one place. This will allow users to share one link that serves as their online contact card.
+          - Building with Rails 2.3.5, MongoDB (through MongoHQ) and Heroku
+      
+education:
+- school: Washington University in St. Louis
+  years:  1999 - 2003
+  degree: B.A. Mathematics
+- school: Portland State University
+  years:  2004 - 2005
+  degree: Certificate in Web Technologies
+  
+ongoing:
+- group: pdxrb
+  desc:  Attend monthly Portland Ruby Brigade meetings featuring demonstrations on Ruby projects and techniques
+- group: pdxfunc
+  desc:  Attend monthly Portland Functional Programming Study Group meetings featuring talks on the functional style of programming and writing of code to learn functional programming techniques

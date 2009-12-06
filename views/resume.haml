@@ -15,28 +15,24 @@
 
     %h2
         experience
-    - @resume['experience'].each do |e|      
+    - @resume['experience'].each do |e|
         .company
             %h3.name
                 = e['name']
             .date
                 = e['date_employed']
-
-            .client
-                %h4
-                    Carver Climbing Club
-                .project
-                    %h5
-                        Membership Renewal Drive System
-                    .project-role
-                        Consultant
-                    %ul
-                        %li
-                            Currently bidding on a project to help a local climbing club with a membership renewal drive that will bring all member records into a web application built with Ruby on Rails
-                        %li
-                            Helping stakeholders understand how technology can benefit the club
-                        %li
-                            Designed workflow for offline/online membership renewal as part of project proposal
-
-
-
+            - e['clients'].each do |c|
+                .client
+                    %h4
+                        = c['name']
+                    .projects
+                    = c['projects'].each do |p|
+                        .project
+                            %h5
+                                = p['name']
+                            .role
+                                = p['role']
+                            %ul.details
+                            - p['details'].each do |d|
+                                %li
+                                    = d
