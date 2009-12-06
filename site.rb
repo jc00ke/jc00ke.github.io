@@ -12,3 +12,15 @@ get '/styles.css' do
     content_type 'text/css', :charset => 'utf-8'
     sass :styles
 end
+
+get '/resume' do
+    haml :resume
+end
+
+not_found do
+    haml :not_found
+end
+
+error do
+    haml :error
+end
