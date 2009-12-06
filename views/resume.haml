@@ -1,37 +1,42 @@
 .resume
     %h1
-        Jesse Cooke
+        = @resume['info']['name']
     .info
-        4361 SE Raymond St | Portland, OR | 97206 | 662-452-0053 | first_name@this_domain
+        = @resume['info']['address']
+        |
+        = @resume['info']['phone_number']
+        |
+        = @resume['info']['email']
 
     %h2
         qualifications
     %p
-        Well rounded, detailed oriented, senior software engineer with a strong background developing complex, data driven websites and web based application. Extensive experience with both front end and back end development. Extremely knowledgeable in current Microsoft technologies. Focusing on developing skills in Ruby. Seasoned in deployments on both Microsoft and Linux platforms.
+        = @resume['qualifications']
 
     %h2
         experience
-    .company
-        %h3.name
-            jc00ke llc
-        .date
-            2009 &ndash; present
+    - @resume['experience'].each do |e|      
+        .company
+            %h3.name
+                = e['name']
+            .date
+                = e['date_employed']
 
-        .client
-            %h4
-                Carver Climbing Club
-            .project
-                %h5
-                    Membership Renewal Drive System
-                .project-role
-                    Consultant
-                %ul
-                    %li
-                        Currently bidding on a project to help a local climbing club with a membership renewal drive that will bring all member records into a web application built with Ruby on Rails
-                    %li
-                        Helping stakeholders understand how technology can benefit the club
-                    %li
-                        Designed workflow for offline/online membership renewal as part of project proposal
+            .client
+                %h4
+                    Carver Climbing Club
+                .project
+                    %h5
+                        Membership Renewal Drive System
+                    .project-role
+                        Consultant
+                    %ul
+                        %li
+                            Currently bidding on a project to help a local climbing club with a membership renewal drive that will bring all member records into a web application built with Ruby on Rails
+                        %li
+                            Helping stakeholders understand how technology can benefit the club
+                        %li
+                            Designed workflow for offline/online membership renewal as part of project proposal
 
 
 

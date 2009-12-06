@@ -1,4 +1,4 @@
-%w(rubygems sinatra haml sass rack-flash).each { |r| require r }
+%w(rubygems sinatra haml sass rack-flash yaml).each { |r| require r }
 
 set :haml,          { :format => :html5 }
 set :sessions,      true
@@ -14,6 +14,7 @@ get '/styles.css' do
 end
 
 get '/resume' do
+    @resume = File.open('public/resume.yml') { |y| YAML::load y }
     haml :resume
 end
 
