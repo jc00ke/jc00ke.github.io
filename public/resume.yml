@@ -21,9 +21,15 @@ qualifications: Well rounded, detailed oriented, senior software engineer with a
 # ####################################################
 experience:
 
+# ########################
+# jc00ke llc
+# ########################
 - name: jc00ke llc
   date_employed: 2009 - present
   clients:
+  # ----------------
+  # Clients
+  # ----------------
   - name: Carver Climbing Club
     projects:
     - name: Membership Renewal Drive System
@@ -55,6 +61,43 @@ experience:
           - Springee is an online persona management application that will allow users to manage all their social networking and contact information in one place. This will allow users to share one link that serves as their online contact card.
           - Building with Rails 2.3.5, MongoDB (through MongoHQ) and Heroku
 
+
+# ########################
+# Swipht Technologies
+# ########################
+- name: Swipht Technologies
+  date_employed: 2005 - 2009
+  clients:
+  # ----------------
+  # Clients
+  # ----------------
+  - name: Carver Climbing Club
+    projects:
+    - name: Membership Renewal Drive System
+      role: Consultant
+      details:
+      - Currently bidding on a project to help a local climbing club with a membership renewal drive that will bring all member records into a web application built with Ruby on Rails
+      - Helping stakeholders understand how technology can benefit the club
+      - Designed workflow for offline/online membership renewal as part of project proposal
+          
+
+# ########################
+# Centene
+# ########################
+- name: Centene Corporation
+  date_employed: 2003 - 2006
+  clients:
+  # ----------------
+  # Clients
+  # ----------------
+  - name: Information Services Dept
+    projects:
+    - name: Website Maintenance and Development
+      role: Contractor
+      details:
+      - Internship that lead to employment with a multi-state HMO
+      - Helped Centene create and maintain their numerous websites for HMO members and providers
+      - Researched application platforms for new round of websites and web applications          
   
 # ####################################################
 # Education
