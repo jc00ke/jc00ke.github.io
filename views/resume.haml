@@ -26,13 +26,40 @@
                     %h4
                         = c['name']
                     .projects
-                    = c['projects'].each do |p|
-                        .project
-                            %h5
-                                = p['name']
-                            .role
-                                = p['role']
-                            %ul.details
-                            - p['details'].each do |d|
-                                %li
-                                    = d
+                        = c['projects'].each do |p|
+                            .project
+                                %h5
+                                    = p['name']
+                                .role
+                                    = p['role']
+                                %ul.details
+                                    - p['details'].each do |d|
+                                        %li
+                                            = d
+    %h2
+        educatiion
+    %dl
+        - @resume['education'].each do |ed|
+            %dt
+                = ed['school']
+            %dd
+    %h2
+        ongoing
+    %dl
+        - @resume['ongoing'].each do |o|
+            %dt
+                = o['group']
+            %dd
+                = o['desc']
+
+    %h2
+        skills
+    %table{ :border => 0, :cellpadding => 3, :cellspacing => 0 }
+        - @resume['skills'].each do |s|
+            %tr
+                %td
+                    = s['name']
+                %td
+                    = s['level']
+                %td
+                    = s['years']
