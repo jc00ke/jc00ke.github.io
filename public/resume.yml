@@ -20,7 +20,6 @@ qualifications: Well rounded, detailed oriented, senior software engineer with a
 # Experience
 # ####################################################
 experience:
-
 # ########################
 # jc00ke llc
 # ########################
@@ -192,6 +191,7 @@ education:
 - school: Washington University in St. Louis
   years:  1999 - 2003
   degree: B.A. Mathematics
+  
 - school: Portland State University
   years:  2004 - 2005
   degree: Certificate in Web Technologies
@@ -201,6 +201,7 @@ education:
 # ####################################################
 ongoing:
 - group: pdxrb
+
   desc: Attend monthly Portland Ruby Brigade meetings featuring demonstrations on Ruby projects and techniques
 - group: pdxfunc
   desc: Attend monthly Portland Functional Programming Study Group meetings featuring talks on the functional style of programming and writing of code to learn functional programming techniques
@@ -213,27 +214,35 @@ skills:
 - name: HTML and CSS
   level: advanced
   years: 6 years
+  
 - name: Javascript
   level: advanced
   years: 5 years
+  
 - name: C# and ASP.NET
   level: advanced
   years: 5 years
+  
 - name: SQL
   level: advanced
   years: 5 years
+  
 - name: Windows - Desktop and Server
   level: advanced
   years: 5 years
+  
 - name: Linux - Ubuntu and Red Hat, Desktop and Server
   level: advanced
   years: 3 years
+  
 - name: Ruby/Rails
   level: intermediate
   years: 3 years
+  
 - name: Photoshop
   level: intermediate
   years: 5 years
+  
 - name: Haskell and Erlang
   level: beginner
   years: less than 1 year
