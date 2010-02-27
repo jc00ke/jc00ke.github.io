@@ -1,28 +1,32 @@
-%w(rubygems sinatra haml sass rack-flash yaml).each { |r| require r }
+%w(rubygems sinatra/base haml sass rack-flash yaml).each { |r| require r }
 
-set :haml,          { :format => :html5 }
-set :sessions,      true
-use Rack::Flash,    :accessorize => [ :notice, :error ]
+class Site < Sinatra::Base
 
-get '/' do
-    haml :index
-end
+    set :haml,          { :format => :html5 }
+    set :sessions,      true
+    use Rack::Flash,    :accessorize => [ :notice, :error ]
 
-get '/styles.css' do
-    content_type 'text/css', :charset => 'utf-8'
-    sass :styles
-end
+    get '/' do
+        haml :index
+    end
 
-get '/resume' do
-    @resume = File.open('public/resume.yml') { |y| YAML::load y }
-    @info   = @resume['info']
-    haml :resume
-end
+    get '/styles.css' do
+        content_type 'text/css', :charset => 'utf-8'
+        sass :styles
+    end
 
-not_found do
-    haml :not_found
-end
+    get '/resume' do
+        @resume = File.open('public/resume.yml') { |y| YAML::load y }
+        @info   = @resume['info']
+        haml :resume
+    end
 
-error do
-    haml :error
+    not_found do
+        haml :not_found
+    end
+
+    error do
+        haml :error
+    end
+
 end
