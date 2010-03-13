@@ -2,12 +2,11 @@
 
 class Site < Sinatra::Base
 
-    configure do
-        set :haml,          { :format => :html5 }
-        set :sessions,      true
-        enable :static
-        use Rack::Flash,    :accessorize => [ :notice, :error ]
-    end
+    set :haml,          { :format => :html5 }
+    set :sessions,      true
+    enable :static
+    use Rack::Static,   :urls => %w(/images /javascripts /stylesheets), :root => 'public'
+    use Rack::Flash,    :accessorize => [ :notice, :error ]
 
     configure :development do
         Sinatra::Application.reset!
