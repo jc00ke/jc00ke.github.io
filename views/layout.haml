@@ -14,7 +14,6 @@
             %header
                 %a#logo{ :href => '/' }jc00ke llc
             %nav
-                %a{ :href => '/about' }About
                 %a{ :href => '/resume' }Resume
                 %a{ :href => '/contact' }Contact
 
@@ -26,23 +25,23 @@
 
             #content= yield
 
-        %footer
-            #hcard-Jesse-Cooke.vcard
-                .fn
-                    %span.given-name Jesse
-                    %span.family-name Cooke
-                    %a.nickname{ :href => 'http://twitter.com/jc00ke' }@jc00ke
-                    %span.role N-Tier Engineer
-                    at
-                    %span.org jc00ke llc
-                    of
-                    %abbr{ :title => 'Portland, OR' }pdx
-                .communications
-                    %a.email{ :href => 'mailto:info@jc00ke.com' }info@jc00ke.com
-                    %abbr.tel{ :title => '+16624520053' }
-                        %span.type
-                            Work
-                        +1-662-4jc00ke
+            %footer
+                #hcard-Jesse-Cooke.vcard
+                    .fn
+                        %span.given-name Jesse
+                        %span.family-name Cooke
+                        %a.nickname{ :href => 'http://twitter.com/jc00ke' }@jc00ke
+                        %span.role N-Tier Engineer
+                        at
+                        %span.org jc00ke llc
+                        of
+                        %abbr{ :title => 'Portland, OR' }pdx
+                    .communications
+                        %a.email{ :href => 'mailto:info@jc00ke.com' }info@jc00ke.com
+                        %abbr.tel{ :title => '+16624520053' }
+                            %span.type
+                                Work
+                            +1-662-4jc00ke
 
 
         %script{ :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js' }

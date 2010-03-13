@@ -1,20 +1,22 @@
 @charset "UTF-8"
 
 html
-    background: #ccc url(/images/bg.png) repeat 0 0
+    background: #ccc url(/images/background-stripe.gif) repeat 0 0
 
 #wrapper
     margin: 20px
     width:  920px
 
 nav
-    height: 70px
-    top:    151px
+    left:       402px
+    position:   relative
+    top:        -56px
 
     a
         color:      #ffcc00
         display:    block
         text-decoration:    none
+        width:      60px
 
         &:hover
             text-decoration:    underline
@@ -30,7 +32,11 @@ nav
     &:hover
         background-color:   rgba(204, 204, 204, 0.2)
 
+#content
+    background-color:       rgba(140, 140, 140, 0.4)
+
 .resume
 
     li
         :margin 0 0 0 15px
+
