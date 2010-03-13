@@ -2,9 +2,17 @@
 
 class Site < Sinatra::Base
 
-    set :haml,          { :format => :html5 }
-    set :sessions,      true
-    use Rack::Flash,    :accessorize => [ :notice, :error ]
+    configure do
+        set :haml,          { :format => :html5 }
+        set :sessions,      true
+        enable :static
+        use Rack::Flash,    :accessorize => [ :notice, :error ]
+    end
+
+    configure :development do
+        Sinatra::Application.reset!
+        use Rack::Reloader
+    end
 
     get '/' do
         haml :index
