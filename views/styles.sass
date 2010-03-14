@@ -1,12 +1,29 @@
 @charset "UTF-8"
 
+// light grey
+!bg         = rgb(204, 204, 204)
+
+// light grey
+!logo_bg    = rgba(204, 204, 204, 0.2)
+
+// dark grey
+!text_color = rgb(51, 51, 51)
+
+// blue
+!links          = rgb(0, 140, 255)
+!content_bg     = rgba(0, 140, 255, 0.4)
+// grey
+!links_hover    = rgb(140, 140, 140)
+
 html
-    background: #ccc url(/images/background-stripe.gif) repeat 0 0
+    background= !bg "url(/images/background-stripe.gif)" "repeat" "0" "0"
+    color=      !text_color
 
 a
-    color:  #8C8C8C
+    color=  !links
     text-decoration:    none
     &:hover
+        color=              !links_hover
         text-decoration:    underline
 
 
@@ -16,18 +33,14 @@ a
     width:  920px
 
 nav
-    left:       402px
+    left:       405px
     position:   relative
     top:        -43px
 
     a
-        color:          #ffcc00
         font-size:      1.3em
         font-weight:    bold
-        width:          60px
-
-footer
-    background-color:   rgba(57, 57, 57, 0.6)
+        margin-right:   15px
 
 #logo
     background:     transparent url(/images/logo.png) no-repeat 0 0
@@ -37,13 +50,13 @@ footer
     width:          387px
 
     &:hover
-        background-color:   rgba(204, 204, 204, 0.2)
+        background-color=   !logo_bg
 
 #content
-    background-color:       rgba(140, 140, 140, 0.4)
-    background-color:       rgba(255, 204, 0, 0.4)
-    margin-bottom:          20px
-    padding:                10px
+    //background-color:       rgba(255, 204, 0, 0.4)
+    background-color=   !content_bg
+    margin-bottom:      20px
+    padding:            10px
 
 .resume
 
