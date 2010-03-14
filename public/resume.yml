@@ -35,6 +35,18 @@ experience:
   # ----------------
   # Clients
   # ----------------
+  - name: Renewable Funding
+    projects:
+    - name: Repaymnt Estimatr
+      role: Consultant
+      details:
+      - Writing a loan estimation library so potential applicants
+        can get a good-faith estimate of their total loan costs.
+      - Working through a massive spreadsheet and porting expressions
+        into Ruby
+      - Using Rspec to both describe & unit test
+      - Using Sinatra as the entry point to the library
+
   - name: Carver Climbing Club
     projects:
     - name: Membership Renewal Drive System
