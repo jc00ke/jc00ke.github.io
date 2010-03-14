@@ -1,3 +1,8 @@
+.formats
+    %a{ :href => '/resume.yml' }YAML
+    %a{ :href => '/resume.json' }JSON
+    %a{ :href => '/resume.pdf' }PDF
+
 .resume
     %h1= @resume['info']['name']
     .info= "#{@info['address']} | #{@info['phone_number']} | #{@info['email']}"
