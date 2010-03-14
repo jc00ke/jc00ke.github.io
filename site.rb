@@ -28,6 +28,10 @@ class Site < Sinatra::Base
         haml :resume
     end
 
+    get '/contact' do
+        haml :contact
+    end
+
     not_found do
         haml :not_found
     end
