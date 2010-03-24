@@ -1,1 +1,3 @@
 rack-flash
+sinatra --version 1.0
+tilt    --version 0.8
