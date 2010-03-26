@@ -33,9 +33,9 @@ class Site < Sinatra::Base
         haml :index
     end
 
-    get '/styles.css' do
+    get %r{/(styles|print).css} do |sheet|
         content_type 'text/css', :charset => 'utf-8'
-        sass :styles
+        sass sheet.to_sym
     end
 
     get '/resume' do
