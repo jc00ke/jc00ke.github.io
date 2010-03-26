@@ -14,17 +14,7 @@ class Site < Sinatra::Base
     end
 
     before do
-
-        @title =    case request.path_info
-                    when '/'
-                        'Welcome!'
-                    when '/resume'
-                        'My Resume/CV/Experience'
-                    when '/contact'
-                        "Let's chat"
-                    else
-                        'Where are you?'
-                    end
+        @page = request.path_info.gsub(/\//, '')
     end
 
     helpers do
@@ -36,6 +26,7 @@ class Site < Sinatra::Base
     end
 
     get '/' do
+        @title  = "Welcome!"
         haml :index
     end
 
@@ -45,6 +36,7 @@ class Site < Sinatra::Base
     end
 
     get '/resume' do
+        @title  = "My Resume/CV/Experience"
         @resume = get_yaml
         @info   = @resume['info']
         haml :resume
@@ -62,14 +54,17 @@ class Site < Sinatra::Base
     end
 
     get '/contact' do
+        @title  = "Let's chat"
         haml :contact
     end
 
     not_found do
+        @title  = "Where are you?"
         haml :not_found
     end
 
     error do
+        @title  = "Uh oh, something broke."
         haml :error
     end
 
