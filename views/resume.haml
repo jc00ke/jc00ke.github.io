@@ -22,6 +22,8 @@
                         - c['projects'].each do |p|
                             .project
                                 %h5= p['name']
+                                - if p['url']
+                                    =split_url(p['url'])
                                 .role= p['role']
                                 %ul.details
                                     - p['details'].each do |d|

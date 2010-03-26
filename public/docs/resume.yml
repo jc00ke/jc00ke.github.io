@@ -14,18 +14,19 @@ info:
 # Qualifications
 # ####################################################
 qualifications:
-  Well rounded, detailed oriented, senior software engineer with a
-  strong background developing complex, data driven websites and web
-  based application. Extensive experience with both front end and back
-  end development. Extremely knowledgeable in current Microsoft
-  technologies. Focusing on developing skills in Ruby. Seasoned in
-  deployments on both Microsoft and Linux platforms.
+  I am a well rounded technologist. I am specializing in Ruby and
+  Rails projects now, but have been an integral part in several large
+  Microsoft .NET projects over the years. I have extensive experience
+  with both front end and back end development and thoroughly enjoy
+  learning new technologies. I truly believe in the open source movement
+  and try to give back when possible.
 
 
 # ####################################################
 # Experience
 # ####################################################
 experience:
+
 # ########################
 # jc00ke llc
 # ########################
@@ -39,23 +40,25 @@ experience:
     projects:
     - name: Repaymnt Estimatr
       role: Consultant
+      url: renewfund.com | http://j.mp/d0iDBA
       details:
-      - Writing a loan estimation library so potential applicants
+      - Wrote a loan estimation library so potential applicants
         can get a good-faith estimate of their total loan costs.
-      - Working through a massive spreadsheet and porting expressions
+      - Worked through a massive spreadsheet and ported expressions
         into Ruby
-      - Using Rspec to both describe & unit test
-      - Using Sinatra as the entry point to the library
+      - Used Rspec to both describe & unit test
+      - Used Sinatra as the entry point to the library
 
   - name: Carver Climbing Club
     projects:
     - name: Membership Renewal Drive System
       role: Consultant
+      url: members.carverclimbingclub.org | http://j.mp/bjpk0b
       details:
-      - Building a system to help a local climbing club
+      - Built a system to help a local climbing club
         with a membership renewal drive that will bring all member
         records into a web application built with Ruby on Rails
-      - Helping stakeholders understand how technology can benefit the
+      - Helped stakeholders understand how technology can benefit the
         club
       - Designed workflow for offline/online membership renewal as part
         of project proposal
@@ -64,6 +67,7 @@ experience:
     projects:
     - name: Member Initiation Prototype
       role: Contractor
+      url: sitkatech.com | http://j.mp/cIkloR
       details:
       - Built a scenario management system in Rails that was used to demo
         a new system to Sitka's client's client.
@@ -73,6 +77,7 @@ experience:
     projects:
     - name: Email Marketing System
       role: Consultant
+      url: portlandrockgym.com | http://j.mp/bsqkBk
       details:
       - Designed scheduled task to email members a notification that
         their membership will be expiring soon
@@ -86,6 +91,7 @@ experience:
     projects:
     - name: Website
       role: Consultant/Developer
+      url: bystanderproductions.com | http://j.mp/2pOJXH
       details:
       - Built out the website using the Refinery Content Management System (a Rails CMS)
       - Researched different CDN options for video playback
@@ -94,6 +100,7 @@ experience:
     projects:
     - name: Website Audit
       role: Consultant
+      url: brightworks.net | http://j.mp/cWPici
       details:
       - Performed a website audit for client to help them understand
         both qualitative and technical pros and cons of their current
@@ -104,9 +111,17 @@ experience:
 
   - name: Personal Projects
     projects:
+    - name: Restis
+      role: Lead Developer
+      url: Restis on Github | http://j.mp/9Pki2H
+      details:
+          - A REST interface for Redis
+          - Uses Sinatra as HTTP interface
+          - Will attempt to map all Redis commands to REST methods
     - name: Springee
       role: Lead Developer
       details:
+          - On hold for the moment
           - Springee is an online persona management application that
             will allow users to manage all their social networking and
             contact information in one place. This will allow users to
@@ -128,6 +143,7 @@ experience:
     projects:
     - name: Graduate Business School CMS
       role: Systems Architect, Lead	Developer and Systems Administrator
+      url: gradbusiness.pdx.edu | http://j.mp/cxWEgt
       details:
       - Designed a flexible content management system (CMS) that allowed
         business users at the school to create, edit and delete pages
@@ -152,6 +168,7 @@ experience:
     projects:
     - name: File Upload Tool
       role: Systems Architect, Lead	Developer and Systems Administrator
+      url: upload.citylaw.org | http://j.mp/bgnCI6
       details:
       - Researched, designed and developed an FTP replacement tool
       - Built tool using Ruby, Sinatra and Passenger that allowed users
@@ -192,6 +209,7 @@ experience:
     projects:
     - name: Jobdango 2.5
       role: Lead Developer
+      url: jobdango.com | http://j.mp/d4hZnO
       details:
       - Lead development on major front-end overhaul introducing
         location specific platform (based on IP address) and new
@@ -202,6 +220,7 @@ experience:
     - name: Jobdango 2.0
       role: Lead Developer, Infrastructure/Systems Administrator and
         Email Guru
+      url: jobdango.com | http://j.mp/d4hZnO
       details:
       - Helped lead project to port application from Classic ASP to
         ASP.NET 2.0
@@ -247,6 +266,7 @@ experience:
 
     - name: HSW Websites in Windows Sharepoint Services
       role: Lead Developer
+      url: hswenterprises.com | http://j.mp/b47wGI
       details:
       - Worked closely with client to design site and transformed
         Photoshop comps into HTML + CSS for client review
@@ -266,6 +286,7 @@ experience:
     projects:
     - name: Website Maintenance and Development
       role: Contractor
+      url: centene.com | http://j.mp/bcgzPL
       details:
       - Internship that lead to employment with a multi-state HMO
       - Helped Centene create and maintain their numerous websites for
@@ -290,7 +311,6 @@ education:
 # ####################################################
 ongoing:
 - group: pdxrb
-
   desc: Attend monthly Portland Ruby Brigade meetings featuring
     demonstrations on Ruby projects and techniques
 - group: pdxfunc

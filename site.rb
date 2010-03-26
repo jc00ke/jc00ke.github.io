@@ -22,7 +22,10 @@ class Site < Sinatra::Base
         def get_yaml
             File.open('public/docs/resume.yml') { |y| YAML::load y }
         end
-
+        def split_url(url)
+            txt, url = url.scan(/^(.*)\s\|\s(.*)$/)[0]
+            "<a href=\"#{url}\">#{txt}</a>"
+        end
     end
 
     get '/' do
