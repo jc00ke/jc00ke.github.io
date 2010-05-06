@@ -36,6 +36,27 @@ experience:
   # ----------------
   # Clients
   # ----------------
+  - name: Confidential
+    projects:
+    - name: Coaching &amp; Code Review
+      role: Consultant
+      details:
+      - Working with a startup that is new to Ruby.
+      - Coaching them on Ruby &amp; Sinatra best-practices
+      - Helping research &amp; guiding infrastructure roadmap.
+
+  - name: CrowdCompass
+    projects:
+    - name: Attendee Site
+      role: Consultant
+      url: crowdcompass.com | http://j.mp/crowdcompass
+      details:
+      - CrowdCompass builds event management software centered around
+        the mobile device.
+      - Currently working on building out public-facing side of application
+        for attendees to have same experience on the web as they do on their
+        mobile device.
+
   - name: Renewable Funding
     projects:
     - name: Repaymnt Estimatr
