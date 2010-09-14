@@ -26,6 +26,9 @@ class Site < Sinatra::Base
             txt, url = url.scan(/^(.*)\s\|\s(.*)$/)[0]
             "<a href=\"#{url}\">#{txt}</a>"
         end
+        def cache
+            headers['Cache-Control'] = 'public, max-age=600' if Sinatra::Base.production?
+        end
     end
 
     get '/' do
@@ -42,6 +45,7 @@ class Site < Sinatra::Base
         @title  = "My Resume/CV/Experience"
         @resume = get_yaml
         @info   = @resume['info']
+        cache
         haml :resume
     end
 
@@ -52,6 +56,7 @@ class Site < Sinatra::Base
             yml     = get_yaml
             content_type 'text/json'
             attachment 'resume.json'
+            cache
             JSON.pretty_generate yml
         end
     end
