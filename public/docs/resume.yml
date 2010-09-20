@@ -35,14 +35,24 @@ experience:
   # ----------------
   # Clients
   # ----------------
+  - name: Locked On Media
+    projects:
+    - name: Developer
+      role: Contractor
+      details:
+      - Paired with other contractor to build ad-platform management system
+      - Test-Driven Development with Shoulda on Rails 3 (tracked Rails 3 during beta)
+      - Devops using Chef on Engine Yard Cloud infrastructure
+      - Project used polyglot datastores MySQL, CouchDB &amp; Redis
+
   - name: Confidential
     projects:
     - name: Coaching &amp; Code Review
       role: Consultant
       details:
-      - Working with a startup that is new to Ruby.
-      - Coaching them on Ruby &amp; Sinatra best-practices
-      - Helping research &amp; guiding infrastructure roadmap.
+      - Worked with a startup that is new to Ruby.
+      - Coached them on Ruby &amp; Sinatra best-practices
+      - Helped research &amp; guiding infrastructure roadmap.
 
   - name: CrowdCompass
     projects:
@@ -52,9 +62,10 @@ experience:
       details:
       - CrowdCompass builds event management software centered around
         the mobile device.
-      - Currently working on building out public-facing side of application
+      - Built out public-facing side of application
         for attendees to have same experience on the web as they do on their
         mobile device.
+      - Worked on custom-tiled Google Maps framework
 
   - name: Renewable Funding
     projects:
@@ -68,6 +79,11 @@ experience:
         into Ruby
       - Used Rspec to both describe & unit test
       - Used Sinatra as the entry point to the library
+    - name: ProjectDX
+      role: Developer
+      url: projectdx.com | http://j.mp/projectdx
+      details:
+      - Pairing with developer to work on online public financing program application
 
   - name: Carver Climbing Club
     projects:
