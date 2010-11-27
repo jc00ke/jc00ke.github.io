@@ -1,0 +1,36 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    configuration (1.2.0)
+    haml (3.0.24)
+    heroku (1.14.4)
+      json_pure (>= 1.2.0, < 1.5.0)
+      launchy (~> 0.3.2)
+      rest-client (>= 1.4.0, < 1.7.0)
+    json_pure (1.4.6)
+    launchy (0.3.7)
+      configuration (>= 0.0.5)
+      rake (>= 0.8.1)
+    mime-types (1.16)
+    rack (1.2.1)
+    rack-flash (0.1.1)
+      rack
+    rake (0.8.7)
+    rdiscount (1.6.5)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
+    sinatra (1.1.0)
+      rack (~> 1.1)
+      tilt (~> 1.1)
+    tilt (1.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  haml (= 3.0.24)
+  heroku
+  rack-flash (= 0.1.1)
+  rdiscount (= 1.6.5)
+  sinatra (= 1.1.0)
+  tilt (= 1.1)
