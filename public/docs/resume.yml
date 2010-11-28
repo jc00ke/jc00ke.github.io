@@ -35,6 +35,25 @@ experience:
   # ----------------
   # Clients
   # ----------------
+
+  - name: Renewable Funding
+    projects:
+    - name: ProjectDX
+      role: Developer
+      url: projectdx.com | http://j.mp/projectdx
+      details:
+      - Pairing with developer to work on online public financing program application
+      - leading the upgrade to Rails 3
+    - name: Repaymnt Estimatr
+      role: Consultant
+      url: renewfund.com | http://j.mp/d0iDBA
+      details:
+      - Wrote a loan estimation library so potential applicants
+        can get a good-faith estimate of their total loan costs.
+      - Worked through a massive spreadsheet and ported expressions
+        into Ruby
+      - Used Rspec to both describe & unit test
+      - Used Sinatra as the entry point to the library
   - name: Locked On Media
     projects:
     - name: Developer
@@ -66,24 +85,6 @@ experience:
         for attendees to have same experience on the web as they do on their
         mobile device.
       - Worked on custom-tiled Google Maps framework
-
-  - name: Renewable Funding
-    projects:
-    - name: Repaymnt Estimatr
-      role: Consultant
-      url: renewfund.com | http://j.mp/d0iDBA
-      details:
-      - Wrote a loan estimation library so potential applicants
-        can get a good-faith estimate of their total loan costs.
-      - Worked through a massive spreadsheet and ported expressions
-        into Ruby
-      - Used Rspec to both describe & unit test
-      - Used Sinatra as the entry point to the library
-    - name: ProjectDX
-      role: Developer
-      url: projectdx.com | http://j.mp/projectdx
-      details:
-      - Pairing with developer to work on online public financing program application
 
   - name: Carver Climbing Club
     projects:
@@ -354,13 +355,18 @@ ongoing:
     meetings featuring talks on the functional style of programming and
     writing of code to learn functional programming techniques
 - group: Javascript Admirers
-  desc: Attend monthly meeting on new Javascript techniques & libraries.
+  desc: Attend monthly meeting on new Javascript techniques & libraries
 
 
 # ####################################################
 # Skills
 # ####################################################
 skills:
+
+- name: Ruby/Rails
+  level: intermediate
+  years: 3 years
+
 - name: HTML and CSS
   level: advanced
   years: 6 years
@@ -382,17 +388,9 @@ skills:
   years: 5 years
 
 - name: Linux - Ubuntu and Red Hat, Desktop and Server
-  level: advanced
-  years: 3 years
-
-- name: Ruby/Rails
-  level: intermediate
+  level: intermediate/advanced
   years: 3 years
 
 - name: Photoshop
   level: intermediate
   years: 5 years
-
-- name: Haskell and Erlang
-  level: beginner
-  years: less than 1 year
