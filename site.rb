@@ -26,8 +26,8 @@ class Site < Sinatra::Base
             txt, url = url.scan(/^(.*)\s\|\s(.*)$/)[0]
             "<a href=\"#{url}\">#{txt}</a>"
         end
-        def cache
-            headers['Cache-Control'] = 'public, max-age=600' if Sinatra::Base.production?
+        def cache(time=600)
+            headers['Cache-Control'] = "public, max-age=#{time}" if Sinatra::Base.production?
         end
     end
 
@@ -63,6 +63,7 @@ class Site < Sinatra::Base
 
     get '/5000' do
         @title = "My 5000th tweet"
+        cache(3600)
         haml :'5000'
     end
     get '/contact' do
