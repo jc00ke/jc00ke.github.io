@@ -61,6 +61,10 @@ class Site < Sinatra::Base
         end
     end
 
+    get '/5000' do
+        @title = "My 5000th tweet"
+        haml :'5000'
+    end
     get '/contact' do
         @title  = "Let's chat"
         haml :contact
