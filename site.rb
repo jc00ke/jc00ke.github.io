@@ -33,10 +33,12 @@ class Site < Sinatra::Base
 
     get '/' do
         @title  = "Welcome!"
+        cache
         haml :index
     end
 
     get %r{/(styles|print).css} do |sheet|
+        cache(3600)
         content_type 'text/css', :charset => 'utf-8'
         sass sheet.to_sym
     end
@@ -68,6 +70,7 @@ class Site < Sinatra::Base
     end
     get '/contact' do
         @title  = "Let's chat"
+        cache(3600)
         haml :contact
     end
 
