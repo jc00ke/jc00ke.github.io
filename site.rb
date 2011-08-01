@@ -45,22 +45,8 @@ class Site < Sinatra::Base
 
     get '/resume' do
         @title  = "My Resume/CV/Experience"
-        @resume = get_yaml
-        @info   = @resume['info']
         cache
         haml :resume
-    end
-
-    get %r{/resume.(yml|json|pdf)} do |ft|
-        if ft == 'yml' || ft == 'pdf'
-            send_file "public/docs/resume.#{ft}"
-        else
-            yml     = get_yaml
-            content_type 'text/json'
-            attachment 'resume.json'
-            cache
-            JSON.pretty_generate yml
-        end
     end
 
     get '/5000' do
