@@ -40,12 +40,6 @@ class Site < Sinatra::Base
         sass sheet.to_sym
     end
 
-    get '/contact' do
-        @title  = "Let's chat"
-        cache(3600)
-        haml :contact
-    end
-
     not_found do
         @title  = "Where are you?"
         haml :not_found

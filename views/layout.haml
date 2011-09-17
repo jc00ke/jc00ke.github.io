@@ -13,8 +13,6 @@
         #wrapper
             %header
                 %a#logo{ :href => '/' }jc00ke llc
-            %nav
-                %a{ :href => '/contact' }Contact
 
 
             - if flash.has?(:error)
@@ -36,9 +34,6 @@
                         %abbr{ :title => 'Portland, OR' }pdx
 
 
-        %script{ :src => 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js' }
-        %script{ :src => 'http://ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js' }
-        %script{ :src => '/javascripts/jc00ke.js' }
         :javascript
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-11936520-1']);
