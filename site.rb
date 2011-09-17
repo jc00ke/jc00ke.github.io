@@ -49,11 +49,6 @@ class Site < Sinatra::Base
         haml :resume
     end
 
-    get '/5000' do
-        @title = "My 5000th tweet"
-        cache(3600)
-        haml :'5000'
-    end
     get '/contact' do
         @title  = "Let's chat"
         cache(3600)
