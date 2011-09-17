@@ -1,11 +1,11 @@
-%w(rubygems sinatra/base haml sass rack-flash yaml json).each { |r| require r }
+%w(rubygems sinatra/base haml sass rack-flash).each { |r| require r }
 
 class Site < Sinatra::Base
 
     set :haml,          { :format => :html5 }
     set :sessions,      true
     enable :static
-    use Rack::Static,   :urls => %w(/images /javascripts /docs), :root => 'public'
+    use Rack::Static,   :urls => %w(/images /javascripts), :root => 'public'
     use Rack::Flash,    :accessorize => [ :notice, :error ]
 
     configure :development do
@@ -19,9 +19,6 @@ class Site < Sinatra::Base
 
     helpers do
 
-        def get_yaml
-            File.open('public/docs/resume.yml') { |y| YAML::load y }
-        end
         def split_url(url)
             txt, url = url.scan(/^(.*)\s\|\s(.*)$/)[0]
             "<a href=\"#{url}\">#{txt}</a>"
@@ -41,12 +38,6 @@ class Site < Sinatra::Base
         cache(3600)
         content_type 'text/css', :charset => 'utf-8'
         sass sheet.to_sym
-    end
-
-    get '/resume' do
-        @title  = "My Resume/CV/Experience"
-        cache
-        haml :resume
     end
 
     get '/contact' do
