@@ -1,0 +1,19 @@
+html {
+  background: none; }
+
+header, .formats, footer, nav {
+  display: none; }
+
+a {
+  text-decoration: underline;
+  color: black; }
+
+#wrapper {
+  margin: 20px;
+  width: 920px; }
+
+h4, h4 {
+  margin-bottom: 0; }
+
+.projects {
+  margin-left: 20px; }

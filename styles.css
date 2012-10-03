@@ -1,0 +1,40 @@
+html {
+  background: #cccccc url(/images/background-stripe.gif) repeat 0 0;
+  color: #333333; }
+
+a {
+  color: #008cff;
+  text-decoration: none; }
+  a:hover {
+    color: #8c8c8c;
+    text-decoration: underline; }
+
+#wrapper {
+  margin: 20px;
+  width: 920px; }
+
+#logo {
+  background: transparent url(/images/logo.png) no-repeat 0 0;
+  display: block;
+  height: 131px;
+  text-indent: -9999px;
+  width: 387px; }
+  #logo:hover {
+    background-color: rgba(204, 204, 204, 0.2); }
+
+#content {
+  background-color: rgba(0, 140, 255, 0.4);
+  margin: 20px 0;
+  padding: 10px; }
+
+.contact ul {
+  margin-left: 0; }
+.contact li {
+  list-style-type: none; }
+  .contact li span {
+    display: block;
+    float: left;
+    width: 75px; }
+
+#hcard-Jesse-Cooke {
+  float: left; }
