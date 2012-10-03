@@ -1,0 +1,834 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Wouldn't you like to forget about the database?</title>
+
+		<meta name="description" content="Cascadia Ruby 2012 session">
+		<meta name="author" content="Jesse Cooke">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="/css/reset.css">
+		<link rel="stylesheet" href="/css/main.css">
+		<link rel="stylesheet" href="/css/print.css" type="text/css" media="print">
+
+		<link rel="stylesheet" href="/lib/css/solarized_light.css" >
+		<link rel="stylesheet" href="/lib/assets/styles.css">
+	</head>                        
+	                              
+	<body>
+		
+		<div class="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Wouldn't you like to forget about the database?</h1>
+					<script>
+						// Delicously hacky. Look away.
+						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
+					</script>
+          <aside class="notes">
+            <ul>
+              <li>Ruby is awesome</li>
+              <li>Great community</li>
+            </ul>
+          </aside>
+				</section>
+
+        <section>
+          <h1>Community</h1>
+          <img src="/lib/assets/tenderlove.jpg" alt="Tenderlove being awesome" data-attribution="http://jakescruggs.blogspot.com/2010/06/rails-conf-2010-day-2.html" />
+          <aside class="notes">
+            <ul>
+              <li>Ruby is awesome</li>
+              <li>Great community</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Shoehorn</h1>
+          <table class="relational-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Birthdate</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Jesse Cooke</td>
+                <td>9/28/1981</td>
+                <td>jesse@jc00ke.com</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jon Doe</td>
+                <td>6/23/1972</td>
+                <td>jon@doe.name</td>
+              </tr>
+            </tbody>
+          </table>
+          <aside class="notes">
+            <ul>
+              <li>Assume most work on web apps</li>
+              <li>Literally shoehorn</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Objects!</h2>
+          <pre><code contenteditable class="ruby"> 
+Widget.find_by_name("foo")
+# or
+User.create({ email: "foo@bar.com" })
+          </code></pre>
+
+          <h2>Some Query Language :(</h2>
+          <pre><code contenteditable class="sql"> 
+select * from widgets where name = 'foo';
+# or
+insert into users...
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>We use ActiveRecord w/MySQL, Datamapper &amp; pg, Mongoid &amp; MongoDB</li>
+              <li>These databases aren't meant to store objects</li>
+              <li>Not designed to do the job we use them for</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>Object-relational impedance mismatch</h2>
+          <h3><a href="http://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">Wikipedia</a></h3>
+          <h3><a href="http://www.agiledata.org/essays/impedanceMismatch.html">Agile Data</a></h3>
+          <h3><a href="http://c2.com/cgi/wiki?ObjectRelationalImpedanceMismatch">Cunningham &amp; Cunningham</a></h3>
+          <h3><a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">Coding Horror</a></h3>
+          <aside class="notes">
+            <ul>
+              <li>We constantly build up &amp; rip apart our objects</li>
+              <li>Every request goes to the database &amp; builds up the same object, over and over</li>
+              <li>To make a create a new, or update an existing object, we strip it down to bare fields &amp; send across the wire</li>
+              <li>Huge impedance mismatch there</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>PORO</h1>
+          <h3>Plain Old Ruby Object</h3>
+          <pre><code contenteditable class="ruby"> 
+class Post < ActiveRecord::Base
+
+end
+          </code></pre>
+          <aside class="notes">
+            <ul>
+              <li>I despise this term</li>
+              <li>Reinforces the impedance mismatch</li>
+              <li>We've been trained to believe our normal Ruby objects are AR objects</li>
+              <li>Unfortunate</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>The Image</h2>
+          <p>
+            <img src="/lib/assets/plasma.jpg" alt="plasma lamp" />
+            <!-- TODO: attribution - I, Luc Viatour [GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/) or CC-BY-SA-2.5-2.0-1.0 (http://creativecommons.org/licenses/by-sa/2.5-2.0-1.0)], via Wikimedia Commons
+            http://commons.wikimedia.org/wiki/File%3APlasma-lamp_2.jpg -->
+          </p>
+          <aside class="notes">
+            <ul>
+              <li>How did Smalltalk get this right?</li>
+              <li>Explain the image</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h3>Time traveller</h3>
+          <div class="fragment">
+            <blockquote>
+              The future of Ruby is here, it’s just that we have it over in the Smalltalk world and you guys should come and get it.
+            </blockquote>
+            <img src="/lib/assets/avi.jpg" alt="Avi Bryant" />
+            <h4><a href="http://about.me/avibryant">Avi Bryant</a></h4>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Keynote RailsConf 2007</li>
+              <li>He suggested we petition GemStone to share their magic</li>
+            </ul>
+          </aside>
+        </section>
+
+				<section>
+					<blockquote cite="http://www.gemstone.com/products/gemstone">
+            GemStone/S is the state-of-the-art platform for developing, deploying, and managing scalable, high-performance, multi-tier applications based on business <span class="emphasis">objects</span>.
+					</blockquote>
+					<p>
+            <img src="/lib/assets/gemstone-s-logo.png" alt="GemStone/S" />
+            <!-- TODO: attribution - http://www.gemstone.com/products/gemstone -->
+					</p>
+          <aside class="notes">
+            <p>Lots of buzzwords, and a lot of power in that last word.</p>
+            <p>Well, who's GemStone? (the company)</p>
+            <ol>
+              <li>Well-tuned VM to run Smalltalk</li>
+              <li>
+                Battle-tested
+                <ul>
+                  <li>OOCL</li>
+                  <li>National Slovenian Gas</li>
+                  <li>JPMorgan Chase</li>
+                  <li>Merril Lyn... haha just kidding</li>
+                  <li>JACK IN THE BOX!</li>
+                </ul>
+              </li>
+              <li>Transparent Object Persistence</li>
+            </ol>
+          </aside>
+        </section>
+
+        <section>
+          <h3>A wise man once asked...</h3>
+          <div>
+            <blockquote>
+              How much do you think about saving your data instead of using it?
+            </blockquote>
+            <img src="/lib/assets/dale.jpg" alt="Dale Henrichs" />
+            <h4><a href="http://gemstonesoup.wordpress.com/">Dale Henrichs</a></h4>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>Answer: more than I want</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2><span class="emphasis">Re-</span>Introducing MagLev</h2>
+          <img src="/lib/assets/maglev-logo.gif" alt="MagLev logo" />
+          <aside class="notes">
+            <ul>
+              <li>What is MagLev?</li>
+              <li>Next slide</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2>What we want to build</h2>
+          <img src="/lib/assets/eqh-ideal.png" alt="Ideal design" />
+        </section>
+
+        <section>
+          <h2>What we end up building</h2>
+          <img src="/lib/assets/eqh-actual.png" alt="Actual design" />
+        </section>
+
+        <section>
+          <h1>Aha!</h1>
+          <img src="/lib/assets/aha.jpg" />
+          <!-- TODO: attribute - http://audioporncentral.com/2008/10/a-ha-take-on-me-literal-video-version.html -->
+        </section>
+
+        <section>
+          <h2>What we could build with MagLev</h2>
+          <img src="/lib/assets/eqh-maglev.png" alt="MagLev design" />
+          <aside class="notes">
+            <ul>
+              <li>warm, sticky ball of dough</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h1>Decouple no more</h1>
+          <h2 class="fragment">MagLev <span class="emphasis">becomes</span> your API</h2>
+        </section>
+
+        <section>
+          <h2 class="emphasis">Transparent Object Persistence</h2>
+          <div class="fragment">
+            <blockquote>
+              I've often wished that I could just do something where I just change a bunch of models and at the end of the request cycle something magical goes through and collects up all the models that have changed and persists them, and I haven't really gotten to that level yet. Sometimes I feel that ActiveRecord is holding me back from that.
+            </blockquote>
+            <p>Avdi Grimm</p>
+           </div>
+          <aside class="notes">
+            <ul>
+              <li>Driving up last night, lots of traffic</li>
+              <li>Ruby Rogues, DDD w/David Laribee</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2 class="emphasis">The Punchline</h2>
+          <blockquote class="fragment">
+            You can just switch to Java, or .NET.
+          </blockquote>
+          <p>David Laribee</p>
+          <!-- http://rubyrogues.com/rr-061-domain-driven-design-ddd-with-david-laribee/ -->
+        </section>
+
+        <section>
+          <img src="/lib/assets/sad-trombone.png" alt="Waa waaah" />
+          <!-- http://www.hark.com/collections/bvtjyltcpl-trombone -->
+        </section>
+
+        <section>
+          <h2 class="emphasis">Transparent Object Persistence</h2>
+          <pre><code contenteditable class="ruby"> 
+Maglev::PERSISTENT_ROOT
+          </code></pre>
+          <aside class="notes">
+            Explain    
+          </aside>
+        </section>
+
+
+        <section>
+          <h2>Simple Example</h2>
+          <pre><code contenteditable class="ruby"> 
+# VM #1
+Maglev.abort_transaction
+j = Rubyist.new("Jesse")
+j.object_id
+# => 1234567
+Maglev::PERSISTENT_ROOT[:jesse] = j
+Maglev.commit_transaction
+          </code></pre>
+
+          <pre class="fragment"><code contenteditable class="ruby"> 
+# VM #2
+Maglev.abort_transaction
+Maglev::PERSISTENT_ROOT[:jesse].object_id
+# => 1234567
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>What is happening?</h1>
+          <div>
+            <img src="/lib/assets/maglev-stone-diagram.png" />
+          </div>
+        </section>
+
+        <section>
+            <pre><code contenteditable class="ruby"> 
+Maglev.abort_transaction
+            </code></pre>
+          <div>
+            <img src="/lib/assets/maglev.abort_transaction.png" />
+          </div>
+        </section>
+
+        <section>
+            <pre><code contenteditable class="ruby"> 
+Maglev.commit_transaction
+            </code></pre>
+          <div>
+            <img src="/lib/assets/maglev.commit_transaction.png" />
+          </div>
+        </section>
+
+        <section>
+          <h2 class="emphasis">Persistence by Reachability</h2>
+          <pre><code contenteditable class="ruby"> 
+# VM #1
+Maglev.abort_transaction
+
+cats = CatCollection.new
+pierre = Cat.new("Pierre")
+cats << pierre
+Maglev::PERSISTENT_ROOT[:cats] = cats
+
+Maglev.commit_transaction
+pierre.object_id
+# => 9876543
+          </code></pre>
+
+          <pre class="fragment"><code contenteditable class="ruby"> 
+# VM #2
+Maglev.abort_transaction
+persisted_cats = Maglev::PERSISTENT_ROOT[:cats]
+
+persisted_cats.first.object_id
+# => 9876543
+          </code></pre>
+
+        </section>
+
+        <section>
+          <h2 class="emphasis">Persistence by Reachability</h2>
+          <pre><code contenteditable class="ruby"> 
+# VM #3
+Maglev.abort_transaction
+
+pierre = Maglev::PERSISTENT_ROOT[:cats].first
+pierre.favorite_toy = BallOfYarn.new
+
+Maglev.commit_transaction
+          </code></pre>
+
+          <pre class="fragment"><code contenteditable class="ruby"> 
+# VM #4
+Maglev.abort_transaction
+
+Maglev::PERSISTENT_ROOT[:cats].first.favorite_toy
+# => #&lt;BallOfYarn:123987&gt;
+          </code></pre>
+
+        </section>
+
+        <section>
+          <h3>What can you (easily) persist today?</h3>
+          <p class="fragment">Arrays</p>
+          <p class="fragment">Sets</p>
+          <p class="fragment">Hashes</p>
+          <p class="fragment">Counters</p>
+          <p class="fragment">Sorted Sets</p>
+        </section>
+
+        <section>
+          <h3>Something more... exotic</h3>
+          <div class="fragment">k-D Tree</div>
+          <div class="fragment">Bloom Filter</div>
+          <div class="fragment">Judy Array</div>
+          <div class="fragment">
+            <p>Leftist Tree</p>
+            <img src="/lib/assets/leftist-tree.jpg" />
+          </div>
+          <!-- TODO: attribute - http://ronbosoldier.blogspot.com/2011/05/leftist-animal-rights-activists-peed-on.html -->
+        </section>
+
+        <section>
+          <h3>(Almost) All the objects!</h3>
+          <div>Proc</div>
+          <div>Binding</div>
+          <div class="stricken">IO</div>
+        </section>
+
+        <section>
+          <h2>A blog I whipped up this morning</h2>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby"> 
+class MaglevBlogApp < Sinatra::Application
+  set :root, File.dirname(__FILE__)
+
+  before do
+    @blog = Maglev::PERSISTENT_ROOT[:maglev_blogs].first
+    @posts = @blog.posts
+  end
+
+  get "/" do
+    erb :index
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby"> 
+class MaglevBlogApp < Sinatra::Application
+  # ...
+  get "/posts/:id" do
+    @post = @posts.detect { |post|
+      post.object_id == params[:id].to_i
+    }
+    erb :post
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby"> 
+class MaglevBlogApp < Sinatra::Application
+  # ...
+
+  post "/post" do
+    post = @posts.class.new(params[:title], params[:body])
+    @blog.posts << post
+    redirect "/"
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby"> 
+class MagLevTransactionWrapper
+  def initialize(app)
+    @app = app
+  end
+
+  def call(env)
+    begin
+      Maglev.abort_transaction
+      status, headers, body = @app.call env
+      [status, headers, body]
+    ensure
+      if committable? status
+        Maglev.commit_transaction
+      else
+        Maglev.abort_transaction
+      end
+    end
+  end
+
+  # A Commit-worthy status is success (2xx) or a redirect.
+  def committable?(status)
+    ! status.nil? &&  (200..399).include?(status)
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby"> 
+class MaglevBlog
+  attr_accessor :posts, :name, :author
+  def initialize(name, author_name)
+    @posts = []
+    @name = name
+    @author = Author.new(author_name)
+  end
+  # ...
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby"> 
+class MaglevBlog
+  # ...
+
+  class Post
+    attr_accessor :title, :body
+    def initialize(title, body)
+      @title = title
+      @body = body
+    end
+  end
+
+  # ...
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby"> 
+class MaglevBlog
+  # ...
+
+  class Author
+    attr_accessor :name
+    def initialize(name)
+      @name = name
+    end
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby"> 
+# bootstrap.rb
+
+Maglev.persistent do
+  load "maglev_blog.rb"
+  blog = MaglevBlog.new("Cascadia Ruby!", "jc00ke")
+  Maglev::PERSISTENT_ROOT[:maglev_blogs] = [blog]
+end
+          </code></pre>
+          <pre><code contenteditable class="bash"> 
+maglev-ruby -Mcommit bootstrap.rb
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Background Jobs</h1>
+          <div>
+            <h2>Sidekiq</h2>
+            <h2>Resque</h2>
+            <h2>Queue Classic</h2>
+            <h2>RabbitMQ</h2>
+            <h2>etc...</h2>
+          </div>
+        </section>
+
+        <section>
+          <h2>World's worst (but easiest) queue</h2>
+          <pre><code contenteditable class="ruby"> 
+# pseudo
+jobs = []
+jobs << Proc.new { puts "doing work" }
+jobs.shift.call
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Slightly-better producer</h2>
+          <pre><code contenteditable class="ruby"> 
+Maglev.abort_transaction
+Maglev::PERSISTENT_ROOT[:q] ||= []
+
+while true do
+  Maglev::PERSISTENT_ROOT[:q] << Proc.new { puts "doing work" }
+  Maglev.commit_transaction
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Slightly-better worker</h2>
+          <pre><code contenteditable class="ruby"> 
+while true do
+  Maglev.abort_transaction
+  work = Maglev::PERSISTENT_ROOT[:q].shift
+  Maglev.commit_transaction
+  work.call if work
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Issues?</h1>
+          <ol>
+            <li class="fragment">What happens if a commit fails?</li>
+            <li class="fragment">Array isn't a concurrent data structure</li>
+            <li class="fragment">others...</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Slightly-better producer</h2>
+          <pre><code contenteditable class="ruby"> 
+Maglev.abort_transaction
+Maglev::PERSISTENT_ROOT[:q] ||= []
+
+while true do
+  Maglev::PERSISTENT_ROOT[:q] << Proc.new { puts "doing work" }
+  Maglev.commit_transaction
+rescue Maglev::CommitFailedException
+  puts "Couldn't add the job. Retrying..."
+  redo
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Slightly-better worker</h2>
+          <pre><code contenteditable class="ruby"> 
+while true do
+  Maglev.abort_transaction
+  work = Maglev::PERSISTENT_ROOT[:q].shift
+  Maglev.commit_transaction
+  work.call if work
+rescue Maglev::CommitFailedException
+  puts "Someone grabbed this job before me. Go grab another."
+  redo
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Issues?</h1>
+          <ol>
+            <li class="stricken">What happens if a commit fails?</li>
+            <li>Array isn't a concurrent data structure</li>
+            <li>others...</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Reduced Conflict Classes</h2>
+          <div>
+            <h3 class="normal-heading">RCHash</h3>
+            <h3 class="normal-heading">RCQueue</h3>
+            <h3 class="normal-heading">RCCounter<span class="emphasis">*</span></h3>
+            <h3 class="normal-heading">RCIdentityBag<span class="emphasis">*</span></h3>
+          </div>
+        </section>
+
+        <section>
+          <img src="/lib/assets/rchash-write.png" alt="Write RCHash diagram" />
+        </section>
+
+        <section>
+          <img src="/lib/assets/rchash-read.png" alt="Read RCHash diagram" />
+        </section>
+
+        <section>
+          <h2>Slightly-better producer</h2>
+          <pre><code contenteditable class="ruby">
+require 'maglev/rcqueue'
+
+Maglev.abort_transaction
+Maglev::PERSISTENT_ROOT[:q] ||= RCQueue.new
+
+while true do
+  Maglev::PERSISTENT_ROOT[:q] << Proc.new { puts "doing work" }
+  Maglev.commit_transaction
+rescue Maglev::CommitFailedException
+  puts "Couldn't add the job. Retrying..."
+  redo
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Issues?</h1>
+          <ol>
+            <li class="stricken">What happens if a commit fails?</li>
+            <li class="stricken">Array isn't a concurrent data structure</li>
+            <li>others...</li>
+          </ol>
+        </section>
+
+        <section>
+          <h1>MagLev-Q</h1>
+          <a href="https://github.com/jc00ke/maglev-q">https://github.com/jc00ke/maglev-q</a>
+        </section>
+
+        <section>
+          <h1>What's the point?</h1>
+          <pre>
+Totals grouped by language (dominant language first):
+ruby:            34 (100.00%)
+
+Total Physical Source Lines of Code (SLOC)                = 34
+Development Effort Estimate, Person-Months                = 0.07
+Schedule Estimate, Months                                 = 0.90
+Estimated Average Number of Developers (Effort/Schedule)  = 0.08
+Total Estimated Cost to Develop                           = $ 776
+ (average salary = $56,286/year, overhead = 2.40).
+          </pre>
+          <p class="tiny">Generated using David A. Wheeler's 'SLOCCount'</p>
+        </section>
+
+        <section>
+          <h2>Like all implementations</h2>
+          <h2>MagLev needs help</h2>
+
+          <div class="fragment">RubySpec - catch up to 1.8.7</div>
+          <div class="fragment">Other C-ext</div>
+          <div class="fragment">RSpec's described_class, etc</div>
+          <div class="fragment">IO</div>
+        </section>
+
+        <section>
+          <h2>Things we depend on</h2>
+          <h3 class="fragment">&lt;nokogiri&gt;</h3>
+          <h3 class="fragment">bcrypt</h3>
+          <h3 class="fragment">{ json }</h3>
+        </section>
+
+        <section>
+          <h2>The future of MagLev</h2>
+          <h3>GemStone/S 3.1.0.1</h3>
+          <h3>HPI 1.9/Rails 4</h3>
+          <h3>Your cool projects</h3>
+
+          <pre><code contenteditable class="bash">
+rvm install maglev
+ruby-build install maglev-1.1.0-dev
+./install.sh
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Thanks!</h1>
+          <h2>Jesse Cooke</h2>
+          <p><a href="https://github.com/jc00ke">github/jc00ke</a></p>
+          <p><a href="https://twitter.com/jc00ke">@jc00ke</a></p>
+          <p>jesse [at] jc00ke.com</p>
+        </section>
+
+      </div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Presentation progress bar -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+
+		<script src="/lib/js/head.min.js"></script>
+
+		<script>
+			// Load reveal.js as well as a classList polyfill if needed
+			head.js( !document.body.classList ? '/lib/js/classList.js' : null )
+				.js( '/js/reveal.js', function() {
+
+				// Parse the query string into a key/value object
+				var query = {};
+				location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+					query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+				} );
+
+				// Fires when a slide with data-state=customevent is activated
+				Reveal.addEventListener( 'customevent', function() {
+					console.log( '"customevent" has fired' );
+				} );
+
+				// Fires each time a new slide is activated
+				Reveal.addEventListener( 'slidechanged', function( event ) {
+					// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+				} );
+
+				// Full list of configuration options available here:
+				// https://github.com/hakimel/reveal.js#configuration
+				Reveal.initialize({
+					controls: true,
+					progress: true,
+					history: true,
+					
+					theme: query.theme || 'default', // default/neon/beige
+					transition: query.transition || 'concave' // default/cube/page/concave/linear(2d)
+				});
+
+			} );
+			
+			// Load highlight.js for syntax highlighting of code samples
+			head.js( '/lib/js/highlight.js', function() { 
+				hljs.initHighlightingOnLoad(); 
+			} );
+
+			// If we're runnning the notes server we need to include some additional JS
+			// TODO Is there a better way to determine if we're running the notes server?
+			if( window.location.host === 'localhost:1947' ) {
+				head.js( 'socket.io/socket.io.js', '/plugin/speakernotes/client.js' );
+			}
+		</script>
+		
+	</body>
+</html>
