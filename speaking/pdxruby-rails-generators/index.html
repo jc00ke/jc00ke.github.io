@@ -279,7 +279,7 @@ namespace :db do
       require model
     end
 
-    Dbx::Base.subclasses.each do |model|
+    RoflDB::Base.subclasses.each do |model|
       DatabaseMigrator.migrate(model.schema_attrs, model.to_s)
     end
   end
