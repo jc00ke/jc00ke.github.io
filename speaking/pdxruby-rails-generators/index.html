@@ -58,8 +58,6 @@ Usage: rails generate GENERATOR [args] [options]
 
 Please choose a generator below.
 
-...
-
 Kaminari:
   kaminari:config
   kaminari:views
@@ -94,9 +92,7 @@ Usage: rails generate GENERATOR [args] [options]
 General options:
   -h, [--help]     # Print generator's options and usage
   -p, [--pretend]  # Run but do not make any changes
-  -f, [--force]    # Overwrite files that already exist
-  -s, [--skip]     # Skip files that already exist
-  -q, [--quiet]    # Suppress status output
+  ...
 
 Please choose a generator below.
 
@@ -104,9 +100,6 @@ Rails:
   assets
   controller
   generator <------------------------------ WAT?!?
-  helper
-  integration_test
-  mailer
   ...
           </code></pre>
         </section>
@@ -176,10 +169,6 @@ end
 class ConverterGenerator < Rails::Generators::NamedBase
   # ...
 
-  def self.base_root
-    File.dirname(__FILE__)
-  end
-
   # required interface for Rails::Generators::Migration.
   def self.next_migration_number(dirname) #:nodoc:
     next_num = current_migration_number(dirname) + 1
@@ -209,7 +198,6 @@ class DatabaseMigrator
   def mapped_attributes
     # ...
   end
-  # ...
 end
           </code></pre>
         </section>
