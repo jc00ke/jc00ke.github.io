@@ -1,9 +1,9 @@
-<!doctype html>  
+<!doctype html>
 <html lang="en">
-	
+
 	<head>
 		<meta charset="utf-8">
-		
+
 		<title>Wouldn't you like to forget about the database?</title>
 
 		<meta name="description" content="Cascadia Ruby 2012 session">
@@ -11,24 +11,24 @@
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-		
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-		
-		<link rel="stylesheet" href="/css/reset.css">
-		<link rel="stylesheet" href="/css/main.css">
-		<link rel="stylesheet" href="/css/print.css" type="text/css" media="print">
 
-		<link rel="stylesheet" href="/lib/css/solarized_light.css" >
-		<link rel="stylesheet" href="/lib/assets/styles.css">
-	</head>                        
-	                              
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+		<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
+		<link rel="stylesheet" href="../../reveal.js/css/print/pdf.css" type="text/css" media="print">
+		<link rel="stylesheet" href="../../reveal.js/css/theme/default.css" id="theme">
+
+		<link rel="stylesheet" href="lib/css/solarized_light.css" >
+		<link rel="stylesheet" href="lib/assets/styles.css">
+	</head>
+
 	<body>
-		
+
 		<div class="reveal">
 
 			<!-- Used to fade in a background when a specific slide state is reached -->
 			<div class="state-background"></div>
-			
+
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
@@ -47,7 +47,7 @@
 
         <section>
           <h1>Community</h1>
-          <img src="/lib/assets/tenderlove.jpg" alt="Tenderlove being awesome" data-attribution="http://jakescruggs.blogspot.com/2010/06/rails-conf-2010-day-2.html" />
+          <img src="lib/assets/tenderlove.jpg" alt="Tenderlove being awesome" data-attribution="http://jakescruggs.blogspot.com/2010/06/rails-conf-2010-day-2.html" />
           <aside class="notes">
             <ul>
               <li>Ruby is awesome</li>
@@ -92,14 +92,14 @@
 
         <section>
           <h2>Objects!</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 Widget.find_by_name("foo")
 # or
 User.create({ email: "foo@bar.com" })
           </code></pre>
 
           <h2>Some Query Language :(</h2>
-          <pre><code contenteditable class="sql"> 
+          <pre><code contenteditable class="sql">
 select * from widgets where name = 'foo';
 # or
 insert into users...
@@ -132,7 +132,7 @@ insert into users...
         <section>
           <h1>PORO</h1>
           <h3>Plain Old Ruby Object</h3>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 class Post < ActiveRecord::Base
 
 end
@@ -150,7 +150,7 @@ end
         <section>
           <h2>The Image</h2>
           <p>
-            <img src="/lib/assets/plasma.jpg" alt="plasma lamp" />
+            <img src="lib/assets/plasma.jpg" alt="plasma lamp" />
             <!-- TODO: attribution - I, Luc Viatour [GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/) or CC-BY-SA-2.5-2.0-1.0 (http://creativecommons.org/licenses/by-sa/2.5-2.0-1.0)], via Wikimedia Commons
             http://commons.wikimedia.org/wiki/File%3APlasma-lamp_2.jpg -->
           </p>
@@ -168,7 +168,7 @@ end
             <blockquote>
               The future of Ruby is here, it’s just that we have it over in the Smalltalk world and you guys should come and get it.
             </blockquote>
-            <img src="/lib/assets/avi.jpg" alt="Avi Bryant" />
+            <img src="lib/assets/avi.jpg" alt="Avi Bryant" />
             <h4><a href="http://about.me/avibryant">Avi Bryant</a></h4>
           </div>
           <aside class="notes">
@@ -184,7 +184,7 @@ end
             GemStone/S is the state-of-the-art platform for developing, deploying, and managing scalable, high-performance, multi-tier applications based on business <span class="emphasis">objects</span>.
 					</blockquote>
 					<p>
-            <img src="/lib/assets/gemstone-s-logo.png" alt="GemStone/S" />
+            <img src="lib/assets/gemstone-s-logo.png" alt="GemStone/S" />
             <!-- TODO: attribution - http://www.gemstone.com/products/gemstone -->
 					</p>
           <aside class="notes">
@@ -213,7 +213,7 @@ end
             <blockquote>
               How much do you think about saving your data instead of using it?
             </blockquote>
-            <img src="/lib/assets/dale.jpg" alt="Dale Henrichs" />
+            <img src="lib/assets/dale.jpg" alt="Dale Henrichs" />
             <h4><a href="http://gemstonesoup.wordpress.com/">Dale Henrichs</a></h4>
           </div>
           <aside class="notes">
@@ -225,7 +225,7 @@ end
 
         <section>
           <h2><span class="emphasis">Re-</span>Introducing MagLev</h2>
-          <img src="/lib/assets/maglev-logo.gif" alt="MagLev logo" />
+          <img src="lib/assets/maglev-logo.gif" alt="MagLev logo" />
           <aside class="notes">
             <ul>
               <li>What is MagLev?</li>
@@ -236,23 +236,23 @@ end
 
         <section>
           <h2>What we want to build</h2>
-          <img src="/lib/assets/eqh-ideal.png" alt="Ideal design" />
+          <img src="lib/assets/eqh-ideal.png" alt="Ideal design" />
         </section>
 
         <section>
           <h2>What we end up building</h2>
-          <img src="/lib/assets/eqh-actual.png" alt="Actual design" />
+          <img src="lib/assets/eqh-actual.png" alt="Actual design" />
         </section>
 
         <section>
           <h1>Aha!</h1>
-          <img src="/lib/assets/aha.jpg" />
+          <img src="lib/assets/aha.jpg" />
           <!-- TODO: attribute - http://audioporncentral.com/2008/10/a-ha-take-on-me-literal-video-version.html -->
         </section>
 
         <section>
           <h2>What we could build with MagLev</h2>
-          <img src="/lib/assets/eqh-maglev.png" alt="MagLev design" />
+          <img src="lib/assets/eqh-maglev.png" alt="MagLev design" />
           <aside class="notes">
             <ul>
               <li>warm, sticky ball of dough</li>
@@ -291,24 +291,24 @@ end
         </section>
 
         <section>
-          <img src="/lib/assets/sad-trombone.png" alt="Waa waaah" />
+          <img src="lib/assets/sad-trombone.png" alt="Waa waaah" />
           <!-- http://www.hark.com/collections/bvtjyltcpl-trombone -->
         </section>
 
         <section>
           <h2 class="emphasis">Transparent Object Persistence</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 Maglev::PERSISTENT_ROOT
           </code></pre>
           <aside class="notes">
-            Explain    
+            Explain
           </aside>
         </section>
 
 
         <section>
           <h2>Simple Example</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 # VM #1
 Maglev.abort_transaction
 j = Rubyist.new("Jesse")
@@ -318,7 +318,7 @@ Maglev::PERSISTENT_ROOT[:jesse] = j
 Maglev.commit_transaction
           </code></pre>
 
-          <pre class="fragment"><code contenteditable class="ruby"> 
+          <pre class="fragment"><code contenteditable class="ruby">
 # VM #2
 Maglev.abort_transaction
 Maglev::PERSISTENT_ROOT[:jesse].object_id
@@ -329,31 +329,31 @@ Maglev::PERSISTENT_ROOT[:jesse].object_id
         <section>
           <h1>What is happening?</h1>
           <div>
-            <img src="/lib/assets/maglev-stone-diagram.png" />
+            <img src="lib/assets/maglev-stone-diagram.png" />
           </div>
         </section>
 
         <section>
-            <pre><code contenteditable class="ruby"> 
+            <pre><code contenteditable class="ruby">
 Maglev.abort_transaction
             </code></pre>
           <div>
-            <img src="/lib/assets/maglev.abort_transaction.png" />
+            <img src="lib/assets/maglev.abort_transaction.png" />
           </div>
         </section>
 
         <section>
-            <pre><code contenteditable class="ruby"> 
+            <pre><code contenteditable class="ruby">
 Maglev.commit_transaction
             </code></pre>
           <div>
-            <img src="/lib/assets/maglev.commit_transaction.png" />
+            <img src="lib/assets/maglev.commit_transaction.png" />
           </div>
         </section>
 
         <section>
           <h2 class="emphasis">Persistence by Reachability</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 # VM #1
 Maglev.abort_transaction
 
@@ -367,7 +367,7 @@ pierre.object_id
 # => 9876543
           </code></pre>
 
-          <pre class="fragment"><code contenteditable class="ruby"> 
+          <pre class="fragment"><code contenteditable class="ruby">
 # VM #2
 Maglev.abort_transaction
 persisted_cats = Maglev::PERSISTENT_ROOT[:cats]
@@ -380,7 +380,7 @@ persisted_cats.first.object_id
 
         <section>
           <h2 class="emphasis">Persistence by Reachability</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 # VM #3
 Maglev.abort_transaction
 
@@ -390,7 +390,7 @@ pierre.favorite_toy = BallOfYarn.new
 Maglev.commit_transaction
           </code></pre>
 
-          <pre class="fragment"><code contenteditable class="ruby"> 
+          <pre class="fragment"><code contenteditable class="ruby">
 # VM #4
 Maglev.abort_transaction
 
@@ -416,7 +416,7 @@ Maglev::PERSISTENT_ROOT[:cats].first.favorite_toy
           <div class="fragment">Judy Array</div>
           <div class="fragment">
             <p>Leftist Tree</p>
-            <img src="/lib/assets/leftist-tree.jpg" />
+            <img src="lib/assets/leftist-tree.jpg" />
           </div>
           <!-- TODO: attribute - http://ronbosoldier.blogspot.com/2011/05/leftist-animal-rights-activists-peed-on.html -->
         </section>
@@ -433,7 +433,7 @@ Maglev::PERSISTENT_ROOT[:cats].first.favorite_toy
         </section>
 
         <section>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 class MaglevBlogApp < Sinatra::Application
   set :root, File.dirname(__FILE__)
 
@@ -450,7 +450,7 @@ end
         </section>
 
         <section>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 class MaglevBlogApp < Sinatra::Application
   # ...
   get "/posts/:id" do
@@ -464,7 +464,7 @@ end
         </section>
 
         <section>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 class MaglevBlogApp < Sinatra::Application
   # ...
 
@@ -478,7 +478,7 @@ end
         </section>
 
         <section>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 class MagLevTransactionWrapper
   def initialize(app)
     @app = app
@@ -507,7 +507,7 @@ end
         </section>
 
         <section>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 class MaglevBlog
   attr_accessor :posts, :name, :author
   def initialize(name, author_name)
@@ -521,7 +521,7 @@ end
         </section>
 
         <section>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 class MaglevBlog
   # ...
 
@@ -539,7 +539,7 @@ end
         </section>
 
         <section>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 class MaglevBlog
   # ...
 
@@ -554,7 +554,7 @@ end
         </section>
 
         <section>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 # bootstrap.rb
 
 Maglev.persistent do
@@ -563,7 +563,7 @@ Maglev.persistent do
   Maglev::PERSISTENT_ROOT[:maglev_blogs] = [blog]
 end
           </code></pre>
-          <pre><code contenteditable class="bash"> 
+          <pre><code contenteditable class="bash">
 maglev-ruby -Mcommit bootstrap.rb
           </code></pre>
         </section>
@@ -581,7 +581,7 @@ maglev-ruby -Mcommit bootstrap.rb
 
         <section>
           <h2>World's worst (but easiest) queue</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 # pseudo
 jobs = []
 jobs << Proc.new { puts "doing work" }
@@ -591,7 +591,7 @@ jobs.shift.call
 
         <section>
           <h2>Slightly-better producer</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 Maglev.abort_transaction
 Maglev::PERSISTENT_ROOT[:q] ||= []
 
@@ -604,7 +604,7 @@ end
 
         <section>
           <h2>Slightly-better worker</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 while true do
   Maglev.abort_transaction
   work = Maglev::PERSISTENT_ROOT[:q].shift
@@ -625,7 +625,7 @@ end
 
         <section>
           <h2>Slightly-better producer</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 Maglev.abort_transaction
 Maglev::PERSISTENT_ROOT[:q] ||= []
 
@@ -641,7 +641,7 @@ end
 
         <section>
           <h2>Slightly-better worker</h2>
-          <pre><code contenteditable class="ruby"> 
+          <pre><code contenteditable class="ruby">
 while true do
   Maglev.abort_transaction
   work = Maglev::PERSISTENT_ROOT[:q].shift
@@ -674,11 +674,11 @@ end
         </section>
 
         <section>
-          <img src="/lib/assets/rchash-write.png" alt="Write RCHash diagram" />
+          <img src="lib/assets/rchash-write.png" alt="Write RCHash diagram" />
         </section>
 
         <section>
-          <img src="/lib/assets/rchash-read.png" alt="Read RCHash diagram" />
+          <img src="lib/assets/rchash-read.png" alt="Read RCHash diagram" />
         </section>
 
         <section>
@@ -779,15 +779,15 @@ ruby-build install maglev-1.1.0-dev
 
 			<!-- Presentation progress bar -->
 			<div class="progress"><span></span></div>
-			
+
 		</div>
 
-		<script src="/lib/js/head.min.js"></script>
+		<script src="../../reveal.js/lib/js/head.min.js"></script>
 
 		<script>
 			// Load reveal.js as well as a classList polyfill if needed
-			head.js( !document.body.classList ? '/lib/js/classList.js' : null )
-				.js( '/js/reveal.js', function() {
+			head.js( !document.body.classList ? '../../reveal.js/lib/js/classList.js' : null )
+				.js( '../../reveal.js/js/reveal.js', function() {
 
 				// Parse the query string into a key/value object
 				var query = {};
@@ -811,24 +811,24 @@ ruby-build install maglev-1.1.0-dev
 					controls: true,
 					progress: true,
 					history: true,
-					
+
 					theme: query.theme || 'default', // default/neon/beige
 					transition: query.transition || 'concave' // default/cube/page/concave/linear(2d)
 				});
 
 			} );
-			
+
 			// Load highlight.js for syntax highlighting of code samples
-			head.js( '/lib/js/highlight.js', function() { 
-				hljs.initHighlightingOnLoad(); 
+			head.js( '../../reveal.js/lib/js/highlight.js', function() {
+				hljs.initHighlightingOnLoad();
 			} );
 
 			// If we're runnning the notes server we need to include some additional JS
 			// TODO Is there a better way to determine if we're running the notes server?
 			if( window.location.host === 'localhost:1947' ) {
-				head.js( 'socket.io/socket.io.js', '/plugin/speakernotes/client.js' );
+				head.js( 'socket.io/socket.io.js', '../../reveal.js/lib/plugin/speakernotes/client.js' );
 			}
 		</script>
-		
+
 	</body>
 </html>
