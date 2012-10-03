@@ -82,8 +82,8 @@ RailsAdmin:
 
         <section>
           <h2>The mission</h2>
-          <h3 class="fragment">DB X -> pg</h3>
-          <h3 class="fragment">DB X is... a document database!</h3>
+          <h3 class="fragment">RoflDB -> pg</h3>
+          <h3 class="fragment">RoflDB is... a document database!</h3>
         </section>
 
         <section>
@@ -250,7 +250,7 @@ rake db:migrate_schema
 require 'rails/generators'
 
 namespace :db do
-  desc "Migrate DocumentDB to pg"
+  desc "Migrate RoflDB to pg"
   task migrate_schema: :environment do
     # explicitly load models to avoid lazy loading in development
     Dir[Rails.root.join("app/models/**/*.rb")].each do |model|
