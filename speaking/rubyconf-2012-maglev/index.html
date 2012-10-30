@@ -604,6 +604,142 @@ PROOT[:cats].first.toys.first
           </blockquote>
         </section>
 
+        <section>
+          <h1>A blog I whipped up</h1>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
+class MaglevBlogApp < Sinatra::Application
+  set :root, File.dirname(__FILE__)
+
+  before do
+    @blog = PROOT[:maglev_blogs].first
+    @posts = @blog.posts
+  end
+
+  get "/" do
+    erb :index
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
+class MaglevBlogApp < Sinatra::Application
+  # ...
+  get "/posts/:id" do
+    @post = @posts.detect { |post|
+      post.slug == params[:slug]
+    }
+    erb :post
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
+class MaglevBlogApp < Sinatra::Application
+  # ...
+
+  post "/post" do
+    post = Post.new(params[:title], params[:body])
+    @blog.posts << post
+    redirect "/"
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
+class MagLevTransactionWrapper
+  def initialize(app); @app = app; end
+
+  def call(env)
+    begin
+      Maglev.abort_transaction
+      status, headers, body = @app.call env
+      [status, headers, body]
+    ensure
+      commit_if_cool status
+    end
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
+class MaglevBlog
+  attr_accessor :posts, :name, :author
+  def initialize(name, author_name)
+    @posts = []
+    @name = name
+    @author = Author.new(author_name)
+  end
+  # ...
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
+class MaglevBlog
+  # ...
+
+  class Post
+    attr_accessor :title, :body
+    def initialize(title, body)
+      @title = title
+      @body = body
+      post_initialize
+    end
+
+    private
+    def post_initialize
+      @slug = SecureRandom.hex(12)
+    end
+  end
+
+  # ...
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
+class MaglevBlog
+  # ...
+
+  class Author
+    attr_accessor :name
+    def initialize(name)
+      @name = name
+    end
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
+# bootstrap.rb
+
+Maglev.persistent do
+  load "maglev_blog.rb"
+  blog = MaglevBlog.new("RubyConf 2012!", "jc00ke")
+  PROOT[:maglev_blogs] << blog
+end
+          </code></pre>
+          <pre><code contenteditable class="bash">
+maglev-ruby -Mcommit bootstrap.rb
+          </code></pre>
+        </section>
+
+
 				<section data-markdown>
           <script type="text/template">
             # Thanks!
