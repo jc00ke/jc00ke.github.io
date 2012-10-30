@@ -20,6 +20,7 @@
 
 		<link rel="stylesheet" href="../lib/css/solarized_light.css" >
 		<link rel="stylesheet" href="../lib/css/styles.css">
+		<link rel="stylesheet" href="lib/assets/styles.css">
 	</head>
 
 	<body>
@@ -79,13 +80,177 @@
 
 				<section data-markdown>
           <script type="text/template">
-            ![OOCL Truck](lib/assets/oocl-truck.jpg)
+            # Why is it so special?
           </script>
+        </section>
+
+        <section>
+          <h2 class="emphasis">Transparent Object Persistence</h2>
+          <div class="fragment">
+            <blockquote>
+              I've often wished that I could just do something where I just change a bunch of models and at the end of the request cycle something magical goes through and collects up all the models that have changed and persists them, and I haven't really gotten to that level yet. Sometimes I feel that ActiveRecord is holding me back from that.
+            </blockquote>
+            <p>Avdi Grimm</p>
+           </div>
+          <aside class="notes">
+            <ul>
+              <li>Heading up to Cascadia Ruby</li>
+              <li>Ruby Rogues, DDD w/David Laribee</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
+          <h2 class="emphasis">The Punchline</h2>
+          <blockquote class="fragment">
+            You can just switch to Java, or .NET.
+          </blockquote>
+          <p>David Laribee</p>
+          <!-- http://rubyrogues.com/rr-061-domain-driven-design-ddd-with-david-laribee/ -->
+        </section>
+
+        <section>
+          <img src="lib/assets/sad-trombone.png" alt="Waa waaah" />
+          <!-- http://www.hark.com/collections/bvtjyltcpl-trombone -->
         </section>
 
 				<section data-markdown>
           <script type="text/template">
+            ![OOCL Truck](lib/assets/oocl-truck.jpg)
           </script>
+        </section>
+
+				<section>
+          <h1>Persisting objects is hard</h1>
+          <h2 class="fragment">Let's go shopping!</h2>
+          <aside class="notes">
+            It's not that we don't have nice tools...
+            <ul>
+              <li>ActiveRecord</li>
+              <li>Sequel</li>
+              <li>Mongoid</li>
+              <li>etc</li>
+            </ul>
+            Too many non-trivial decisions to make.
+          </aside>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
+            # Avi Bryant
+
+            ## Super Smart
+
+            ![Avi](lib/assets/avi.jpg)
+
+            [Ruby and Other Gems](http://web.archive.org/web/20110328010807/http://www.avibryant.com/2008/03/ive-had-a-numbe.html)
+          </script>
+
+          <aside class="notes">
+            Rails as an architecture
+            <ul>
+              <li>Central database</li>
+              <li>Many App servers</li>
+              <li>In-memory caches</li>
+              <li>etc</li>
+            </ul>
+            How many of you have implemented a system like that?
+          </aside>
+        </section>
+
+        <section>
+          <table class="relational-table avi-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th colspan="2">Rails</th>
+                <th colspan="2">Gemstone</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th>Provided By</th>
+                <th>Stores</th>
+                <th>Provided By</th>
+                <th>Stores</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Storage Engine</td>
+                <td>MySQL</td>
+                <td>objects mapped to relational tables</td>
+                <td>"Stone" object store</td>
+                <td>Smalltalk objects</td>
+              </tr>
+              <tr>
+                <td>Memory Cache</td>
+                <td>memcached</td>
+                <td>objects marshalled to strings</td>
+                <td>Shared page cache</td>
+                <td>Smalltalk objects</td>
+              </tr>
+              <tr>
+                <td>Worker Process</td>
+                <td>MRI/Mongrel</td>
+                <td>Ruby objects</td>
+                <td>"Gem" Smalltalk VM</td>
+                <td>Smalltalk objects</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <table class="relational-table avi-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th colspan="2">Rails</th>
+                <th colspan="2">Gemstone</th>
+              </tr>
+              <tr>
+                <th></th>
+                <th>Provided By</th>
+                <th>Stores</th>
+                <th>Provided By</th>
+                <th>Stores</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Storage Engine</td>
+                <td>MySQL</td>
+                <td>objects mapped to relational tables</td>
+                <td>"Stone" object store</td>
+                <td class="emphasis">Smalltalk objects</td>
+              </tr>
+              <tr>
+                <td>Memory Cache</td>
+                <td>memcached</td>
+                <td>objects marshalled to strings</td>
+                <td>Shared page cache</td>
+                <td class="emphasis">Smalltalk objects</td>
+              </tr>
+              <tr>
+                <td>Worker Process</td>
+                <td>MRI/Mongrel</td>
+                <td>Ruby objects</td>
+                <td>"Gem" Smalltalk VM</td>
+                <td class="emphasis">Smalltalk objects</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
+            # GemStone/R
+          </script>
+          <aside class="notes">
+            <p>You're essentially implementing the Ruby version of GemStone/S, but without the object persistence.</p>
+            <p>And you have to keep track of everything</p>
+            <p>And you doing it wrong</p>
+          </aside>
         </section>
 
 				<section data-markdown>
