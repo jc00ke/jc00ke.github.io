@@ -673,6 +673,21 @@ end
 
         <section>
           <pre><code contenteditable class="ruby">
+class MagLevTransactionWrapper
+  # ...
+
+  private
+  def commit_if_cool(status=0)
+    if (200..399).include? status
+      Maglev.commit_transaction
+    end
+  end
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <pre><code contenteditable class="ruby">
 class MaglevBlog
   attr_accessor :posts, :name, :author
   def initialize(name, author_name)
@@ -703,8 +718,6 @@ class MaglevBlog
       @slug = SecureRandom.hex(12)
     end
   end
-
-  # ...
 end
           </code></pre>
         </section>
