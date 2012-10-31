@@ -541,10 +541,6 @@ Maglev.commit_transaction
           <h2 class="emphasis">Persistence by Reachability</h2>
           <pre><code contenteditable class="ruby">
 # VM #1
-Maglev.persistent do
-  require 'set'
-end
-
 cats = []
 pierre = Cat.new("Pierre")
 cats << pierre
@@ -570,7 +566,7 @@ persisted_cats.first.object_id
           <pre><code contenteditable class="ruby">
 # VM #3
 pierre = PROOT[:cats].first
-pierre.toys << :catnip
+pierre.toys << :ball_of_yarn
 
 Maglev.commit_transaction
           </code></pre>
@@ -580,7 +576,7 @@ Maglev.commit_transaction
 Maglev.abort_transaction
 
 PROOT[:cats].first.toys.first
-# => :catnip
+# => :ball_of_yarn
           </code></pre>
         </section>
 
