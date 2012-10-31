@@ -1143,6 +1143,7 @@ end
             <li class="fragment">The logic should be in your app, not in the DB</li>
             <li class="fragment">Use the data structures we have...</li>
             <li class="fragment">... or build the ones you want</li>
+            <li class="fragment">MagLev let's us persist anything, so have fun!</li>
           </ul>
         </section>
 
@@ -1151,8 +1152,47 @@ end
         </section>
 
         <section>
-          <h1>Last example</h1>
-          <h2 class="fragment">Someone set us up the BOM</h2>
+          <h1>Did I mention...</h1>
+          <h1 class="fragment">it's distributed?</h1>
+        </section>
+
+        <section>
+          <h1>Start on remote stone</h1>
+          <h2>maglev.jc00ke.com</h2>
+          <pre><code contenteditable class="bash">
+$> cd $MAGLEV_HOME
+$> rake netldi:start
+startnetldi[Info]: Starting GemStone network server 'gs64ldi'.
+startnetldi[Info]: GemStone server 'gs64ldi' has been started.
+
+%> rake maglev:start
+startstone[Info]: GemStone server 'maglev' has been started.
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Start on my laptop</h1>
+          <pre><code contenteditable class="bash">
+cd $MAGLEV_HOME
+rake netldi:start
+startnetldi[Info]: Starting GemStone network server 'gs64ldi'.
+startnetldi[Info]: GemStone server 'gs64ldi' has been started.
+
+maglev-ruby --stonehost -e 'PROOT[:cats].first.name'
+Pierre
+          </code></pre>
+        </section>
+
+				<section>
+          <h1>Killer feature</h1>
+          <h2 class="fragment">Transparent Object Persistence</h2>
+          <h2 class="fragment"><span class="emphasis">Distributed</span> Transparent Object Persistence</h2>
+        </section>
+
+				<section>
+          <h1>Find me later</h1>
+          <p>I want to test out this distributed thing on a bigger scale</p>
+          <p>with your help ;)</p>
         </section>
 
 				<section data-markdown>
