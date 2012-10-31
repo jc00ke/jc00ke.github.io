@@ -448,19 +448,57 @@ PROOT[:pierre].object_id
           </code></pre>
         </section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Step Back...
-
-            * Transactions, how do they work?
-            * begin/commit/abort
-          </script>
+        <section>
+          <h1>VM Modes</h1>
+          <h2>Transient (default)</h2>
+          <h2>Persistent</h2>
         </section>
 
         <section>
-          <h1>Boot it up</h1>
+          <h1>Transient</h1>
+          <pre><code contenteditable class="ruby">
+Maglev.transient do
+  # Will only be persisted locally
+  # Won't be written to the stone
+end
+          </code></pre>
+
+          <pre><code contenteditable class="bash">
+maglev-ruby foo.rb
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Persistent</h1>
+          <pre><code contenteditable class="ruby">
+Maglev.persistent do
+  # Will be written to the stone
+  # upon commit
+end
+          </code></pre>
+
+          <pre><code contenteditable class="bash">
+maglev-ruby -Mpersistent foo.rb
+          </code></pre>
+        </section>
+
+				<section>
+          <h1>Transactions</h1>
+        </section>
+
+        <section>
+          <h1>Begin</h1>
           <pre><code contenteditable class="ruby">
 # Implicit...
+Maglev.begin_transaction
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Abort</h1>
+          <pre><code contenteditable class="ruby">
+# Revert all persisted classes
+# and grab fresh view
 Maglev.abort_transaction
           </code></pre>
         </section>
@@ -479,6 +517,15 @@ Maglev.abort_transaction
           <div>
             <img src="lib/assets/maglev.abort_transaction.png" />
           </div>
+        </section>
+
+        <section>
+          <h1>Commit</h1>
+          <pre><code contenteditable class="ruby">
+# Attempt to write all changes to persisted
+# classes to the stone
+Maglev.commit_transaction
+          </code></pre>
         </section>
 
         <section>
