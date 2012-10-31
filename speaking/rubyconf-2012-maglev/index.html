@@ -647,14 +647,15 @@ PROOT[:cats].first.toys.first
           </blockquote>
         </section>
 
-        <section>
-          <h1>A blog I whipped up</h1>
+        <section data-state="soothe">
+          <h1>An example</h1>
+          <h2>Blog</h2>
         </section>
 
         <section>
           <pre><code contenteditable class="ruby">
 class MaglevBlogApp < Sinatra::Application
-  set :root, File.dirname(__FILE__)
+  # ...
 
   before do
     @blog = PROOT[:maglev_blogs].first
@@ -741,6 +742,10 @@ class MaglevBlog
   # ...
 end
           </code></pre>
+
+          <aside class="notes">
+            After reading POODR I totally want to refactor these examples.
+          </aside>
         </section>
 
         <section>
@@ -793,6 +798,15 @@ end
           <pre><code contenteditable class="bash">
 maglev-ruby -Mcommit bootstrap.rb
           </code></pre>
+        </section>
+
+        <section data-state="blackout">
+          <h1>Questions?</h1>
+        </section>
+
+        <section data-state="soothe">
+          <h1>An example</h1>
+          <h2>Worker Queue</h2>
         </section>
 
         <section>
@@ -884,6 +898,10 @@ Total Estimated Cost to Develop                           = $ 776
  (average salary = $56,286/year, overhead = 2.40).
           </pre>
           <p class="tiny">Generated using David A. Wheeler's 'SLOCCount'</p>
+        </section>
+
+        <section data-state="blackout">
+          <h1>Questions?</h1>
         </section>
 
 				<section data-markdown>
@@ -1126,7 +1144,15 @@ end
             <li class="fragment">Use the data structures we have...</li>
             <li class="fragment">... or build the ones you want</li>
           </ul>
+        </section>
 
+        <section data-state="blackout">
+          <h1>Questions?</h1>
+        </section>
+
+        <section>
+          <h1>Last example</h1>
+          <h2 class="fragment">Someone set us up the BOM</h2>
         </section>
 
 				<section data-markdown>
