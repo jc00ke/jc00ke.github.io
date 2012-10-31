@@ -1157,7 +1157,7 @@ end
         </section>
 
         <section>
-          <h1>Start on remote stone</h1>
+          <h1>Remote Stone</h1>
           <h2>maglev.jc00ke.com</h2>
           <pre><code contenteditable class="bash">
 $> cd $MAGLEV_HOME
@@ -1171,22 +1171,27 @@ startstone[Info]: GemStone server 'maglev' has been started.
         </section>
 
         <section>
-          <h1>Start on my laptop</h1>
+          <h1>My laptop</h1>
           <pre><code contenteditable class="bash">
 cd $MAGLEV_HOME
 rake netldi:start
 startnetldi[Info]: Starting GemStone network server 'gs64ldi'.
 startnetldi[Info]: GemStone server 'gs64ldi' has been started.
 
-maglev-ruby --stonehost -e 'PROOT[:cats].first.name'
+maglev-ruby --stonehost -e 'puts PROOT[:cats].first.name'
 Pierre
           </code></pre>
         </section>
 
 				<section>
           <h1>Killer feature</h1>
-          <h2 class="fragment">Transparent Object Persistence</h2>
-          <h2 class="fragment"><span class="emphasis">Distributed</span> Transparent Object Persistence</h2>
+          <h2>Transparent Object Persistence</h2>
+        </section>
+
+				<section>
+          <h1>Killer feature</h1>
+          <h2 class="stricken">Transparent Object Persistence</h2>
+          <h2><span class="emphasis">Distributed</span> Transparent Object Persistence</h2>
         </section>
 
 				<section>
@@ -1227,11 +1232,6 @@ Pierre
 				var query = {};
 				location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
 					query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
-				} );
-
-				// Fires when a slide with data-state=customevent is activated
-				Reveal.addEventListener( 'customevent', function() {
-					console.log( '"customevent" has fired' );
 				} );
 
 				// Fires each time a new slide is activated
