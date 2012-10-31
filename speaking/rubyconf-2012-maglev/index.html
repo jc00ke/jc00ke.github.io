@@ -877,6 +877,18 @@ Total Estimated Cost to Develop                           = $ 776
 
 				<section data-markdown>
           <script type="text/template">
+            # Approaches
+
+            ## Redis
+
+            ## RDBMS
+
+            ## Ruby's SortedSet
+          </script>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
             # Redis
 
             ## to the rescue
@@ -941,6 +953,21 @@ Total Estimated Cost to Develop                           = $ 776
           </table>
         </section>
 
+        <section>
+          <pre><code contenteditable class="ruby">
+class LeaderboardItem
+  include Comparable
+
+  def <=>(other)
+    return  1 if score < other.score
+    return -1 if score > other.score
+
+    0
+  end
+end
+          </code></pre>
+        </section>
+
 				<section data-markdown>
           <script type="text/template">
             # Better Winner Criteria
@@ -980,16 +1007,22 @@ Total Estimated Cost to Develop                           = $ 776
           </table>
         </section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Approaches
+        <section>
+          <pre><code contenteditable class="ruby">
+class LeaderboardItem
+  include Comparable
 
-            ## Redis
+  def <=>(other)
+    return  1 if score < other.score
+    return -1 if score > other.score
 
-            ## RDBMS
+    return -1 if timestamp < other.timestamp
+    return  1 if timestamp > other.timestamp
 
-            ## Ruby's SortedSet
-          </script>
+    0
+  end
+end
+          </code></pre>
         </section>
 
 				<section data-markdown>
