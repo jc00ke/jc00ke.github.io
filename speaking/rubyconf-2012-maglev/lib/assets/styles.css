@@ -12,6 +12,10 @@
   font-weight: bold;
 }
 
+table .emphasis {
+  background-color: #ccc;
+}
+
 .equation {
   margin: 0 auto;
   text-align: right;
@@ -30,7 +34,7 @@
 
 .relational-table {
   border: 1px solid white;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 .relational-table th, .relational-table td{
@@ -49,6 +53,7 @@
 .tiny {
   font-size: 0.5em;
 }
+
 .avi-table {
   font-size: 18px !important;
 }

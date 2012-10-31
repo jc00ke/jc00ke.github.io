@@ -752,6 +752,306 @@ maglev-ruby -Mcommit bootstrap.rb
           </code></pre>
         </section>
 
+        <section>
+          <h2>World's worst (but easiest) queue</h2>
+          <pre><code contenteditable class="ruby">
+# pseudo
+jobs = []
+jobs << Proc.new { puts "doing work" }
+jobs.shift.call
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Slightly-better producer</h2>
+          <pre><code contenteditable class="ruby">
+PROOT[:q] ||= []
+
+while true do
+  PROOT[:q] << Proc.new { puts "doing work" }
+  Maglev.commit_transaction
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Slightly-better worker</h2>
+          <pre><code contenteditable class="ruby">
+while true do
+  Maglev.abort_transaction
+  work = PROOT[:q].shift
+  Maglev.commit_transaction
+  work.call if work
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>Commit failure?</h1>
+        </section>
+
+        <section>
+          <h2>Slightly-better producer</h2>
+          <pre><code contenteditable class="ruby">
+PROOT[:q] ||= []
+
+while true do
+  PROOT[:q] << Proc.new { puts "doing work" }
+  Maglev.commit_transaction
+rescue Maglev::CommitFailedException
+  puts "Couldn't add the job. Retrying..."
+  redo
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Slightly-better worker</h2>
+          <pre><code contenteditable class="ruby">
+while true do
+  Maglev.abort_transaction
+
+  work = PROOT[:q].shift
+  Maglev.commit_transaction
+
+  work.call if work
+rescue Maglev::CommitFailedException
+  puts "Someone grabbed this job before me. Go grab another."
+  redo
+end
+          </code></pre>
+        </section>
+
+        <section>
+          <h1>MagLev-Q</h1>
+          <a href="https://github.com/jc00ke/maglev-q">https://github.com/jc00ke/maglev-q</a>
+        </section>
+
+        <section>
+          <h1>What's the point?</h1>
+          <pre>
+Totals grouped by language (dominant language first):
+ruby:            34 (100.00%)
+
+Total Physical Source Lines of Code (SLOC)                = 34
+Development Effort Estimate, Person-Months                = 0.07
+Schedule Estimate, Months                                 = 0.90
+Estimated Average Number of Developers (Effort/Schedule)  = 0.08
+Total Estimated Cost to Develop                           = $ 776
+ (average salary = $56,286/year, overhead = 2.40).
+          </pre>
+          <p class="tiny">Generated using David A. Wheeler's 'SLOCCount'</p>
+        </section>
+
+				<section data-markdown>
+          <h1>Leaderboard</h1>
+          <h2 class="fragment">100 points</h2>
+        </section>
+
+				<section>
+          <h1>Leaderboard</h1>
+          <table class="relational-table" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>@jc00ke</td>
+                <td>99</td>
+              </tr>
+              <tr>
+                <td>@sproutworx</td>
+                <td>99</td>
+              </tr>
+              <tr>
+                <td>@mrinterweb</td>
+                <td>98</td>
+              </tr>
+            </tbody>
+            <tbody>
+          </table>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
+            # Redis
+
+            ## to the rescue
+
+            ## ZSET
+          </script>
+        </section>
+
+				<section>
+          <h1>Leaderboard</h1>
+          <h2>Tied score?</h2>
+          <table class="relational-table" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>@jc00ke</td>
+                <td class="emphasis">100</td>
+              </tr>
+              <tr>
+                <td>@sproutworx</td>
+                <td class="emphasis">100</td>
+              </tr>
+              <tr>
+                <td>@mrinterweb</td>
+                <td>98</td>
+              </tr>
+            </tbody>
+            <tbody>
+          </table>
+        </section>
+
+				<section>
+          <h1>Leaderboard</h1>
+          <h2>Tied score?</h2>
+          <table class="relational-table" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>@sproutworx</td>
+                <td class="emphasis">100</td>
+              </tr>
+              <tr>
+                <td>@jc00ke</td>
+                <td class="emphasis">100</td>
+              </tr>
+              <tr>
+                <td>@mrinterweb</td>
+                <td>98</td>
+              </tr>
+            </tbody>
+            <tbody>
+          </table>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
+            # Better Winner Criteria
+
+            ## First to 100
+          </script>
+        </section>
+
+				<section>
+          <h1>Leaderboard</h1>
+          <table class="relational-table" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Score</th>
+                <th>Timestamp</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>@sproutworx</td>
+                <td class="emphasis">100</td>
+                <td class="emphasis">12:15:27</td>
+              </tr>
+              <tr>
+                <td>@jc00ke</td>
+                <td class="emphasis">100</td>
+                <td class="emphasis">12:16:27</td>
+              </tr>
+              <tr>
+                <td>@mrinterweb</td>
+                <td>98</td>
+                <td>12:15:00</td>
+              </tr>
+            </tbody>
+            <tbody>
+          </table>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
+            # Approaches
+
+            ## Redis
+
+            ## RDBMS
+
+            ## Ruby's SortedSet
+          </script>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
+            # Redis
+            ___
+            ## Pros
+            Always sorted (on insert)
+
+            Super fast
+            ___
+            ## Cons
+            Only one sort criteria (score)
+
+            Always an array
+          </script>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
+            # RDBMS
+
+            ## Pros
+            Can sort over any field
+
+            Fast
+            ___
+            ## Cons
+            Only sorted at query time
+
+            Always an array
+          </script>
+        </section>
+
+				<section data-markdown>
+          <script type="text/template">
+            # SortedSet
+
+            ## Pros
+            Richer data structure
+
+            Composed in Leaderboard instance
+
+            Sorts on insertion
+
+            Can sort over any critera &lt;=&gt;
+            ___
+            ## Cons
+            Must sort before iterating
+          </script>
+        </section>
+
+				<section>
+          <h1>The moral?</h1>
+
+          <ul>
+            <li class="fragment">The logic should be in your app, not in the DB</li>
+            <li class="fragment">Use the data structures we have...</li>
+            <li class="fragment">... or build the ones you want</li>
+          </ul>
+
+        </section>
 
 				<section data-markdown>
           <script type="text/template">
