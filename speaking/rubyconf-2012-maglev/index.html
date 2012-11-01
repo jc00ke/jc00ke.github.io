@@ -403,6 +403,23 @@ end
         </section>
 
         <section>
+          <h2>Object-relational impedance mismatch</h2>
+          <h3><a href="http://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">Wikipedia</a></h3>
+          <h3><a href="http://www.agiledata.org/essays/impedanceMismatch.html">Agile Data</a></h3>
+          <h3><a href="http://c2.com/cgi/wiki?ObjectRelationalImpedanceMismatch">Cunningham &amp; Cunningham</a></h3>
+          <h3><a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">Coding Horror</a></h3>
+          <aside class="notes">
+            <ul>
+              <li>We constantly build up &amp; rip apart our objects</li>
+              <li>Every request goes to the database &amp; builds up the same object, over and over</li>
+              <li>To make a create a new, or update an existing object, we strip it down to bare fields &amp; send across the wire</li>
+              <li>The relations are pulled apart &amp; lost</li>
+              <li>Huge impedance mismatch there</li>
+            </ul>
+          </aside>
+        </section>
+
+        <section>
           <h3>Time traveller</h3>
           <div class="fragment">
             <blockquote>
@@ -599,23 +616,6 @@ PROOT[:cats].first.toys.first
             <img src="lib/assets/leftist-tree.jpg" />
           </div>
           <!-- TODO: attribute - http://ronbosoldier.blogspot.com/2011/05/leftist-animal-rights-activists-peed-on.html -->
-        </section>
-
-        <section>
-          <h2>Object-relational impedance mismatch</h2>
-          <h3><a href="http://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">Wikipedia</a></h3>
-          <h3><a href="http://www.agiledata.org/essays/impedanceMismatch.html">Agile Data</a></h3>
-          <h3><a href="http://c2.com/cgi/wiki?ObjectRelationalImpedanceMismatch">Cunningham &amp; Cunningham</a></h3>
-          <h3><a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">Coding Horror</a></h3>
-          <aside class="notes">
-            <ul>
-              <li>We constantly build up &amp; rip apart our objects</li>
-              <li>Every request goes to the database &amp; builds up the same object, over and over</li>
-              <li>To make a create a new, or update an existing object, we strip it down to bare fields &amp; send across the wire</li>
-              <li>The relations are pulled apart &amp; lost</li>
-              <li>Huge impedance mismatch there</li>
-            </ul>
-          </aside>
         </section>
 
 				<section>
