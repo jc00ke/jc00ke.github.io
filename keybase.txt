@@ -1,0 +1,69 @@
+==================================================================
+https://keybase.io/jc00ke
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://jc00ke.com
+  * I am jc00ke (https://keybase.io/jc00ke) on keybase.
+  * I have a public key with fingerprint 2E29 19CC 294F 7D75 D583  EF84 C922 D20A EA86 ABFF
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "2e2919cc294f7d75d583ef84c922d20aea86abff",
+            "host": "keybase.io",
+            "key_id": "C922D20AEA86ABFF",
+            "uid": "f36d11b9bc87a78121a2d4c7068e4c00",
+            "username": "jc00ke"
+        },
+        "service": {
+            "hostname": "jc00ke.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1398218438,
+    "expire_in": 157680000,
+    "prev": "98aa931950f5c28f15bce08f9c47c6bfa5286d2240acb1fd1df5fdb8bca2c579",
+    "seqno": 27,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1.4.14 (GNU/Linux)
+
+owGbwMvMwMT4q72KN0aD05bx9IF3SQzB4XLHqpWS8lMqlayqlbJTwVRaZl56alFB
+UWZeiZKVklGqkaWhZXKykaVJmnmKuWmKqYVxapqFSbKlkVGKkUFiaqKFWWJSWpqS
+jlJGfjFIB9CYpMTiVL3MfKAYkBOfmQIUdQaqdzEycHR1tDBzdHJzA8qVgiXSjM1S
+DA2TLJOSLcwTzS0MjQwTjVJMks0NzCxSTZINDEAKi1OL8hJzU4Gqs4Ai2alKtTpK
+QLGyzORUkItBFqPI6yXn5wL1FRTll+Qn5+cAxTNKSgqsQNpKKgtA6spTk+KhJsQn
+ZealAP0M1FCWWlScmZ+nZGUIVJlckgky0tDY0sLI0MLE2EJHKbWiILMoNT4TpMLU
+3MzCAAhA1qSWAY20tEhMtDQ2tDQ1SDNNNrJIMzRNSk41sEizTDYxTzZLSks0NbIw
+SzEyMjFITE4yTEsxTEkzTUtJskhKTjRKNjW3VAL5qTAvX8nKyBzozsR0oJnFmel5
+iSWlRUAfdzLJsDAwMjGwsTKBoo2Bi1MAFpm9avz/4+wyQ20Y+xYXBG7I3NGfc9X0
+oVvWxRe2s2b/WMN35Pihi3+TXTR7/v/6U95eWBtlKfbvwOFLC9Ibi6eFp3NJNb0Q
+/HXt/uuut9x8DD87pgQe+vDhasAz63nygY1LXu3+X6et48r4ZdKq+FVuci/e/Fz8
+enVB8dKn028vTYgp41mW6umsbJ+ssmfr2iBB0Spf0/t5l1dLaSy/ac1ZsLaKRyND
+s7Z0wTK+DXKf2Quq5+rW+t6VeB++39n/7oc6NlkZpg/TtrbWMXrXXGVIr+D6bZ0u
+Zav+q7jimUjFkvMhKet+79lupbD8c4/3sxazlpR1+9paEtjTd1x8r+G35imHeuPP
+Rx5hv49qq72sWCVbF3lGJro3qVDI9cNVmbMhoRJ7vbQv20pkrtO3ZNrm83xefM7B
+W6vM9hoZNp5vXVT83flV3MY9969Wb9K7tmzz6e9rRbtCBDdlRLd4+WRMqr9010s5
+fI+svc+fCpbTiYFvuVktXzOtOHTv2pLLjNeXPsvyWup7PTkqZFL+rGSVjTtzd3MJ
+9a9aILngOfPTALeTnHOUVRO/TvaYumOdwDlvodm9ImUGnjVRjTcCHrV+8piw4M3b
+Au5ZayqbdTcx+fiVZbWHNbzLd3/3y2TiMmUOid0hnKndj6/5PlxZlLtgjYDwV9ne
+7Gj7H8bu3XbVF4PL+4P9byoJrDSd4Nb65GTm0Y7z1X4W3188CX2a3QwA
+=ciz/
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jc00ke
+
+==================================================================
