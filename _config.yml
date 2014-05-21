@@ -1,0 +1,14 @@
+# Site settings
+title: Musings of something or another
+email: info@jc00ke.com
+description: "On a mission. Not sure what the mission is yet, but I'm on it."
+baseurl: ""
+url: "http://jc00ke.com"
+username: jc00ke
+timezone: America/Los_Angeles
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+sass:
+  sass_dir: css
