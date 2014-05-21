@@ -137,6 +137,6 @@ I did it the safest way I knew how. If you know of a better way, please share!
 #### Hope that helps
 
 This has been deployed for a few weeks now and we don't see any connection pool issues anymore.
-If you have a way you do it, please tweet [@watsi](https://twitter.com/watsi).
+If you have a way you do it, please tweet [@{{ site.username }}](https://twitter.com/{{ site.username }}).
 
 \- *{{ page.author }}*
