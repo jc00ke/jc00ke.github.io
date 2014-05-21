@@ -1,78 +1,21 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Welcome! | jc00ke llc</title>
-    <link href="http://yui.yahooapis.com/3.0.0/build/cssreset/reset.css" media="screen" rel="stylesheet">
-    <link href="http://yui.yahooapis.com/3.0.0/build/cssfonts/fonts.css" media="screen" rel="stylesheet">
-    <link href="http://yui.yahooapis.com/3.0.0/build/cssbase/base.css" media="screen" rel="stylesheet">
-    <link href="styles.css" media="screen" rel="stylesheet">
-    <link href="print.css" media="print" rel="stylesheet">
-    <meta content="2OjD3SXVlbH70lZl5vUDKKDEtqUcwQ2sSfaW91C-0O4" name="google-site-verification">
-  </head>
-  <body>
-    <div id="wrapper">
-      <header>
-        <a href="/" id="logo">jc00ke llc</a>
-      </header>
-      <div id="content">
-        <section>
-          <p>Hello. My name is Jesse Cooke, and I'm a web guy.</p>
+---
+layout: default
+---
 
-          <p>
-            I've come to love Ruby and its ecosystem, so that's where I spend most of my time. I'm currently working on <a href="https://watsi.org">Watsi</a>
-            as a co-founder and code-slinger. Best thing I've done so far.
-          </p>
+<div class="home">
 
-          <p>
-            I also love contributing to open-source projects. My favorites, and the ones I spend the most time on, are:
-            <a href="http://rubini.us">Rubinius</a>,
-            <a href="http://maglev.github.com/">MagLev</a>,
-            <a href="http://mperham.github.com/sidekiq">Sidekiq</a> and
-            <a href="http://mperham.github.com/girl_friday">girl_friday</a>.
-          </p>
+  <h1>Posts</h1>
 
-          <p>
-            Follow me on <a href="http://twitter.com/jc00ke" rel="me">twitter</a> and check out my <a href="https://github.com/jc00ke" rel="me">github</a>.
-          </p>
-        </section>
-      </div>
-      <footer>
-        <div class="vcard" id="hcard-Jesse-Cooke">
-          <div class="fn">
-            <span class="given-name">Jesse</span>
-            <span class="family-name">Cooke</span>
-            <span class="role">code-slinger</span>
-            at
-            <span class="org">Watsi</span>
-            in
-            <abbr title="Mountain View, CA">mv</abbr>
-            and
-            <span class="org">jc00ke llc</span>
-            in
-            <abbr title="Portland, OR">pdx</abbr>.
-          </div>
-        </div>
-      </footer>
-    </div>
-    <script type="text/javascript">
-      //<![CDATA[
-        if(document.location.hostname.match(/jc00ke/)) {
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-35917203-1']);
-          _gaq.push(['_trackPageview']);
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li>
+        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
 
-          (function() {
-              var ga = document.createElement('script');
-              ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
-                  'http://www') + '.google-analytics.com/ga.js';
-              ga.setAttribute('async', 'true');
-              document.documentElement.firstChild.appendChild(ga);
-          })();
-        }
-      //]]>
-    </script>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 
+</div>
 
-  </body>
-</html>
