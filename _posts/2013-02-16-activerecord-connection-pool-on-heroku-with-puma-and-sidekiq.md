@@ -13,7 +13,7 @@ actual parallelism) I just love how simple & effective Puma is. One
 of the few options I set with Puma is the thread min & max.
 
 {% highlight bash %}
-> bundle exec puma -p $PORT -c 4:8
+$> bundle exec puma -p $PORT -c 4:8
 {% endhighlight %}
 
 Since ActiveRecord's default connection pool size is 5, one might
@@ -43,9 +43,9 @@ So, we're on Heroku, and our only option is to mangle the `DATABASE_URL`.
 We could get the `DATABASE_URL`
 
 {% highlight bash %}
-> heroku config | ack DATABASE_URL
+$> heroku config | ack DATABASE_URL
 DATABASE_URL:      postgres://foo:bar@baz.com/my_db
-> heroku config:add DATABASE_URL=postgres://foo:bar@baz.com/my_db?pool=35
+$> heroku config:add DATABASE_URL=postgres://foo:bar@baz.com/my_db?pool=35
 {% endhighlight %}
 
 (Don't do this!)
@@ -76,7 +76,7 @@ end
 
 Let's take a look at our `config/application.rb`
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 
 require File.expand_path('../boot', __FILE__)
 require "rails/all"
@@ -106,7 +106,8 @@ module Platform
 
   class Application < Rails::Application
     if Puma.respond_to?(:cli_config)
-      ::Platform.set_db_connection_pool_size! Puma.cli_config.options.fetch(:max_threads)
+      max = Puma.cli_config.options.fetch(:max_threads)
+      ::Platform.set_db_connection_pool_size! max
     end
 
     # ...
@@ -121,7 +122,7 @@ added in `puma 2.0.0.b6` we can now get at the `max_threads` setting. Puma only 
 
 For Sidekiq, we do the same thing in `config/initializers/sidekiq.rb`
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 
 Sidekiq.configure_server do |config|
   Platform.set_db_connection_pool_size!(Sidekiq.options[:concurrency])
