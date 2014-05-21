@@ -17,7 +17,7 @@ First, I ditched the `set_db_connection_pool_size!` method in `Platform` and cre
 
 `config/initializers/database_connection.rb`
 
-{% highlight ruby linenos %}
+{% highlight ruby %}
 module Platform
   module Database
     def connect(size=35)
