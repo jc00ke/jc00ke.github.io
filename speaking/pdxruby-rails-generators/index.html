@@ -12,7 +12,7 @@ layout: presentation
 
 <section>
   <h2>Generators?</h2>
-  <pre><code contenteditable class="bash">
+  <pre><code data-trim contenteditable class="bash">
 rails new foo
   </code></pre>
 </section>
@@ -23,8 +23,8 @@ rails new foo
 </section>
 
 <section>
-  <pre><code class="bash">
-∴ rails g
+  <pre><code data-trim class="bash">
+$> rails g
 Usage: rails generate GENERATOR [args] [options]
 
 Please choose a generator below.
@@ -55,8 +55,8 @@ RailsAdmin:
 </section>
 
 <section>
-  <pre><code class="bash">
-∴ rails g
+  <pre><code data-trim class="bash">
+$> rails g
 Usage: rails generate GENERATOR [args] [options]
 
 General options:
@@ -75,8 +75,8 @@ Rails:
 </section>
 
 <section>
-  <pre><code class="bash">
-∴ rails g generator converter
+  <pre><code data-trim class="bash">
+$> rails g generator converter
       create  lib/generators/converter
       create  lib/generators/converter/converter_generator.rb
       create  lib/generators/converter/USAGE
@@ -85,10 +85,10 @@ Rails:
 </section>
 
 <section>
-  <pre><code class="bash">
+  <pre><code data-trim class="bash">
 cat  lib/generators/converter/converter_generator.rb
   </code></pre>
-  <pre><code class="ruby">
+  <pre><code data-trim class="ruby">
 class ConverterGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
 end
@@ -96,7 +96,7 @@ end
 </section>
 
 <section>
-  <pre><code contenteditable class="ruby">
+  <pre><code data-trim contenteditable class="ruby">
 require 'active_record'
 
 class ConverterGenerator < Rails::Generators::NamedBase
@@ -115,7 +115,7 @@ end
 </section>
 
 <section>
-  <pre><code contenteditable class="ruby">
+  <pre><code data-trim contenteditable class="ruby">
 class ConverterGenerator < Rails::Generators::NamedBase
   # ...
 
@@ -153,7 +153,7 @@ class ConverterGenerator < Rails::Generators::NamedBase
 </section>
 
 <section>
-  <pre><code contenteditable class="ruby">
+  <pre><code data-trim contenteditable class="ruby">
 class DatabaseMigrator
   TYPE_MAP = {
     # ...
@@ -173,11 +173,11 @@ end
 </section>
 
 <section>
-  <pre><code class="bash">
+  <pre><code data-trim class="bash">
 cat  lib/generators/converter/templates/migrate.rb
   </code></pre>
 
-  <pre><code contenteditable class="ruby">
+  <pre><code data-trim contenteditable class="ruby">
 class Create<%= config[:class_name] %> < ActiveRecord::Migration
   def change
     create_table :<%= config[:table_name] %> do |t|
@@ -197,10 +197,10 @@ end
 </section>
 
 <section>
-  <pre><code class="bash">
+  <pre><code data-trim class="bash">
 cat  lib/generators/converter/templates/migrate_sequel.rb
   </code></pre>
-  <pre><code contenteditable class="ruby">
+  <pre><code data-trim contenteditable class="ruby">
 Sequel.migration do
   change do
     create_table :<%= config[:table_name] %> do
@@ -220,13 +220,13 @@ end
 
 <section>
   <h2>What I want</h2>
-  <pre class="fragment"><code contenteditable class="rake">
+  <pre class="fragment"><code data-trim contenteditable class="rake">
 rake db:migrate_schema
   </code></pre>
 </section>
 
 <section>
-  <pre><code contenteditable class="ruby">
+  <pre><code data-trim contenteditable class="ruby">
 require 'rails/generators'
 
 namespace :db do
@@ -246,13 +246,13 @@ end
 </section>
 
 <section>
-  <pre><code contenteditable class="rake">
+  <pre><code data-trim contenteditable class="rake">
 rake db:migrate_schema
   </code></pre>
 </section>
 
 <section>
-  <pre><code contenteditable class="ruby">
+  <pre><code data-trim contenteditable class="ruby">
 class CreateWidget < ActiveRecord::Migration
   def change
     create_table :widgets do |t|
@@ -285,25 +285,4 @@ end
   <p><a href="https://twitter.com/jc00ke">@jc00ke</a></p>
   <p>jesse [at] jc00ke.com</p>
 </section>
-
-<!--<section>-->
-  <!--<h2>Pretty Code</h2>-->
-  <!--<pre><code data-trim contenteditable>-->
-<!--function linkify( selector ) {-->
-  <!--if( supports3DTransforms ) {-->
-
-    <!--var nodes = document.querySelectorAll( selector );-->
-
-    <!--for( var i = 0, len = nodes.length; i &lt; len; i++ ) {-->
-      <!--var node = nodes[i];-->
-
-      <!--if( !node.className ) {-->
-        <!--node.className += ' roll';-->
-      <!--}-->
-    <!--}-->
-  <!--}-->
-<!--}-->
-  <!--</code></pre>-->
-  <!--<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>-->
-<!--</section>-->
 
