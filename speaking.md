@@ -18,3 +18,4 @@ Portland Ruby Brigade - 2012/10/2:
 ## Wouldn't you like to forget about the database?
 Cascadia Ruby - 2012/08/11:
 [slides]({{ "/speaking/cascadia-ruby-2012-maglev/" | prepend: site.baseurl  }})
+[video](http://j.mp/1okm7wG)
