@@ -1,0 +1,177 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+    <title>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+
+    <meta name="description" content="{{ page.description }}">
+		<meta name="author" content="Jesse Cooke">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href='{{ "/vendor/reveal.js/css/reveal.min.css" | prepend: site.baseurl }}'>
+    <link rel="stylesheet" href='{{ "/vendor/reveal.js/css/theme/default.css" | prepend: site.baseurl }}'>
+
+		<!-- For syntax highlighting -->
+    <link rel="stylesheet" href="{{ "/vendor/reveal.js/lib/css/zenburn.css" | prepend: site.baseurl }}">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = '{{ "/vendor/reveal.js/css/print/pdf.css" | prepend: site.baseurl }}';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src='{{ "/vendor/reveal.js/lib/js/html5shiv.js" | prepend: site.baseurl }}'></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+        {{ content }}
+
+				<section>
+					<h1>Reveal.js</h1>
+					<h3>HTML Presentations Made Easy</h3>
+					<p>
+						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+					</p>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
+
+						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  For those of you who like that sort of thing.
+						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+					</script>
+				</section>
+
+				<section id="themes">
+					<h2>Themes</h2>
+					<p>
+						Reveal.js comes with a few themes built in: <br>
+						<a href="?theme=solarized#/themes">Solarized</a>
+					</p>
+					<p>
+						<small>
+							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
+						</small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Pretty Code</h2>
+					<pre><code data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+					</code></pre>
+					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src='{{ "/vendor/reveal.js/lib/js/head.min.js" | prepend: site.baseurl }}'></script>
+		<script src='{{ "/vendor/reveal.js/js/reveal.js" | prepend: site.baseurl }}'></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+
+				// Optional libraries used to extend on reveal.js
+			});
+      var Jekyll = {
+        baseUrl: '{{ "/vendor/reveal.js" | prepend: site.baseurl }}',
+        pluginUrl: function(plugin) {
+          return [this.baseUrl, 'plugin', plugin].join('/');
+        },
+        libUrl: function(lib) {
+          return [this.baseUrl, 'lib', 'js', lib].join('/');
+        }
+      };
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        keyboard: true,
+        overview: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // none/fade/slide/convex/concave/zoom
+
+        dependencies: [
+          { src: Jekyll.libUrl('classList.js'),
+            condition: function() { return !document.body.classList; } },
+          { src: Jekyll.pluginUrl('markdown/marked.js'),
+            condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: Jekyll.pluginUrl('markdown/markdown.js'),
+            condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: Jekyll.pluginUrl('highlight/highlight.js'),
+            async: true,
+            callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: Jekyll.pluginUrl('zoom-js/zoom.js'),
+            async: true,
+            condition: function() { return !!document.body.classList; } },
+          { src: Jekyll.pluginUrl('notes/notes.js'),
+            async: true,
+            condition: function() { return !!document.body.classList; } }
+        ]
+				//dependencies: [
+					//{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					//{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					//{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					//{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					//{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				//]
+      });
+
+		</script>
+
+	</body>
+</html>
