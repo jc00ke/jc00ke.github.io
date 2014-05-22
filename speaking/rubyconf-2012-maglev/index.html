@@ -1,443 +1,412 @@
-<!doctype html>
-<html lang="en">
+---
+author: Jesse Cooke
+description: RubyConf 2012 presentation on MagLev
+title: Allow me to reintroduce myself. My name is MagLev.
+layout: presentation
+---
 
-	<head>
-		<meta charset="utf-8">
+<section data-markdown>
+  <script type="text/template">
+    # Good Morning!
+  </script>
+</section>
 
-		<title>MagLev!!!</title>
+<section data-markdown>
+  <script type="text/template">
+    ![Pumpkin](lib/assets/pumpkin_puking.jpg)
+  </script>
+</section>
 
-		<meta name="description" content="pdxruby October 2012 lightning talk">
-		<meta name="author" content="Jesse Cooke">
+<section data-markdown>
+  <script type="text/template">
+    # Avi Bryant
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    ## Super Smart
 
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    ![Avi](lib/assets/avi.jpg)
 
-		<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="../../reveal.js/css/print/pdf.css" type="text/css" media="print">
-		<link rel="stylesheet" href="../../reveal.js/css/theme/default.css" id="theme">
+    [Ruby and Other Gems](http://web.archive.org/web/20110328010807/http://www.avibryant.com/2008/03/ive-had-a-numbe.html)
+  </script>
 
-		<link rel="stylesheet" href="../lib/css/solarized_light.css" >
-		<link rel="stylesheet" href="../lib/css/styles.css">
-		<link rel="stylesheet" href="lib/assets/styles.css">
-	</head>
+  <aside class="notes">
+    Rails as an architecture
+    <ul>
+      <li>Central database</li>
+      <li>Many App servers</li>
+      <li>In-memory caches</li>
+      <li>etc</li>
+    </ul>
+    How many of you have implemented a system like that?
+  </aside>
+</section>
 
-	<body>
+<section>
+  <table class="relational-table avi-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th colspan="2">Rails</th>
+        <th colspan="2">GemStone/S</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Provided By</th>
+        <th>Stores</th>
+        <th>Provided By</th>
+        <th>Stores</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Storage<br />Engine</td>
+        <td>MySQL</td>
+        <td>objects mapped to relational tables</td>
+        <td>"Stone" object store</td>
+        <td>Smalltalk objects</td>
+      </tr>
+      <tr>
+        <td>Memory<br />Cache</td>
+        <td>memcached</td>
+        <td>objects marshalled to strings</td>
+        <td>Shared page cache</td>
+        <td>Smalltalk objects</td>
+      </tr>
+      <tr>
+        <td>Worker<br />Process</td>
+        <td>MRI/Mongrel</td>
+        <td>Ruby objects</td>
+        <td>"Gem" Smalltalk VM</td>
+        <td>Smalltalk objects</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
-		<div class="reveal">
+<section>
+  <table class="relational-table avi-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th colspan="2">Rails</th>
+        <th colspan="2">"GemStone/R"</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Provided By</th>
+        <th>Stores</th>
+        <th>Provided By</th>
+        <th>Stores</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Storage<br />Engine</td>
+        <td>MySQL</td>
+        <td>objects mapped to relational tables</td>
+        <td>"Stone" object store</td>
+        <td class="emphasis">Ruby objects</td>
+      </tr>
+      <tr>
+        <td>Memory<br />Cache</td>
+        <td>memcached</td>
+        <td>objects marshalled to strings</td>
+        <td>Shared page cache</td>
+        <td class="emphasis">Ruby objects</td>
+      </tr>
+      <tr>
+        <td>Worker<br />Process</td>
+        <td class="emphasis">Ruby/Mongrel</td>
+        <td>Ruby objects</td>
+        <td>"Gem" Smalltalk VM</td>
+        <td class="emphasis">Ruby objects</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
-			<!-- Used to fade in a background when a specific slide state is reached -->
-			<div class="state-background"></div>
+<section data-markdown>
+  <blockquote>So there you have it: GemStone, it's like Rails, but faster and easier. If only it ran Ruby...</blockquote>
+</section>
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section data-markdown>
-          <script type="text/template">
-            # Good Morning!
-          </script>
-					<script>
-						// Delicously hacky. Look away.
-						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
-					</script>
-				</section>
+<section data-markdown>
+  <script type="text/template">
+    # What is MagLev?
 
-				<section data-markdown>
-          <script type="text/template">
-            ![Pumpkin](lib/assets/pumpkin_puking.jpg)
-          </script>
-        </section>
+    ![MagLev logo](lib/assets/maglev-logo.gif)
+  </script>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Avi Bryant
+<section>
+  <blockquote cite="http://www.gemstone.com/products/gemstone">
+    GemStone/S is the state-of-the-art platform for developing, deploying, and managing scalable, high-performance, multi-tier applications based on business <span class="emphasis">objects</span>.
+  </blockquote>
+  <p>
+    <img src="lib/assets/gemstone-s-logo.png" alt="GemStone/S" />
+    <!-- TODO: attribution - http://www.gemstone.com/products/gemstone -->
+  </p>
+  <aside class="notes">
+    <p>Lots of buzzwords, and a lot of power in that last word.</p>
+    <p>Well, who's GemStone? (the company)</p>
+    <ol>
+      <li>Well-tuned VM to run Smalltalk</li>
+      <li>
+        Battle-tested
+        <ul>
+          <li>OOCL</li>
+          <li>National Slovenian Gas</li>
+          <li>JPMorgan Chase</li>
+          <li>Merril Lyn... haha just kidding</li>
+          <li>JACK IN THE BOX!</li>
+        </ul>
+      </li>
+      <li>Transparent Object Persistence</li>
+    </ol>
+  </aside>
+</section>
 
-            ## Super Smart
+<section data-markdown>
+  <script type="text/template">
+    # Why is it so special?
+  </script>
+</section>
 
-            ![Avi](lib/assets/avi.jpg)
+<section>
+  <h2 class="emphasis">Transparent Object Persistence</h2>
+  <div class="fragment">
+    <blockquote>
+      I've often wished that I could just do something where I just change a bunch of models and at the end of the request cycle something magical goes through and collects up all the models that have changed and persists them, and I haven't really gotten to that level yet. Sometimes I feel that ActiveRecord is holding me back from that.
+    </blockquote>
+    <p>Avdi Grimm</p>
+   </div>
+  <aside class="notes">
+    <ul>
+      <li>Heading up to Cascadia Ruby</li>
+      <li>Ruby Rogues, DDD w/David Laribee</li>
+    </ul>
+  </aside>
+</section>
 
-            [Ruby and Other Gems](http://web.archive.org/web/20110328010807/http://www.avibryant.com/2008/03/ive-had-a-numbe.html)
-          </script>
+<section>
+  <h2 class="emphasis">The Punchline</h2>
+  <blockquote class="fragment">
+    You can just switch to Java, or .NET.
+  </blockquote>
+  <p>David Laribee</p>
+  <!-- http://rubyrogues.com/rr-061-domain-driven-design-ddd-with-david-laribee/ -->
+</section>
 
-          <aside class="notes">
-            Rails as an architecture
-            <ul>
-              <li>Central database</li>
-              <li>Many App servers</li>
-              <li>In-memory caches</li>
-              <li>etc</li>
-            </ul>
-            How many of you have implemented a system like that?
-          </aside>
-        </section>
+<section>
+  <img src="lib/assets/sad-trombone.png" alt="Waa waaah" />
+  <!-- http://www.hark.com/collections/bvtjyltcpl-trombone -->
+</section>
 
-        <section>
-          <table class="relational-table avi-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th colspan="2">Rails</th>
-                <th colspan="2">GemStone/S</th>
-              </tr>
-              <tr>
-                <th></th>
-                <th>Provided By</th>
-                <th>Stores</th>
-                <th>Provided By</th>
-                <th>Stores</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Storage<br />Engine</td>
-                <td>MySQL</td>
-                <td>objects mapped to relational tables</td>
-                <td>"Stone" object store</td>
-                <td>Smalltalk objects</td>
-              </tr>
-              <tr>
-                <td>Memory<br />Cache</td>
-                <td>memcached</td>
-                <td>objects marshalled to strings</td>
-                <td>Shared page cache</td>
-                <td>Smalltalk objects</td>
-              </tr>
-              <tr>
-                <td>Worker<br />Process</td>
-                <td>MRI/Mongrel</td>
-                <td>Ruby objects</td>
-                <td>"Gem" Smalltalk VM</td>
-                <td>Smalltalk objects</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+<section data-markdown>
+  <script type="text/template">
+    ![OOCL Truck](lib/assets/oocl-truck.jpg)
+  </script>
+</section>
 
-        <section>
-          <table class="relational-table avi-table">
-            <thead>
-              <tr>
-                <th></th>
-                <th colspan="2">Rails</th>
-                <th colspan="2">"GemStone/R"</th>
-              </tr>
-              <tr>
-                <th></th>
-                <th>Provided By</th>
-                <th>Stores</th>
-                <th>Provided By</th>
-                <th>Stores</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Storage<br />Engine</td>
-                <td>MySQL</td>
-                <td>objects mapped to relational tables</td>
-                <td>"Stone" object store</td>
-                <td class="emphasis">Ruby objects</td>
-              </tr>
-              <tr>
-                <td>Memory<br />Cache</td>
-                <td>memcached</td>
-                <td>objects marshalled to strings</td>
-                <td>Shared page cache</td>
-                <td class="emphasis">Ruby objects</td>
-              </tr>
-              <tr>
-                <td>Worker<br />Process</td>
-                <td class="emphasis">Ruby/Mongrel</td>
-                <td>Ruby objects</td>
-                <td>"Gem" Smalltalk VM</td>
-                <td class="emphasis">Ruby objects</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
+<section>
+  <h1>Persisting objects is hard</h1>
+  <h2 class="fragment">Let's go shopping!</h2>
+  <aside class="notes">
+    It's not that we don't have nice tools...
+    <ul>
+      <li>ActiveRecord</li>
+      <li>Sequel</li>
+      <li>Mongoid</li>
+      <li>Redis</li>
+    </ul>
+    Too many non-trivial decisions to make.
+  </aside>
+</section>
 
-				<section data-markdown>
-          <blockquote>So there you have it: GemStone, it's like Rails, but faster and easier. If only it ran Ruby...</blockquote>
-        </section>
+<section>
+  <h1>Shoehorn</h1>
+  <h2>users</h2>
+  <table class="relational-table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>birthdate</th>
+        <th>email</th>
+        <th>...</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Jesse Cooke</td>
+        <td>9/28/1981</td>
+        <td>jesse@jc00ke.com</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Jon Doe</td>
+        <td>6/23/1972</td>
+        <td>jon@doe.name</td>
+        <td>...</td>
+      </tr>
+    </tbody>
+  </table>
+  <aside class="notes">
+    <ul>
+      <li>Assume most work on web apps</li>
+      <li>Literally shoehorn</li>
+    </ul>
+  </aside>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # What is MagLev?
+<section>
+  <h1>Shoehorn</h1>
+  <h2>addresses</h2>
+  <table class="relational-table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>user_id</th>
+        <th>street_address</th>
+        <th>city</th>
+        <th>...</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>123 Main St</td>
+        <td>Portland</td>
+        <td>...</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>777</td>
+        <td>321 Smith Rd</td>
+        <td>Denver</td>
+        <td>...</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
-            ![MagLev logo](lib/assets/maglev-logo.gif)
-          </script>
-        </section>
+<section>
+  <h1>Persistence in OO</h1>
+  <h2 class="fragment">Supposed to be simple</h2>
+  <h3 class="fragment">And it was... in Smalltalk</h3>
 
-				<section>
-					<blockquote cite="http://www.gemstone.com/products/gemstone">
-            GemStone/S is the state-of-the-art platform for developing, deploying, and managing scalable, high-performance, multi-tier applications based on business <span class="emphasis">objects</span>.
-					</blockquote>
-					<p>
-            <img src="lib/assets/gemstone-s-logo.png" alt="GemStone/S" />
-            <!-- TODO: attribution - http://www.gemstone.com/products/gemstone -->
-					</p>
-          <aside class="notes">
-            <p>Lots of buzzwords, and a lot of power in that last word.</p>
-            <p>Well, who's GemStone? (the company)</p>
-            <ol>
-              <li>Well-tuned VM to run Smalltalk</li>
-              <li>
-                Battle-tested
-                <ul>
-                  <li>OOCL</li>
-                  <li>National Slovenian Gas</li>
-                  <li>JPMorgan Chase</li>
-                  <li>Merril Lyn... haha just kidding</li>
-                  <li>JACK IN THE BOX!</li>
-                </ul>
-              </li>
-              <li>Transparent Object Persistence</li>
-            </ol>
-          </aside>
-        </section>
+  <aside class="notes">
+    <p>You're essentially implementing the Ruby version of GemStone/S, but without the object persistence.</p>
+    <p>And you have to keep track of everything</p>
+    <p>And you're doing it wrong</p>
+  </aside>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Why is it so special?
-          </script>
-        </section>
+<section>
+  <h2>The Image</h2>
+  <p>
+    <img src="lib/assets/plasma.jpg" alt="plasma lamp" />
+    <!-- TODO: attribution - I, Luc Viatour [GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/) or CC-BY-SA-2.5-2.0-1.0 (http://creativecommons.org/licenses/by-sa/2.5-2.0-1.0)], via Wikimedia Commons
+    http://commons.wikimedia.org/wiki/File%3APlasma-lamp_2.jpg -->
+  </p>
+  <aside class="notes">
+    <ul>
+      <li>How did Smalltalk get this right?</li>
+      <li>Explain the image</li>
+    </ul>
+  </aside>
+</section>
 
-        <section>
-          <h2 class="emphasis">Transparent Object Persistence</h2>
-          <div class="fragment">
-            <blockquote>
-              I've often wished that I could just do something where I just change a bunch of models and at the end of the request cycle something magical goes through and collects up all the models that have changed and persists them, and I haven't really gotten to that level yet. Sometimes I feel that ActiveRecord is holding me back from that.
-            </blockquote>
-            <p>Avdi Grimm</p>
-           </div>
-          <aside class="notes">
-            <ul>
-              <li>Heading up to Cascadia Ruby</li>
-              <li>Ruby Rogues, DDD w/David Laribee</li>
-            </ul>
-          </aside>
-        </section>
+<section>
+  <h1>Currently</h1>
+  <h2 class="fragment">We store objects as</h2>
 
-        <section>
-          <h2 class="emphasis">The Punchline</h2>
-          <blockquote class="fragment">
-            You can just switch to Java, or .NET.
-          </blockquote>
-          <p>David Laribee</p>
-          <!-- http://rubyrogues.com/rr-061-domain-driven-design-ddd-with-david-laribee/ -->
-        </section>
-
-        <section>
-          <img src="lib/assets/sad-trombone.png" alt="Waa waaah" />
-          <!-- http://www.hark.com/collections/bvtjyltcpl-trombone -->
-        </section>
-
-				<section data-markdown>
-          <script type="text/template">
-            ![OOCL Truck](lib/assets/oocl-truck.jpg)
-          </script>
-        </section>
-
-				<section>
-          <h1>Persisting objects is hard</h1>
-          <h2 class="fragment">Let's go shopping!</h2>
-          <aside class="notes">
-            It's not that we don't have nice tools...
-            <ul>
-              <li>ActiveRecord</li>
-              <li>Sequel</li>
-              <li>Mongoid</li>
-              <li>Redis</li>
-            </ul>
-            Too many non-trivial decisions to make.
-          </aside>
-        </section>
-
-        <section>
-          <h1>Shoehorn</h1>
-          <h2>users</h2>
-          <table class="relational-table">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>name</th>
-                <th>birthdate</th>
-                <th>email</th>
-                <th>...</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Jesse Cooke</td>
-                <td>9/28/1981</td>
-                <td>jesse@jc00ke.com</td>
-                <td>...</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jon Doe</td>
-                <td>6/23/1972</td>
-                <td>jon@doe.name</td>
-                <td>...</td>
-              </tr>
-            </tbody>
-          </table>
-          <aside class="notes">
-            <ul>
-              <li>Assume most work on web apps</li>
-              <li>Literally shoehorn</li>
-            </ul>
-          </aside>
-        </section>
-
-        <section>
-          <h1>Shoehorn</h1>
-          <h2>addresses</h2>
-          <table class="relational-table">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>user_id</th>
-                <th>street_address</th>
-                <th>city</th>
-                <th>...</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>123 Main St</td>
-                <td>Portland</td>
-                <td>...</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>777</td>
-                <td>321 Smith Rd</td>
-                <td>Denver</td>
-                <td>...</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-				<section>
-          <h1>Persistence in OO</h1>
-          <h2 class="fragment">Supposed to be simple</h2>
-          <h3 class="fragment">And it was... in Smalltalk</h3>
-
-          <aside class="notes">
-            <p>You're essentially implementing the Ruby version of GemStone/S, but without the object persistence.</p>
-            <p>And you have to keep track of everything</p>
-            <p>And you're doing it wrong</p>
-          </aside>
-        </section>
-
-        <section>
-          <h2>The Image</h2>
-          <p>
-            <img src="lib/assets/plasma.jpg" alt="plasma lamp" />
-            <!-- TODO: attribution - I, Luc Viatour [GFDL (http://www.gnu.org/copyleft/fdl.html), CC-BY-SA-3.0 (http://creativecommons.org/licenses/by-sa/3.0/) or CC-BY-SA-2.5-2.0-1.0 (http://creativecommons.org/licenses/by-sa/2.5-2.0-1.0)], via Wikimedia Commons
-            http://commons.wikimedia.org/wiki/File%3APlasma-lamp_2.jpg -->
-          </p>
-          <aside class="notes">
-            <ul>
-              <li>How did Smalltalk get this right?</li>
-              <li>Explain the image</li>
-            </ul>
-          </aside>
-        </section>
-
-				<section>
-          <h1>Currently</h1>
-          <h2 class="fragment">We store objects as</h2>
-
-          <ul class="fragment">
-            <li>Rows &amp; Columns (with types)</li>
-            <li>BSON/JSON (with types)</li>
-            <li>Strings <span class="emphasis">#yuck</span></li>
-          </ul>
-        </section>
-        <section>
-          <h2>Objects!</h2>
-          <pre><code contenteditable class="ruby">
+  <ul class="fragment">
+    <li>Rows &amp; Columns (with types)</li>
+    <li>BSON/JSON (with types)</li>
+    <li>Strings <span class="emphasis">#yuck</span></li>
+  </ul>
+</section>
+<section>
+  <h2>Objects!</h2>
+  <pre><code data-trim contenteditable class="ruby">
 Widget.find_by_name("foo")
 # or
 User.create({ email: "foo@bar.com" })
-          </code></pre>
+  </code></pre>
 
-          <h2>Some Query Language :(</h2>
-          <pre><code contenteditable class="sql">
+  <h2>Some Query Language :(</h2>
+  <pre><code data-trim contenteditable class="sql">
 select * from widgets where name = 'foo';
 # or
 insert into users...
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h2 class="fragment">SQL - The Leaky Abstraction &trade;</h2>
-          <pre><code class="ruby">
+<section>
+  <h2 class="fragment">SQL - The Leaky Abstraction &trade;</h2>
+  <pre><code data-trim class="ruby">
 Client.where("orders_count = ? AND locked = ?",
              params[:orders],
              false)
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>PORO</h1>
-          <h3>Plain Old Ruby Object</h3>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h1>PORO</h1>
+  <h3>Plain Old Ruby Object</h3>
+  <pre><code data-trim contenteditable class="ruby">
 class Post < ActiveRecord::Base
 
 end
-          </code></pre>
-          <aside class="notes">
-            <ul>
-              <li>I despise this term</li>
-              <li>Reinforces the impedance mismatch</li>
-              <li>We've been trained to believe our normal Ruby objects are AR objects</li>
-              <li>Unfortunate</li>
-            </ul>
-          </aside>
-        </section>
+  </code></pre>
+  <aside class="notes">
+    <ul>
+      <li>I despise this term</li>
+      <li>Reinforces the impedance mismatch</li>
+      <li>We've been trained to believe our normal Ruby objects are AR objects</li>
+      <li>Unfortunate</li>
+    </ul>
+  </aside>
+</section>
 
-        <section>
-          <h2>Object-relational impedance mismatch</h2>
-          <h3><a href="http://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">Wikipedia</a></h3>
-          <h3><a href="http://www.agiledata.org/essays/impedanceMismatch.html">Agile Data</a></h3>
-          <h3><a href="http://c2.com/cgi/wiki?ObjectRelationalImpedanceMismatch">Cunningham &amp; Cunningham</a></h3>
-          <h3><a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">Coding Horror</a></h3>
-          <aside class="notes">
-            <ul>
-              <li>We constantly build up &amp; rip apart our objects</li>
-              <li>Every request goes to the database &amp; builds up the same object, over and over</li>
-              <li>To make a create a new, or update an existing object, we strip it down to bare fields &amp; send across the wire</li>
-              <li>The relations are pulled apart &amp; lost</li>
-              <li>Huge impedance mismatch there</li>
-            </ul>
-          </aside>
-        </section>
+<section>
+  <h2>Object-relational impedance mismatch</h2>
+  <h3><a href="http://en.wikipedia.org/wiki/Object-relational_impedance_mismatch">Wikipedia</a></h3>
+  <h3><a href="http://www.agiledata.org/essays/impedanceMismatch.html">Agile Data</a></h3>
+  <h3><a href="http://c2.com/cgi/wiki?ObjectRelationalImpedanceMismatch">Cunningham &amp; Cunningham</a></h3>
+  <h3><a href="http://www.codinghorror.com/blog/2006/06/object-relational-mapping-is-the-vietnam-of-computer-science.html">Coding Horror</a></h3>
+  <aside class="notes">
+    <ul>
+      <li>We constantly build up &amp; rip apart our objects</li>
+      <li>Every request goes to the database &amp; builds up the same object, over and over</li>
+      <li>To make a create a new, or update an existing object, we strip it down to bare fields &amp; send across the wire</li>
+      <li>The relations are pulled apart &amp; lost</li>
+      <li>Huge impedance mismatch there</li>
+    </ul>
+  </aside>
+</section>
 
-        <section>
-          <h3>Time traveller</h3>
-          <div class="fragment">
-            <blockquote>
-              The future of Ruby is here, it’s just that we have it over in the Smalltalk world and you guys should come and get it.
-            </blockquote>
-            <img src="lib/assets/avi.jpg" alt="Avi Bryant" />
-            <h4><a href="http://about.me/avibryant">Avi Bryant</a></h4>
-          </div>
-          <aside class="notes">
-            <ul>
-              <li>Keynote RailsConf 2007</li>
-            </ul>
-          </aside>
-        </section>
+<section>
+  <h3>Time traveller</h3>
+  <div class="fragment">
+    <blockquote>
+      The future of Ruby is here, it’s just that we have it over in the Smalltalk world and you guys should come and get it.
+    </blockquote>
+    <img src="lib/assets/avi.jpg" alt="Avi Bryant" />
+    <h4><a href="http://about.me/avibryant">Avi Bryant</a></h4>
+  </div>
+  <aside class="notes">
+    <ul>
+      <li>Keynote RailsConf 2007</li>
+    </ul>
+  </aside>
+</section>
 
-        <section>
-          <h2>Simple Example</h2>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h2>Simple Example</h2>
+  <pre><code data-trim contenteditable class="ruby">
 # VM #1
 PROOT = Maglev::PERSISTENT_ROOT
 pierre = Cat.new("Pierre")
@@ -445,107 +414,107 @@ pierre.object_id
 # => 1234567
 PROOT[:pierre] = pierre
 Maglev.commit_transaction
-          </code></pre>
+  </code></pre>
 
-          <pre class="fragment"><code contenteditable class="ruby">
+  <pre class="fragment"><code data-trim contenteditable class="ruby">
 # VM #2
 PROOT[:pierre].object_id
 # => 1234567
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>VM Modes</h1>
-          <h2>Transient (default)</h2>
-          <h2>Persistent</h2>
-        </section>
+<section>
+  <h1>VM Modes</h1>
+  <h2>Transient (default)</h2>
+  <h2>Persistent</h2>
+</section>
 
-        <section>
-          <h1>Transient</h1>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h1>Transient</h1>
+  <pre><code data-trim contenteditable class="ruby">
 Maglev.transient do
   # Will only be persisted locally
   # Won't be written to the stone
 end
-          </code></pre>
+  </code></pre>
 
-          <pre><code contenteditable class="bash">
+  <pre><code data-trim contenteditable class="bash">
 maglev-ruby foo.rb
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>Persistent</h1>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h1>Persistent</h1>
+  <pre><code data-trim contenteditable class="ruby">
 Maglev.persistent do
   # Will be written to the stone
   # upon commit
 end
-          </code></pre>
+  </code></pre>
 
-          <pre><code contenteditable class="bash">
+  <pre><code data-trim contenteditable class="bash">
 maglev-ruby -Mpersistent foo.rb
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-				<section>
-          <h1>Transactions</h1>
-        </section>
+<section>
+  <h1>Transactions</h1>
+</section>
 
-        <section>
-          <h1>Begin</h1>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h1>Begin</h1>
+  <pre><code data-trim contenteditable class="ruby">
 # Implicit...
 Maglev.begin_transaction
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>Abort</h1>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h1>Abort</h1>
+  <pre><code data-trim contenteditable class="ruby">
 # Revert all persisted classes
 # and grab fresh view
 Maglev.abort_transaction
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>What is happening?</h1>
-          <div>
-            <img src="lib/assets/maglev-stone-diagram.png" />
-          </div>
-        </section>
+<section>
+  <h1>What is happening?</h1>
+  <div>
+    <img src="lib/assets/maglev-stone-diagram.png" />
+  </div>
+</section>
 
-        <section>
-            <pre><code contenteditable class="ruby">
+<section>
+    <pre><code data-trim contenteditable class="ruby">
 Maglev.abort_transaction
-            </code></pre>
-          <div>
-            <img src="lib/assets/maglev.abort_transaction.png" />
-          </div>
-        </section>
+    </code></pre>
+  <div>
+    <img src="lib/assets/maglev.abort_transaction.png" />
+  </div>
+</section>
 
-        <section>
-          <h1>Commit</h1>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h1>Commit</h1>
+  <pre><code data-trim contenteditable class="ruby">
 # Attempt to write all changes to persisted
 # classes to the stone
 Maglev.commit_transaction
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-            <pre><code contenteditable class="ruby">
+<section>
+    <pre><code data-trim contenteditable class="ruby">
 Maglev.commit_transaction
-            </code></pre>
-          <div>
-            <img src="lib/assets/maglev.commit_transaction.png" />
-          </div>
-        </section>
+    </code></pre>
+  <div>
+    <img src="lib/assets/maglev.commit_transaction.png" />
+  </div>
+</section>
 
-        <section>
-          <h2 class="emphasis">Persistence by Reachability</h2>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h2 class="emphasis">Persistence by Reachability</h2>
+  <pre><code data-trim contenteditable class="ruby">
 # VM #1
 cats = []
 pierre = Cat.new("Pierre")
@@ -555,94 +524,94 @@ PROOT[:cats] = cats
 Maglev.commit_transaction
 pierre.object_id
 # => 9876543
-          </code></pre>
+  </code></pre>
 
-          <pre class="fragment"><code contenteditable class="ruby">
+  <pre class="fragment"><code data-trim contenteditable class="ruby">
 # VM #2
 persisted_cats = PROOT[:cats]
 
 persisted_cats.first.object_id
 # => 9876543
-          </code></pre>
+  </code></pre>
 
-        </section>
+</section>
 
-        <section>
-          <h2 class="emphasis">Persistence by Reachability</h2>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h2 class="emphasis">Persistence by Reachability</h2>
+  <pre><code data-trim contenteditable class="ruby">
 # VM #3
 pierre = PROOT[:cats].first
 pierre.toys << :ball_of_yarn
 
 Maglev.commit_transaction
-          </code></pre>
+  </code></pre>
 
-          <pre class="fragment"><code contenteditable class="ruby">
+  <pre class="fragment"><code data-trim contenteditable class="ruby">
 # VM #4
 Maglev.abort_transaction
 
 PROOT[:cats].first.toys.first
 # => :ball_of_yarn
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h3>What can you (easily) persist today?</h3>
-          <p class="fragment">Arrays</p>
-          <p class="fragment">Sets</p>
-          <p class="fragment">Hashes</p>
-          <p class="fragment">Counters</p>
-          <p class="fragment">Sorted Sets</p>
-        </section>
+<section>
+  <h3>What can you (easily) persist today?</h3>
+  <p class="fragment">Arrays</p>
+  <p class="fragment">Sets</p>
+  <p class="fragment">Hashes</p>
+  <p class="fragment">Counters</p>
+  <p class="fragment">Sorted Sets</p>
+</section>
 
-        <section>
-          <h1>Common theme</h1>
-          <h2 class="fragment">Serialization</h2>
-          <h2 class="fragment">Expensive (mentally & CPU cycles)</h2>
-        </section>
+<section>
+  <h1>Common theme</h1>
+  <h2 class="fragment">Serialization</h2>
+  <h2 class="fragment">Expensive (mentally & CPU cycles)</h2>
+</section>
 
-        <section>
-          <h3>Something more... exotic</h3>
-          <div class="fragment">k-D Tree</div>
-          <div class="fragment">Bloom Filter</div>
-          <div class="fragment">Judy Array</div>
-          <div class="fragment">
-            <p>Leftist Tree</p>
-            <img src="lib/assets/leftist-tree.jpg" />
-          </div>
-          <!-- TODO: attribute - http://ronbosoldier.blogspot.com/2011/05/leftist-animal-rights-activists-peed-on.html -->
-        </section>
+<section>
+  <h3>Something more... exotic</h3>
+  <div class="fragment">k-D Tree</div>
+  <div class="fragment">Bloom Filter</div>
+  <div class="fragment">Judy Array</div>
+  <div class="fragment">
+    <p>Leftist Tree</p>
+    <img src="lib/assets/leftist-tree.jpg" />
+  </div>
+  <!-- TODO: attribute - http://ronbosoldier.blogspot.com/2011/05/leftist-animal-rights-activists-peed-on.html -->
+</section>
 
-				<section>
-          <h1>Mismatch</h1>
+<section>
+  <h1>Mismatch</h1>
 
-          <ul>
-            <li class="fragment">It's not just about the objects, but the relations</li>
-            <li class="fragment">It's the graph!</li>
-          </ul>
-        </section>
+  <ul>
+    <li class="fragment">It's not just about the objects, but the relations</li>
+    <li class="fragment">It's the graph!</li>
+  </ul>
+</section>
 
-				<section>
-          <h1>Clojure!</h1>
+<section>
+  <h1>Clojure!</h1>
 
-          <ul>
-            <li><a href="http://www.infoq.com/presentations/Impedance-Mismatch">The Impedance Mismatch is Our Fault</a></li>
-          </ul>
-        </section>
+  <ul>
+    <li><a href="http://www.infoq.com/presentations/Impedance-Mismatch">The Impedance Mismatch is Our Fault</a></li>
+  </ul>
+</section>
 
-				<section>
-          <blockquote>
-            The only nice thing I'll say about databases, as they exist today, or about Java, or other OO languages... the only nice thing I'll say is about transactions. <span class="emphasis">Transactions are awesome.</span> Transactions are composable. We can understand how to reason about them. They're part of what give databases their greatness. So I've got no qualm with transactions.
-          </blockquote>
-        </section>
+<section>
+  <blockquote>
+    The only nice thing I'll say about databases, as they exist today, or about Java, or other OO languages... the only nice thing I'll say is about transactions. <span class="emphasis">Transactions are awesome.</span> Transactions are composable. We can understand how to reason about them. They're part of what give databases their greatness. So I've got no qualm with transactions.
+  </blockquote>
+</section>
 
-        <section data-state="soothe">
-          <h1>An example</h1>
-          <h2>Blog</h2>
-        </section>
+<section data-state="soothe">
+  <h1>An example</h1>
+  <h2>Blog</h2>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class MaglevBlogApp < Sinatra::Application
   # ...
 
@@ -655,11 +624,11 @@ class MaglevBlogApp < Sinatra::Application
     erb :index
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class MaglevBlogApp < Sinatra::Application
   # ...
   get "/posts/:id" do
@@ -669,11 +638,11 @@ class MaglevBlogApp < Sinatra::Application
     erb :post
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class MaglevBlogApp < Sinatra::Application
   # ...
 
@@ -683,11 +652,11 @@ class MaglevBlogApp < Sinatra::Application
     redirect "/"
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class MagLevTransactionWrapper
   def initialize(app); @app = app; end
 
@@ -701,11 +670,11 @@ class MagLevTransactionWrapper
     end
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class MagLevTransactionWrapper
   # ...
 
@@ -716,11 +685,11 @@ class MagLevTransactionWrapper
     end
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class MaglevBlog
   attr_accessor :posts, :name, :author
   def initialize(name, author_name)
@@ -730,15 +699,15 @@ class MaglevBlog
   end
   # ...
 end
-          </code></pre>
+  </code></pre>
 
-          <aside class="notes">
-            After reading POODR I totally want to refactor these examples.
-          </aside>
-        </section>
+  <aside class="notes">
+    After reading POODR I totally want to refactor these examples.
+  </aside>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class MaglevBlog
   # ...
 
@@ -756,11 +725,11 @@ class MaglevBlog
     end
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class MaglevBlog
   # ...
 
@@ -771,11 +740,11 @@ class MaglevBlog
     end
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 # bootstrap.rb
 
 Maglev.persistent do
@@ -783,20 +752,20 @@ Maglev.persistent do
   blog = MaglevBlog.new("RubyConf 2012!", "jc00ke")
   PROOT[:maglev_blogs] << blog
 end
-          </code></pre>
-          <pre><code contenteditable class="bash">
+  </code></pre>
+  <pre><code data-trim contenteditable class="bash">
 maglev-ruby -Mcommit bootstrap.rb
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section data-state="soothe">
-          <h1>An example</h1>
-          <h2>Worker Queue</h2>
-        </section>
+<section data-state="soothe">
+  <h1>An example</h1>
+  <h2>Worker Queue</h2>
+</section>
 
-        <section>
-          <h2>World's worst (but easiest) queue</h2>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h2>World's worst (but easiest) queue</h2>
+  <pre><code data-trim contenteditable class="ruby">
 # pseudo
 jobs = []
 jobs << Proc.new { puts "doing work" }
@@ -806,35 +775,35 @@ jobs.shift.call
 
         <section>
           <h2>Slightly-better producer</h2>
-          <pre><code contenteditable class="ruby">
+          <pre><code data-trim contenteditable class="ruby">
 PROOT[:q] ||= []
 
 while true do
   PROOT[:q] << Proc.new { puts "doing work" }
   Maglev.commit_transaction
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h2>Slightly-better worker</h2>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h2>Slightly-better worker</h2>
+  <pre><code data-trim contenteditable class="ruby">
 while true do
   Maglev.abort_transaction
   work = PROOT[:q].shift
   Maglev.commit_transaction
   work.call if work
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>Commit failure?</h1>
-        </section>
+<section>
+  <h1>Commit failure?</h1>
+</section>
 
-        <section>
-          <h2>Slightly-better producer</h2>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h2>Slightly-better producer</h2>
+  <pre><code data-trim contenteditable class="ruby">
 PROOT[:q] ||= []
 
 while true do
@@ -844,12 +813,12 @@ rescue Maglev::CommitFailedException
   puts "Couldn't add the job. Retrying..."
   redo
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h2>Slightly-better worker</h2>
-          <pre><code contenteditable class="ruby">
+<section>
+  <h2>Slightly-better worker</h2>
+  <pre><code data-trim contenteditable class="ruby">
 while true do
   Maglev.abort_transaction
 
@@ -861,17 +830,17 @@ rescue Maglev::CommitFailedException
   puts "Someone grabbed this job before me. Go grab another."
   redo
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>MagLev-Q</h1>
-          <a href="https://github.com/jc00ke/maglev-q">https://github.com/jc00ke/maglev-q</a>
-        </section>
+<section>
+  <h1>MagLev-Q</h1>
+  <a href="https://github.com/jc00ke/maglev-q">https://github.com/jc00ke/maglev-q</a>
+</section>
 
-        <section>
-          <h1>What's the point?</h1>
-          <pre>
+<section>
+  <h1>What's the point?</h1>
+  <pre>
 Totals grouped by language (dominant language first):
 ruby:            34 (100.00%)
 
@@ -881,122 +850,122 @@ Schedule Estimate, Months                                 = 0.90
 Estimated Average Number of Developers (Effort/Schedule)  = 0.08
 Total Estimated Cost to Develop                           = $ 776
  (average salary = $56,286/year, overhead = 2.40).
-          </pre>
-          <p class="tiny">Generated using David A. Wheeler's 'SLOCCount'</p>
-        </section>
+  </pre>
+  <p class="tiny">Generated using David A. Wheeler's 'SLOCCount'</p>
+</section>
 
-				<section data-markdown>
-          <h1>Leaderboard</h1>
-          <h2 class="fragment">100 points</h2>
-        </section>
+<section data-markdown>
+  <h1>Leaderboard</h1>
+  <h2 class="fragment">100 points</h2>
+</section>
 
-				<section>
-          <h1>Leaderboard</h1>
-          <table class="relational-table" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>@jc00ke</td>
-                <td>99</td>
-              </tr>
-              <tr>
-                <td>@sproutworx</td>
-                <td>99</td>
-              </tr>
-              <tr>
-                <td>@mrinterweb</td>
-                <td>98</td>
-              </tr>
-            </tbody>
-            <tbody>
-          </table>
-        </section>
+<section>
+  <h1>Leaderboard</h1>
+  <table class="relational-table" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@jc00ke</td>
+        <td>99</td>
+      </tr>
+      <tr>
+        <td>@sproutworx</td>
+        <td>99</td>
+      </tr>
+      <tr>
+        <td>@mrinterweb</td>
+        <td>98</td>
+      </tr>
+    </tbody>
+    <tbody>
+  </table>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Approaches
+<section data-markdown>
+  <script type="text/template">
+    # Approaches
 
-            ## Redis
+    ## Redis
 
-            ## RDBMS
+    ## RDBMS
 
-            ## Ruby's SortedSet
-          </script>
-        </section>
+    ## Ruby's SortedSet
+  </script>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Redis
+<section data-markdown>
+  <script type="text/template">
+    # Redis
 
-            ## to the rescue
+    ## to the rescue
 
-            ## ZSET
-          </script>
-        </section>
+    ## ZSET
+  </script>
+</section>
 
-				<section>
-          <h1>Leaderboard</h1>
-          <h2>Tied score?</h2>
-          <table class="relational-table" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>@jc00ke</td>
-                <td class="emphasis">100</td>
-              </tr>
-              <tr>
-                <td>@sproutworx</td>
-                <td class="emphasis">100</td>
-              </tr>
-              <tr>
-                <td>@mrinterweb</td>
-                <td>98</td>
-              </tr>
-            </tbody>
-            <tbody>
-          </table>
-        </section>
+<section>
+  <h1>Leaderboard</h1>
+  <h2>Tied score?</h2>
+  <table class="relational-table" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@jc00ke</td>
+        <td class="emphasis">100</td>
+      </tr>
+      <tr>
+        <td>@sproutworx</td>
+        <td class="emphasis">100</td>
+      </tr>
+      <tr>
+        <td>@mrinterweb</td>
+        <td>98</td>
+      </tr>
+    </tbody>
+    <tbody>
+  </table>
+</section>
 
-				<section>
-          <h1>Leaderboard</h1>
-          <h2>Tied score?</h2>
-          <table class="relational-table" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>@sproutworx</td>
-                <td class="emphasis">100</td>
-              </tr>
-              <tr>
-                <td>@jc00ke</td>
-                <td class="emphasis">100</td>
-              </tr>
-              <tr>
-                <td>@mrinterweb</td>
-                <td>98</td>
-              </tr>
-            </tbody>
-            <tbody>
-          </table>
-        </section>
+<section>
+  <h1>Leaderboard</h1>
+  <h2>Tied score?</h2>
+  <table class="relational-table" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@sproutworx</td>
+        <td class="emphasis">100</td>
+      </tr>
+      <tr>
+        <td>@jc00ke</td>
+        <td class="emphasis">100</td>
+      </tr>
+      <tr>
+        <td>@mrinterweb</td>
+        <td>98</td>
+      </tr>
+    </tbody>
+    <tbody>
+  </table>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class LeaderboardItem
   include Comparable
 
@@ -1007,50 +976,50 @@ class LeaderboardItem
     0
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Better Winner Criteria
+<section data-markdown>
+  <script type="text/template">
+    # Better Winner Criteria
 
-            ## First to 100
-          </script>
-        </section>
+    ## First to 100
+  </script>
+</section>
 
-				<section>
-          <h1>Leaderboard</h1>
-          <table class="relational-table" cellspacing="0">
-            <thead>
-              <tr>
-                <th>Username</th>
-                <th>Score</th>
-                <th>Timestamp</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>@sproutworx</td>
-                <td class="emphasis">100</td>
-                <td class="emphasis">12:15:27</td>
-              </tr>
-              <tr>
-                <td>@jc00ke</td>
-                <td class="emphasis">100</td>
-                <td class="emphasis">12:16:27</td>
-              </tr>
-              <tr>
-                <td>@mrinterweb</td>
-                <td>98</td>
-                <td>12:15:00</td>
-              </tr>
-            </tbody>
-            <tbody>
-          </table>
-        </section>
+<section>
+  <h1>Leaderboard</h1>
+  <table class="relational-table" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Score</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>@sproutworx</td>
+        <td class="emphasis">100</td>
+        <td class="emphasis">12:15:27</td>
+      </tr>
+      <tr>
+        <td>@jc00ke</td>
+        <td class="emphasis">100</td>
+        <td class="emphasis">12:16:27</td>
+      </tr>
+      <tr>
+        <td>@mrinterweb</td>
+        <td>98</td>
+        <td>12:15:00</td>
+      </tr>
+    </tbody>
+    <tbody>
+  </table>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code data-trim contenteditable class="ruby">
 class LeaderboardItem
   include Comparable
 
@@ -1064,79 +1033,79 @@ class LeaderboardItem
     0
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Redis
-            ___
-            ## Pros
-            Always sorted (on insert)
+<section data-markdown>
+  <script type="text/template">
+    # Redis
+    ___
+    ## Pros
+    Always sorted (on insert)
 
-            Super fast
-            ___
-            ## Cons
-            Only one sort criteria (score)
+    Super fast
+    ___
+    ## Cons
+    Only one sort criteria (score)
 
-            Always an array
-          </script>
-        </section>
+    Always an array
+  </script>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # RDBMS
+<section data-markdown>
+  <script type="text/template">
+    # RDBMS
 
-            ## Pros
-            Can sort over any field
+    ## Pros
+    Can sort over any field
 
-            Fast
-            ___
-            ## Cons
-            Only sorted at query time
+    Fast
+    ___
+    ## Cons
+    Only sorted at query time
 
-            Always an array
-          </script>
-        </section>
+    Always an array
+  </script>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # SortedSet
+<section data-markdown>
+  <script type="text/template">
+    # SortedSet
 
-            ## Pros
-            Richer data structure
+    ## Pros
+    Richer data structure
 
-            Composed in Leaderboard instance
+    Composed in Leaderboard instance
 
-            Sorts on insertion
+    Sorts on insertion
 
-            Can sort over any critera &lt;=&gt;
-            ___
-            ## Cons
-            Must sort before iterating
-          </script>
-        </section>
+    Can sort over any critera &lt;=&gt;
+    ___
+    ## Cons
+    Must sort before iterating
+  </script>
+</section>
 
-				<section>
-          <h1>The moral?</h1>
+<section>
+  <h1>The moral?</h1>
 
-          <ul>
-            <li class="fragment">The logic should be in your app, not in the DB</li>
-            <li class="fragment">Use the data structures we have...</li>
-            <li class="fragment">... or build the ones you want</li>
-            <li class="fragment">MagLev let's us persist anything, so have fun!</li>
-          </ul>
-        </section>
+  <ul>
+    <li class="fragment">The logic should be in your app, not in the DB</li>
+    <li class="fragment">Use the data structures we have...</li>
+    <li class="fragment">... or build the ones you want</li>
+    <li class="fragment">MagLev let's us persist anything, so have fun!</li>
+  </ul>
+</section>
 
-        <section>
-          <h1>Did I mention...</h1>
-          <h1 class="fragment">it's distributed?</h1>
-        </section>
+<section>
+  <h1>Did I mention...</h1>
+  <h1 class="fragment">it's distributed?</h1>
+</section>
 
-        <section>
-          <h1>Remote Stone</h1>
-          <h2>maglev.jc00ke.com</h2>
-          <pre><code contenteditable class="bash">
+<section>
+  <h1>Remote Stone</h1>
+  <h2>maglev.jc00ke.com</h2>
+  <pre><code data-trim contenteditable class="bash">
 $> cd $MAGLEV_HOME
 $> rake netldi:start
 startnetldi[Info]: Starting GemStone network server 'gs64ldi'.
@@ -1144,12 +1113,12 @@ startnetldi[Info]: GemStone server 'gs64ldi' has been started.
 
 %> rake maglev:start
 startstone[Info]: GemStone server 'maglev' has been started.
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>My laptop</h1>
-          <pre><code contenteditable class="bash">
+<section>
+  <h1>My laptop</h1>
+  <pre><code data-trim contenteditable class="bash">
 cd $MAGLEV_HOME
 rake netldi:start
 startnetldi[Info]: Starting GemStone network server 'gs64ldi'.
@@ -1157,194 +1126,112 @@ startnetldi[Info]: GemStone server 'gs64ldi' has been started.
 
 maglev-ruby --stonehost -e 'puts PROOT[:cats].first.name'
 Pierre
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-				<section>
-          <h1>Killer feature</h1>
-          <h2>Transparent Object Persistence</h2>
-        </section>
+<section>
+  <h1>Killer feature</h1>
+  <h2>Transparent Object Persistence</h2>
+</section>
 
-				<section>
-          <h1>Killer feature</h1>
-          <h2 class="stricken">Transparent Object Persistence</h2>
-          <h2><span class="emphasis">Distributed</span> Transparent Object Persistence</h2>
-        </section>
+<section>
+  <h1>Killer feature</h1>
+  <h2 class="stricken">Transparent Object Persistence</h2>
+  <h2><span class="emphasis">Distributed</span> Transparent Object Persistence</h2>
+</section>
 
-        <section>
-          <h1>Motivation?</h1>
+<section>
+  <h1>Motivation?</h1>
 
-          <h2 class="fragment">Have fun w/objects</h2>
-          <h2 class="fragment">Learn from the past</h2>
-          <h2 class="fragment">Make your life easier</h2>
-        </section>
+  <h2 class="fragment">Have fun w/objects</h2>
+  <h2 class="fragment">Learn from the past</h2>
+  <h2 class="fragment">Make your life easier</h2>
+</section>
 
-				<section>
-          <h1>Find me later</h1>
-          <p>I want to test out this distributed thing on a bigger scale</p>
-          <p>with your help ;)</p>
-        </section>
+<section>
+  <h1>Find me later</h1>
+  <p>I want to test out this distributed thing on a bigger scale</p>
+  <p>with your help ;)</p>
+</section>
 
-        <section data-state="blackout">
-          <h1>Questions?</h1>
-        </section>
+<section data-state="blackout">
+  <h1>Questions?</h1>
+</section>
 
-				<section data-markdown>
-          <script type="text/template">
-            # Thanks!
+<section data-markdown>
+  <script type="text/template">
+    # Thanks!
 
-            ## Jesse Cooke
+    ## Jesse Cooke
 
-            [github/jc00ke](https://github.com/jc00ke)
+    [github/jc00ke](https://github.com/jc00ke)
 
-            [@jc00ke](https://twitter.com/jc00ke)
-          </script>
-        </section>
+    [@jc00ke](https://twitter.com/jc00ke)
+  </script>
+</section>
 
-        <section>
-          <h1>Benchmarks are...</h1>
-          <ul>
-            <h2 class="fragment">Fun</h2>
-            <h2 class="fragment">Insightful</h2>
-            <h2 class="fragment emphasis">Stupid</h2>
-          </ul>
-        </section>
+<section>
+  <h1>Benchmarks are...</h1>
+  <ul>
+    <h2 class="fragment">Fun</h2>
+    <h2 class="fragment">Insightful</h2>
+    <h2 class="fragment emphasis">Stupid</h2>
+  </ul>
+</section>
 
-        <section>
-          <h1>Fun</h1>
-          <ul>
-            <h2 class="fragment">How fast?</h2>
-            <h2 class="fragment">How many can it handle?</h2>
-            <h2 class="fragment">Know where you stand</h2>
-          </ul>
-        </section>
+<section>
+  <h1>Fun</h1>
+  <ul>
+    <h2 class="fragment">How fast?</h2>
+    <h2 class="fragment">How many can it handle?</h2>
+    <h2 class="fragment">Know where you stand</h2>
+  </ul>
+</section>
 
-        <section>
-          <h1>Insightful</h1>
-          <ul>
-            <h2 class="fragment">What's slow?</h2>
-            <h2 class="fragment">What's not implemented?</h2>
-            <h2 class="fragment">What's broken?</h2>
-          </ul>
-        </section>
+<section>
+  <h1>Insightful</h1>
+  <ul>
+    <h2 class="fragment">What's slow?</h2>
+    <h2 class="fragment">What's not implemented?</h2>
+    <h2 class="fragment">What's broken?</h2>
+  </ul>
+</section>
 
-        <section>
-          <h1 class="emphasis">Stupid</h1>
-          <ul>
-            <h2 class="fragment">Micro or Macro?</h2>
-            <h2 class="fragment">Applicable?</h2>
-            <h2 class="fragment">Just for bragging rights? :(</h2>
-          </ul>
-        </section>
+<section>
+  <h1 class="emphasis">Stupid</h1>
+  <ul>
+    <h2 class="fragment">Micro or Macro?</h2>
+    <h2 class="fragment">Applicable?</h2>
+    <h2 class="fragment">Just for bragging rights? :(</h2>
+  </ul>
+</section>
 
-        <section>
-          <h1>My view</h1>
+<section>
+  <h1>My view</h1>
 
-          <p>If you ignore the Stupid, they are Fun &amp; Insightful.</p>
-          <p>They can be a good tool to diagnose issues &amp; push the implementation</p>
-        </section>
+  <p>If you ignore the Stupid, they are Fun &amp; Insightful.</p>
+  <p>They can be a good tool to diagnose issues &amp; push the implementation</p>
+</section>
 
-        <section>
-          <h1>RBS Results</h1>
-          <img src="https://docs.google.com/a/jc00ke.com/spreadsheet/oimg?key=0AqqwdumTHyNtdFNfc2pHWHNBM0tYQWZ5ZkFfbzNvRmc&oid=3&zx=xnzakqbario" />
-        </section>
+<section>
+  <h1>RBS Results</h1>
+  <img src="https://docs.google.com/a/jc00ke.com/spreadsheet/oimg?key=0AqqwdumTHyNtdFNfc2pHWHNBM0tYQWZ5ZkFfbzNvRmc&oid=3&zx=xnzakqbario" />
+</section>
 
-        <section>
-          <h1>RBS Results</h1>
-          <img src="https://docs.google.com/a/jc00ke.com/spreadsheet/oimg?key=0AqqwdumTHyNtdFNfc2pHWHNBM0tYQWZ5ZkFfbzNvRmc&oid=1&zx=sbzt4ccz4sil" />
-        </section>
+<section>
+  <h1>RBS Results</h1>
+  <img src="https://docs.google.com/a/jc00ke.com/spreadsheet/oimg?key=0AqqwdumTHyNtdFNfc2pHWHNBM0tYQWZ5ZkFfbzNvRmc&oid=1&zx=sbzt4ccz4sil" />
+</section>
 
-        <section>
-          <h2>Developer time is worth more than benchmark speed</h2>
-        </section>
+<section>
+  <h2>Developer time is worth more than benchmark speed</h2>
+</section>
 
-        <section>
-          <h1>Uncle Ben</h1>
+<section>
+  <h1>Uncle Ben</h1>
 
-          <blockquote>
-            With great benchmarks come great responsibility.
-          </blockquote>
-        </section>
+  <blockquote>
+    With great benchmarks come great responsibility.
+  </blockquote>
+</section>
 
-      </div>
-
-			<!-- Presentation progress bar -->
-			<div class="progress"><span></span></div>
-
-		</div>
-
-		<script src="../../reveal.js/lib/js/head.min.js"></script>
-
-		<script>
-			// Load reveal.js as well as a classList polyfill if needed
-			head.js( !document.body.classList ? '../../reveal.js/lib/js/classList.js' : null )
-				.js( '../../reveal.js/js/reveal.js', function() {
-
-				// Parse the query string into a key/value object
-				var query = {};
-				location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
-					query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
-				} );
-
-				// Fires each time a new slide is activated
-				Reveal.addEventListener( 'slidechanged', function( event ) {
-					// event.previousSlide, event.currentSlide, event.indexh, event.indexv
-				} );
-
-				// Full list of configuration options available here:
-				// https://github.com/hakimel/reveal.js#configuration
-				Reveal.initialize({
-					controls: true,
-					progress: true,
-					history: true,
-          rollingLinks: false,
-					theme: query.theme || 'default', // default/neon/beige
-					transition: query.transition || 'none', // default/cube/page/concave/linear(2d)
-          dependencies: [
-            // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
-            { src: '../../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-            // Interpret Markdown in <section> elements
-            { src: '../../reveal.js/plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            { src: '../../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-            // Syntax highlight for <code> elements
-            { src: '../../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-            // Zoom in and out with Alt+click
-            { src: '../../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-            // Speaker notes
-            { src: '../../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-          ]
-      });
-
-			} );
-
-			// Load highlight.js for syntax highlighting of code samples
-			head.js( '../../reveal.js/plugin/highlight/highlight.js', function() {
-				hljs.initHighlightingOnLoad();
-			} );
-
-			// If we're runnning the notes server we need to include some additional JS
-			// TODO Is there a better way to determine if we're running the notes server?
-			if( window.location.host === 'localhost:1947' ) {
-				head.js( 'socket.io/socket.io.js', '../../reveal.js/lib/plugin/speakernotes/client.js' );
-			}
-		</script>
-    <script type="text/javascript">
-      //<![CDATA[
-        if(document.location.hostname.match(/jc00ke/)) {
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-35917203-1']);
-          _gaq.push(['_trackPageview']);
-
-          (function() {
-              var ga = document.createElement('script');
-              ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
-                  'http://www') + '.google-analytics.com/ga.js';
-              ga.setAttribute('async', 'true');
-              document.documentElement.firstChild.appendChild(ga);
-          })();
-        }
-      //]]>
-    </script>
-
-	</body>
-</html>
