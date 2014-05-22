@@ -1,58 +1,29 @@
-<!doctype html>
-<html lang="en">
+---
+author: Jesse Cooke
+description: pdxruby October 2012 lightning talk
+title: Rails Generators that generate generators
+layout: presentation
+---
 
-	<head>
-		<meta charset="utf-8">
 
-		<title>Rails Generators that generate generators</title>
+<section>
+  <h1>Rails Generators that generate generators</h1>
+</section>
 
-		<meta name="description" content="pdxruby October 2012 lightning talk">
-		<meta name="author" content="Jesse Cooke">
-
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-
-		<link rel="stylesheet" href="../../reveal.js/css/reveal.css">
-		<link rel="stylesheet" href="../../reveal.js/css/print/pdf.css" type="text/css" media="print">
-		<link rel="stylesheet" href="../../reveal.js/css/theme/default.css" id="theme">
-
-		<link rel="stylesheet" href="../lib/css/solarized_light.css" >
-		<link rel="stylesheet" href="../lib/css/styles.css">
-	</head>
-
-	<body>
-
-		<div class="reveal">
-
-			<!-- Used to fade in a background when a specific slide state is reached -->
-			<div class="state-background"></div>
-
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Rails Generators that generate generators</h1>
-					<script>
-						// Delicously hacky. Look away.
-						if( navigator.userAgent.match( /(iPhone|iPad|iPod|Android)/i ) ) document.write( '<p style="color: rgba(0,0,0,0.3); text-shadow: none;">('+'Tap to navigate'+')</p>' );
-					</script>
-				</section>
-
-        <section>
-          <h2>Generators?</h2>
-          <pre><code contenteditable class="bash">
+<section>
+  <h2>Generators?</h2>
+  <pre><code contenteditable class="bash">
 rails new foo
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h2>Why might you write your own?</h2>
-          <h3 class="fragment">You wrote a gem</h3>
-        </section>
+<section>
+  <h2>Why might you write your own?</h2>
+  <h3 class="fragment">You wrote a gem</h3>
+</section>
 
-        <section>
-          <pre><code class="bash">
+<section>
+  <pre><code class="bash">
 ∴ rails g
 Usage: rails generate GENERATOR [args] [options]
 
@@ -63,29 +34,28 @@ Kaminari:
   kaminari:views
 
 Mongoid:
-  mongoid:config
-  mongoid:devise
+  # ...
 
 RailsAdmin:
   rails_admin:install
   rails_admin:uninstall
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h2>Why might you write your own?</h2>
-          <h3>You wrote a gem</h3>
-          <h3 class="fragment">A conversion</h3>
-        </section>
+<section>
+  <h2>Why might you write your own?</h2>
+  <h3>You wrote a gem</h3>
+  <h3 class="fragment">A conversion</h3>
+</section>
 
-        <section>
-          <h2>The mission</h2>
-          <h3 class="fragment">RoflDB -> pg</h3>
-          <h3 class="fragment">RoflDB is... a document database!</h3>
-        </section>
+<section>
+  <h2>The mission</h2>
+  <h3 class="fragment">RoflDB -> pg</h3>
+  <h3 class="fragment">RoflDB is... a document database!</h3>
+</section>
 
-        <section>
-          <pre><code class="bash">
+<section>
+  <pre><code class="bash">
 ∴ rails g
 Usage: rails generate GENERATOR [args] [options]
 
@@ -101,32 +71,32 @@ Rails:
   controller
   generator <------------------------------ WAT?!?
   ...
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code class="bash">
+<section>
+  <pre><code class="bash">
 ∴ rails g generator converter
       create  lib/generators/converter
       create  lib/generators/converter/converter_generator.rb
       create  lib/generators/converter/USAGE
       create  lib/generators/converter/templates
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code class="bash">
+<section>
+  <pre><code class="bash">
 cat  lib/generators/converter/converter_generator.rb
-          </code></pre>
-          <pre><code class="ruby">
+  </code></pre>
+  <pre><code class="ruby">
 class ConverterGenerator < Rails::Generators::NamedBase
   source_root File.expand_path('../templates', __FILE__)
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code contenteditable class="ruby">
 require 'active_record'
 
 class ConverterGenerator < Rails::Generators::NamedBase
@@ -141,11 +111,11 @@ class ConverterGenerator < Rails::Generators::NamedBase
   end
 
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code contenteditable class="ruby">
 class ConverterGenerator < Rails::Generators::NamedBase
   # ...
 
@@ -162,10 +132,10 @@ class ConverterGenerator < Rails::Generators::NamedBase
   end
 end
           </code></pre>
-        </section>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code contenteditable class="ruby">
 class ConverterGenerator < Rails::Generators::NamedBase
   # ...
 
@@ -180,10 +150,10 @@ class ConverterGenerator < Rails::Generators::NamedBase
     # ...
   end
           </code></pre>
-        </section>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code contenteditable class="ruby">
 class DatabaseMigrator
   TYPE_MAP = {
     # ...
@@ -199,15 +169,15 @@ class DatabaseMigrator
     # ...
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code class="bash">
+<section>
+  <pre><code class="bash">
 cat  lib/generators/converter/templates/migrate.rb
-          </code></pre>
+  </code></pre>
 
-          <pre><code contenteditable class="ruby">
+  <pre><code contenteditable class="ruby">
 class Create<%= config[:class_name] %> < ActiveRecord::Migration
   def change
     create_table :<%= config[:table_name] %> do |t|
@@ -223,14 +193,14 @@ class Create<%= config[:class_name] %> < ActiveRecord::Migration
     end
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code class="bash">
+<section>
+  <pre><code class="bash">
 cat  lib/generators/converter/templates/migrate_sequel.rb
-          </code></pre>
-          <pre><code contenteditable class="ruby">
+  </code></pre>
+  <pre><code contenteditable class="ruby">
 Sequel.migration do
   change do
     create_table :<%= config[:table_name] %> do
@@ -245,18 +215,18 @@ Sequel.migration do
     end
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h2>What I want</h2>
-          <pre class="fragment"><code contenteditable class="rake">
+<section>
+  <h2>What I want</h2>
+  <pre class="fragment"><code contenteditable class="rake">
 rake db:migrate_schema
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code contenteditable class="ruby">
 require 'rails/generators'
 
 namespace :db do
@@ -272,17 +242,17 @@ namespace :db do
     end
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="rake">
+<section>
+  <pre><code contenteditable class="rake">
 rake db:migrate_schema
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <pre><code contenteditable class="ruby">
+<section>
+  <pre><code contenteditable class="ruby">
 class CreateWidget < ActiveRecord::Migration
   def change
     create_table :widgets do |t|
@@ -295,106 +265,58 @@ class CreateWidget < ActiveRecord::Migration
     end
   end
 end
-          </code></pre>
-        </section>
+  </code></pre>
+</section>
 
-        <section>
-          <h1>Takeaway...</h1>
-          <h2 class="fragment">Repeatability is good!</h2>
-        </section>
+<section>
+  <h1>Takeaway...</h1>
+  <h2 class="fragment">Repeatability is good!</h2>
+</section>
 
-        <section>
-          <h1>Resources</h1>
-          <p><a href="http://guides.rubyonrails.org/generators.html">Rails Guides</a></p>
-        </section>
+<section>
+  <h1>Resources</h1>
+  <p><a href="http://guides.rubyonrails.org/generators.html">Rails Guides</a></p>
+</section>
 
-        <section>
-          <h1>Thanks!</h1>
-          <h2>Jesse Cooke</h2>
-          <p><a href="https://github.com/jc00ke">github/jc00ke</a></p>
-          <p><a href="https://twitter.com/jc00ke">@jc00ke</a></p>
-          <p>jesse [at] jc00ke.com</p>
-        </section>
+<section>
+  <h1>Thanks!</h1>
+  <h2>Jesse Cooke</h2>
+  <p><a href="https://github.com/jc00ke">github/jc00ke</a></p>
+  <p><a href="https://twitter.com/jc00ke">@jc00ke</a></p>
+  <p>jesse [at] jc00ke.com</p>
+</section>
 
-      </div>
+<section id="themes">
+  <h2>Themes</h2>
+  <p>
+    Reveal.js comes with a few themes built in: <br>
+    <a href="?theme=solarized#/themes">Solarized</a>
+  </p>
+  <p>
+    <small>
+      * Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
+    </small>
+  </p>
+</section>
 
-			<!-- The navigational controls UI -->
-			<aside class="controls">
-				<a class="left" href="#">&#x25C4;</a>
-				<a class="right" href="#">&#x25BA;</a>
-				<a class="up" href="#">&#x25B2;</a>
-				<a class="down" href="#">&#x25BC;</a>
-			</aside>
+<section>
+  <h2>Pretty Code</h2>
+  <pre><code data-trim contenteditable>
+function linkify( selector ) {
+  if( supports3DTransforms ) {
 
-			<!-- Presentation progress bar -->
-			<div class="progress"><span></span></div>
+    var nodes = document.querySelectorAll( selector );
 
-		</div>
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
 
-		<script src="../../reveal.js/lib/js/head.min.js"></script>
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+  </code></pre>
+  <p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+</section>
 
-		<script>
-			// Load reveal.js as well as a classList polyfill if needed
-			head.js( !document.body.classList ? '../../reveal.js/lib/js/classList.js' : null )
-				.js( '../../reveal.js/js/reveal.js', function() {
-
-				// Parse the query string into a key/value object
-				var query = {};
-				location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
-					query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
-				} );
-
-				// Fires when a slide with data-state=customevent is activated
-				Reveal.addEventListener( 'customevent', function() {
-					console.log( '"customevent" has fired' );
-				} );
-
-				// Fires each time a new slide is activated
-				Reveal.addEventListener( 'slidechanged', function( event ) {
-					// event.previousSlide, event.currentSlide, event.indexh, event.indexv
-				} );
-
-				// Full list of configuration options available here:
-				// https://github.com/hakimel/reveal.js#configuration
-				Reveal.initialize({
-					controls: true,
-					progress: true,
-					history: true,
-
-					theme: query.theme || 'default', // default/neon/beige
-					transition: query.transition || 'concave' // default/cube/page/concave/linear(2d)
-				});
-
-			} );
-
-			// Load highlight.js for syntax highlighting of code samples
-			head.js( '../../reveal.js/lib/js/highlight.js', function() {
-				hljs.initHighlightingOnLoad();
-			} );
-
-			// If we're runnning the notes server we need to include some additional JS
-			// TODO Is there a better way to determine if we're running the notes server?
-			if( window.location.host === 'localhost:1947' ) {
-				head.js( 'socket.io/socket.io.js', '../../reveal.js/lib/plugin/speakernotes/client.js' );
-			}
-		</script>
-    <script type="text/javascript">
-      //<![CDATA[
-        if(document.location.hostname.match(/jc00ke/)) {
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-35917203-1']);
-          _gaq.push(['_trackPageview']);
-
-          (function() {
-              var ga = document.createElement('script');
-              ga.src = ('https:' == document.location.protocol ? 'https://ssl' :
-                  'http://www') + '.google-analytics.com/ga.js';
-              ga.setAttribute('async', 'true');
-              document.documentElement.firstChild.appendChild(ga);
-          })();
-        }
-      //]]>
-    </script>
-
-	</body>
-</html>
