@@ -1,0 +1,56 @@
+---
+title: Setting Intent
+layout: post
+description: How intention helped me leave Watsi
+author: Jesse
+---
+
+3 years ago I was introduced to a small group of Peace Corps volunteers that
+were working on a brilliant idea. I was immediately hooked. Like all great ideas
+it was simple: use crowdfunding to connect donors with patients in need of low
+cost, high impact health care. Crowdfunding was all the rage, yet no one had
+taken the leap to match it up with health care like Chase Adam, the passionate
+leader of what would become [Watsi](https://watsi.org).
+
+I came on board as the technical co-founder, the one responsible for building
+out the actual platform. Back then Watsi was just a passion project; Google
+Hangouts once a week, emails and phone calls about our dream for what Watsi
+would become, etc. We decided we'd be "successful" if we could fund 10
+treatments. After our friends and family beta, where we raised about half of
+what was needed for the 3 patients on the site, Chase posted to
+[Hacker News](https://news.ycombinator.com/item?id=4424081) and we blew up.
+The reception was amazing, and the rush was something I had never felt before.
+It wasn't the validation of what I had built, but that I was part of something
+that connected people in a way that could only be Good (yes, with a capital G.)
+
+> The only possible outcome of Watsi was Good.
+
+A few months later we caught the eye of Paul Graham, and everything changed.
+We had wanted to focus on Watsi full time but finding the funds proved
+difficult. pg/[Y Combinator](http://ycombinator.com/watsi.html) gave us the
+funding, time, advice, and chance to focus we needed to see where Watsi could
+go.
+
+And so began the rollercoaster. Watsi is the hardest thing I've done so far.
+I set out to find a *work-life* balance when I left my full-time job back in the
+summer of 2009, and once Watsi took off there was no looking back. There's not
+much room for the *life* part of the work-life balance as the founder of a
+startup, which should have been obvious to me, but wasn't.
+
+Over time I realized that the setting of an intention was paramount to how I
+wanted to live. While I loved all the things about Watsi, deep down I knew that
+I had not intended to do it, and that that was contradictory to how I wanted to
+live. I rode the rollercoaster until May 6, 2014, when I decided it was time
+for me to part ways from Watsi.
+
+I am supremely lucky to have been a part of Watsi. Chase, Grace and the rest of
+the team are friends, first and foremost, and ultimately the right people to be
+leading the charge for a new model of health care. They are the most driven and
+altrustic people I've ever met, and they pushed me to develop parts of myself
+I didn't know I could.
+
+It's time for me to set my intentions again. Fortunately I had some travel
+planned, which will give me time and hopefully perspective on what I might
+want to do next. I'm excited for what lies ahead. I'll always remain supportive
+of Watsi, and I encourage you to [do the same](https://watsi.org/monthly).
+
