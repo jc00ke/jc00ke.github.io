@@ -10,6 +10,11 @@ layout: default
 
   <article class="post-content">
   {{ content }}
+  {% if page.author %}
+  <address class="author">
+    - <em>{{ page.author }}</em>
+  </address>
+  {% endif %}
   </article>
 
 </div>

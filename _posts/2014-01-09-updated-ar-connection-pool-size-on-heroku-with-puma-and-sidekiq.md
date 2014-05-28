@@ -75,4 +75,3 @@ I had a hunch it was from having a `DATABASE_URL` env var, so I was extra motiva
 
 This was deployed to production yesterday, and we haven't seen any issues.
 
-\- *{{ page.author }}*
