@@ -15,7 +15,7 @@ leader of what would become [Watsi](https://watsi.org).
 I came on board as the technical co-founder, the one responsible for building
 out the actual platform. Back then Watsi was just a passion project; Google
 Hangouts once a week, emails and phone calls about our dream for what Watsi
-would become, etc. We decided we'd be "successful" if we could fund 10
+would become, etc. We decided we'd be *successful* if we could fund 10
 treatments. After our friends and family beta, where we raised about half of
 what was needed for the 3 patients on the site, Chase posted to
 [Hacker News](https://news.ycombinator.com/item?id=4424081) and we blew up.
@@ -23,9 +23,9 @@ The reception was amazing, and the rush was something I had never felt before.
 It wasn't the validation of what I had built, but that I was part of something
 that connected people in a way that could only be Good (yes, with a capital G.)
 
-> The only possible outcome of Watsi was Good.
+> The only possible outcome of Watsi is Good.
 
-A few months later we caught the eye of Paul Graham, and everything changed.
+A few months later we caught the eye of Paul Graham and everything changed.
 We had wanted to focus on Watsi full time but finding the funds proved
 difficult. pg/[Y Combinator](http://ycombinator.com/watsi.html) gave us the
 funding, time, advice, and chance to focus we needed to see where Watsi could
@@ -37,20 +37,21 @@ summer of 2009, and once Watsi took off there was no looking back. There's not
 much room for the *life* part of the work-life balance as the founder of a
 startup, which should have been obvious to me, but wasn't.
 
-Over time I realized that the setting of an intention was paramount to how I
+Over time I realized that the setting of intention was paramount to how I
 wanted to live. While I loved all the things about Watsi, deep down I knew that
 I had not intended to do it, and that that was contradictory to how I wanted to
 live. I rode the rollercoaster until May 6, 2014, when I decided it was time
-for me to part ways from Watsi.
+for me to part ways.
 
 I am supremely lucky to have been a part of Watsi. Chase, Grace and the rest of
 the team are friends, first and foremost, and ultimately the right people to be
 leading the charge for a new model of health care. They are the most driven and
 altrustic people I've ever met, and they pushed me to develop parts of myself
-I didn't know I could.
+I didn't know I could. I'm proud of the work we did and excited for what they
+will deliver to the world.
 
 It's time for me to set my intentions again. Fortunately I had some travel
-planned, which will give me time and hopefully perspective on what I might
-want to do next. I'm excited for what lies ahead. I'll always remain supportive
-of Watsi, and I encourage you to [do the same](https://watsi.org/monthly).
+planned, which will give me time and perspective on what I might want to do
+next. I'm excited for what lies ahead. I'll always be supportive of Watsi,
+and I encourage you to [do the same](https://watsi.org/monthly).
 
