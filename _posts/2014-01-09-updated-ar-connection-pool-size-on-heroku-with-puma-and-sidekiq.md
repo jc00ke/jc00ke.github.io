@@ -3,6 +3,11 @@ title: UPDATED - Setting ActiveRecord's connection pool size on Heroku with Puma
 layout: post
 description: (Long overdue) An update to the original post, with less DATABASE_URL hacking
 author: Jesse
+tags:
+- activerecord
+- puma
+- rails
+- sidekiq
 ---
 
 [Last I wrote]({% post_url 2013-02-16-activerecord-connection-pool-on-heroku-with-puma-and-sidekiq %}) we

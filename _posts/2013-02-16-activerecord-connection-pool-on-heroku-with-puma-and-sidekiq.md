@@ -3,6 +3,11 @@ title: Setting ActiveRecord's connection pool size on Heroku with Puma and Sidek
 layout: post
 description: Our solution to set the pool size from either Puma or Sidekiq.
 author: Jesse
+tags:
+- activerecord
+- puma
+- rails
+- sidekiq
 ---
 
 UPDATE: [A better way to set the connection pool size]({% post_url 2014-01-09-updated-ar-connection-pool-size-on-heroku-with-puma-and-sidekiq %}).
