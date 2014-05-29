@@ -6,9 +6,13 @@ baseurl: ""
 url: "http://jc00ke.com"
 username: jc00ke
 timezone: America/Los_Angeles
+author: Jesse Cooke
 
 # Build settings
 markdown: kramdown
 permalink: pretty
 sass:
   sass_dir: css
+
+# custom settings
+feedurl: "http://feedpress.me/jc00ke"
