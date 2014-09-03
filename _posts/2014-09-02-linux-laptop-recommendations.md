@@ -26,16 +26,6 @@ of RAM which is a good starting point for most developers.
 I'd definitely consider this an entry level laptop, but one that's got good
 specs for a good price.
 
-### Lenovo Yoga 2 Pro [link](http://j.mp/1vKuesl)
-
-9 hour battery and a 3200x1800 QHD+ screen makes this a pretty nice machine. I
-don't have experience with this laptop running a Linux, but it
-[looks like](http://j.mp/1vKvHig) others have gotten Arch to run on it, so I'd
-think a \*buntu would.
-
-The base model at $899.99 is pretty attractive for someone looking at a lower
-price point.
-
 ## $1000 - $2000 USD
 
 ### Samsung Book 9 Plus [link](http://j.mp/1vKwuzP)
@@ -92,3 +82,45 @@ As for flavor of Linux, I've been using Ubuntu or a variant since 2007 and I hig
 There are a ton of choices, but the most solid ones are really fantastic. Maybe
 Linux never took over the Desktop, and that's fine. It works well on laptops
 and I appreciate the computer I have.
+
+## UPDATE
+
+I received a great email from [Jeff Bonhags](https://twitter.com/jeffbonhag)
+regarding the Lenovo Yoga Pro 2. With this in mind, I'm removing the Yoga Pro 2
+from my list. Here's Jeff's email:
+
+> Hi Jesse,
+
+> I was psyched to see your Linux laptop recommendations article, less so
+to see the Yoga Pro 2 recommended.  I've been using Linux on that laptop
+for about six months, and I don't think it's a great choice.
+
+> The laptop has a few strikes against it to begin with: the touchpad is
+_terrible_, the touchscreen/tablet mode is weird and/or pointless.  The
+touchscreen is pressure sensitive (not heat sensitive), so if you
+accidentally brush a piece of paper or a wire against the screen the
+mouse cursor will jump all over the place.
+
+> I tried out OpenSUSE, Fedora, Ubuntu, and Arch, and there were plenty of
+weird quirks with all of them.  The Intel 7260 Bluetooth/wifi card is
+new enough that it doesn't have stellar Linux support yet.  So you have
+to fiddle with rfkill and blacklist the ideapad_laptop module.  Suspend
+is far from perfect: on OpenSUSE 13.1 there were gross video artifacts
+when I opened the laptop lid and could only (but not always) get rid of
+them by switching to a virtual console and then back to X again --
+although these went away when I upgraded to OpenSUSE Factory (which I'm
+using now).  Sometimes the keys would stay activated in tablet mode,
+sometimes they wouldn't.
+
+> I'm sorry I don't have a better recommendation, or else I'd be using it!
+Let me know if you hear anything from other readers.
+
+> Also, sorry if this is coming off as rant-y -- tweaking a couple of
+settings isn't the end of the world, but this laptop has been
+surprisingly difficult to use with Linux.
+
+> Regards,
+> Jeff Bonhag
+
+If there are any other experiences I'd love to hear about them.
+
