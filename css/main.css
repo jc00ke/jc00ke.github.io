@@ -430,3 +430,23 @@ body, .site-header {
 
 }
 
+.post-content table,
+.post-content td,
+.post-content th {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+}
+
+.post-content td,
+.post-content th {
+  border: 1px solid #ccc;
+  padding: 4px;
+}
+
+.post-content tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+.post-content tbody tr:hover {
+  background-color: #9495E0;
+}
