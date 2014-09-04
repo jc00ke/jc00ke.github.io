@@ -75,7 +75,11 @@ do the trick. Of course I'd be getting it with 32GB RAM, because why not?
 
 ## Flavor
 
-As for flavor of Linux, I've been using Ubuntu or a variant since 2007 and I highly recommend it. Over Xmas I switched from Ubuntu to Xubuntu, which uses Xfce instead of Gnome, and I really like it. Same kernel, same app compatibility and install through Aptitude and the Ubuntu Software Center, and it's lighter/faster than Ubuntu/Gnome.
+As for flavor of Linux, I've been using Ubuntu or a variant since 2007 and I
+highly recommend it. Over Xmas I switched from Ubuntu to Xubuntu, which uses
+Xfce instead of Gnome, and I really like it. Same kernel, same app compatibility
+and install through Aptitude and the Ubuntu Software Center, and it's
+lighter/faster than Ubuntu/Gnome.
 
 ## Wrap Up
 
@@ -123,4 +127,3 @@ surprisingly difficult to use with Linux.
 > Jeff Bonhag
 
 If there are any other experiences I'd love to hear about them.
-
