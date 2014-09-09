@@ -13,6 +13,10 @@ account monthly donations though. How does one do that when monthly
 donations are all charged on the first of the month? How do we include
 tips to our overhead fund?
 
+I recognize there are all sorts of ways to do this. Hell, I could have
+written this in `Ruby`, and I almost did, but we used Heroku's
+[Dataclips](http://j.mp/1u1OVxN) which allowed us to get near-realtime results[1].
+
 Let's take a slightly simpler example: A small business sells widgets.
 Widgets are sold for all different prices, and you can even set up a
 recurring order that is charged on the first of the month.
@@ -48,10 +52,57 @@ So, given this info, we calculate our weekly amount as:
 *Note:* I'm going to ignore time zones for brevity, but assume I'm setting
 everything to `America/Los_Angeles`.
 
+In any other database I would have had to either use `temp tables` or `sub-selects`
+but PostgreSQL has what are called [Common Table Expressions](http://www.postgresql.org/docs/9.3/static/queries-with.html)
+or `WITH` queries.
+
+`WITH` queries allow us to turn `sub-selects` into named tables without the need
+to generate actual `temp tables`.
+
+{% highlight sql %}
+select
+  foo,
+  bar
+from
+  (
+    select
+      foo,
+      bar_id
+    from
+      foos
+    where
+      something > 1
+  ) as some_foos inner join bars on
+  some_foos.bar_id = bars.id
+{% endhighlight %}
+
+can be turned into this:
+
+{% highlight sql %}
+with some_foos as (
+  select
+    foo,
+    bar_id
+  from
+    foos
+  where
+    something > 1
+)
+
+select
+  foo,
+  bar
+from
+  some_foos inner join bars on
+  some_foos.bar_id = bars.id
+{% endhighlight %}
+
+This trivial example doesn't do the greatest job in showing the power of CTE's,
+but the final query below will.
+
 OK, so let's see some SQL:
 
 {% highlight sql %}
--- compile the daily totals
 with daily_purchases as (
   select
     date(date_trunc('day', created_at)) as day,
@@ -97,6 +148,8 @@ daily_purchases_with_month as (
 | 2014-08-01 | 2014-08-24 | $14.00    |
 | 2014-09-01 | 2014-09-03 | $12.00    |
 
+Now we need to calculate each month's recurring revenue:
+
 {% highlight sql %}
 per_month_recurring as (
   select
@@ -123,7 +176,7 @@ handle the different number of days in a month? With another query:
 
 {% highlight sql %}
 per_day_recurring as (
-  select  
+  select
     date_part('days',
         date_trunc('month', month)
         + '1 month'::interval
@@ -144,7 +197,7 @@ per_day_recurring as (
 August has 31 days, September has 30. This approach handles leap years
 in February too.
 
-Now we need to find the actual average per day based on the month:
+We now need to find the actual average per day based on the month:
 
 {% highlight sql %}
 average_per_day_recurring as (
@@ -251,7 +304,7 @@ with daily_purchases as (
   order by
     1
 ), per_day_recurring as (
-  select  
+  select
     date_part('days',
         date_trunc('month', month)
         + '1 month'::interval
@@ -293,12 +346,15 @@ from
   reduced
 {% endhighlight %}
 
-I recognize there are all sorts of ways to do this. Hell, I could have
-written this in `Ruby`, and I almost did, but we used Heroku's
-[Dataclips](http://j.mp/1u1OVxN) which allowed us to get near-realtime results[1].
-
 I hope you enjoyed this venture into using CTE's to build up a simple result from a
-decently complex, for SQL, report. Luckily I haven't had to use another database because
-I've grown quite fond of CTE's.
+decently complex, for SQL, report. I've grown quite fond of CTE's and luckily I
+used PostgreSQL exclusively for my last several projects. The expressive power
+to compose SQL queries like this is one of the many things I love about
+PostgreSQL.
+
+ps: My friend [Jacob](https://twitter.com/jacobrothstein) asked how well this
+performs. From what I can tell it performs really well, but I haven't had the
+chance to benchmark it yet. I'm hoping to write up how it performs 1) with more
+data and 2) against an implementation in Ruby.
 
 [1] I say "near-realtime" because Heroku caches the results for some period.
