@@ -430,6 +430,8 @@ body, .site-header {
 
 }
 
+/* customizations */
+
 .post-content table,
 .post-content td,
 .post-content th {
@@ -449,4 +451,9 @@ body, .site-header {
 
 .post-content tbody tr:hover {
   background-color: #9495E0;
+}
+
+.post-content pre {
+  overflow: auto;
+  white-space: pre;
 }
