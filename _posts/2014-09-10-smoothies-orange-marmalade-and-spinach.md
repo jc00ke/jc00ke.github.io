@@ -12,7 +12,7 @@ I've been on a bit of a smoothie kick this year, and with the help of
 [Superfood Smoothies](http://j.mp/superfood-smoothies) by Julie Morris I've made
 some delicious concoctions.
 
-Today's is really, really tasty, so I thought I'd share.
+Yesterday's is really, really tasty, so I thought I'd share.
 
 * 1 cup So Delicious coconut milk, regular
 * 6 - 8 pieces of ice
