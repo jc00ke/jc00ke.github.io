@@ -352,6 +352,8 @@ used PostgreSQL exclusively for my last several projects. The expressive power
 to compose SQL queries like this is one of the many things I love about
 PostgreSQL.
 
+Discussion over on [hn](https://news.ycombinator.com/item?id=8297239).
+
 ps: My friend [Jacob](https://twitter.com/jacobrothstein) asked how well this
 performs. From what I can tell it performs really well, but I haven't had the
 chance to benchmark it yet. I'm hoping to write up how it performs 1) with more
