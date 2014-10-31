@@ -6,6 +6,10 @@ permalink: /speaking/
 
 I've spoken a few times, and you can find the resources below.
 
+## Tech4Good Panel
+Seattle Startup Week - 2014/10/21
+[tickets](http://j.mp/1tpDhgP)
+
 ## Allow me to reintroduce myself. My name is MagLev.
 RubyConf 2012:
 [slides]({{ "/speaking/rubyconf-2012-maglev/" | prepend: site.baseurl  }})
