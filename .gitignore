@@ -1,3 +1,4 @@
 *.swp
 .bundle
 _site
+_drafts/
