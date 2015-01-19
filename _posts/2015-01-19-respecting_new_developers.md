@@ -72,6 +72,5 @@ Thanks to
 [Pat Maddox](https://twitter.com/patmaddox) for reviewing drafts of this post.
 
 Speaking of Pat, he's been working very hard for the last 6 months to create
-[the best way to learn Ruby: RubySteps](https://rubysteps.com/). If you are a
-new developer, check it out. If you're not, check it out and recommend it to a
-friend.
+[the best way to learn Ruby: RubySteps](https://rubysteps.com/). Check it out
+and recommend it to a friend.
