@@ -1,7 +1,11 @@
 ---
 layout: post
 title: "Patching xdg-open for magnet links"
-tags: linux, xfce, torrent
+author: Jesse
+tags:
+- linux
+- xfce
+- torrent
 ---
 
 `xdg-open` doesn't set the correct `$DE` variable, so the wrong open function
