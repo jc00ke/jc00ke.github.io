@@ -30,7 +30,7 @@ end
 
 Spot the issue?
 
-The members of a set are a subset. A set's members, by definition, are unique from one another. An `Array` is
+Members of a set are a subset. A set's members, by definition, are unique from one another. An `Array` is
 not a collection that enforces uniqueness. Have you ever done the following?
 
 {% highlight ruby %}
@@ -52,7 +52,7 @@ great writeup.
 
 Back to primitive obsession. I think that Ruby developers are lucky but burdened by Rails, specifically when
 it comes to "good OO". `ActiveSupport` is a rad library, and I fondly remember reading the Rails book in 2006
-and being blown away by the ability to do `2.days.from_now`. `<insert Uncle Ben quote />`
+and being blown away by the ability to do `2.days.from_now`.
 
 One of the things I appreciate from `Arel` is that when you make a query you get back an instance of
 `ActiveRecord::Relation` not an `Array`. You can ask this relation questions you couldn't, and shouldn't, ask
@@ -60,16 +60,29 @@ an `Array`. This brings me to something I don't often see in Ruby... collection 
 
 A collection class is a class that represents a collection of objects. Why might you use a collection class
 over an `Array` or a `Hash`, or even a `Set`? Most likely because you want to ask that collection questions
-that `Array`, `Hash`, and even `Set` have no idea about.
+that `Array`, `Hash`, and even `Set` have no idea about. We reach for these custom classes because a
+primitive is too simple, too basic, and we end up asking questions in the wrong places.
 
-I had to interact with a remote API that did not give us good error messages. An example of how this works:
+I had to interact with a remote API that did not give back good error messages. An example of how this works:
 
 {% highlight ruby %}
 class WidgetCollection
+  include Enumerable
+
   attr_accessor :errors
 
   def initialize(widgets)
     @widgets = Set.new(widgets)
+  end
+
+  def each
+    return enum_for(:each) unless block_given?
+
+    @widgets.each do |widget|
+      yield widget
+    end
+
+    self
   end
 
   def invalid_widget_present?
@@ -95,90 +108,18 @@ log(a_message) if widgets.invalid_widget_present?
 
 It's unfortunate that the remote API gives us a fault code like that, but at least we can hide it in a class
 and keep our code a bit cleaner. Granted, there are more moving parts in our production code, but this way of
-dealing with the remote API feels like the right way. Much better than using an `Array` and checking things at
-the bounds. That's certainly not "good" `OO`!
+dealing with the remote API feels like the right way. Much better than using an `Array` and checking the
+status further out. That's certainly not "good" `OO`!
 
-Now, if you're going to make classes like this, like all your classes, it's important to think about the
-interface to that class. A custom collection class we recently introduced, which was a long time coming, had a
-subtle bug that made it's way to production. Luckily it was easy to track down.
-
-Here's the gist: We store config data as a blob of `JSON` but our UI didn't enforce the types we needed these
-values to be. In the beginning they were all strings, and after a fantastic refactor we had strings, booleans,
-integers, text, and a few more. One of these settings is a `true/false` that was stored as `"0" or "1"`
-because that's how Rail's checkboxes work. We wanted to convert them to be booleans, and our code did that
-beautifully. Until...
+What would that code have looked like?
 
 {% highlight ruby %}
-# lib/key.rb
-class Key
-  def configuration
-    @configuration ||= load_from_json
-  end
+# elsewhere...
 
-  def configuration_set
-    @configuration_set ||= Config.new(configuration)
-  end
-end
-
-# lib/config.rb
-class Config
-  def initialize
-    @config = Hash.new
-  end
-end
-
-# lib/thing.rg
-class Thing
-  def do_something
-    return if skip?
-    # do things
-  end
-
-  def skip?
-    key.configuration["should_i_skip"] == "1"
-  end
-end
-
-# spec/lib/thing_spec.rb
-RSpec.describe Thing do
-  describe "#skip?" do
-    context "when config is set to skip" do
-      before do
-        # this reaches in too far to something that is now a Boolean :(
-        key.configuration["should_i_skip"] = "1"
-      end
-
-      its(:skip?) { is_expected.to be_truthy }
-    end
-
-    context "when config is not set to skip" do
-      before do
-        key.configuration["should_i_skip"] = "0"
-      end
-
-      its(:skip?) { is_expected.to be_falsey }
-    end
-  end
-end
+widgets = Widget.fetch
+log(a_message) if WidgetCollection::ERROR_MESSAGE.match(widgets.errors)
 {% endhighlight %}
 
-The bug showed up when customers complained things weren't being skipped that should be. Without seeing all
-the code, can you spot the bug? Remember when I said that after the refactor we had `Booleans`? Well, that
-config setting, `"should_i_skip"` is now a boolean, so `key.configuration["should_i_skip"]` will only ever
-return `true|false` and our test doesn't catch it!
+That requires you to know way too much, and it's a sign that you're relying too heavily on primitives.
 
-Changing `Thing#skip?` to be just `key.configuration["should_i_skip"]` fixed the bug, and changing the specs
-to set that to `true` and `false` fix the test. But the design is still vulnerable because we expose
-`Hash#[]=` on the storage of our custom class, and that's ripe for more bugs in the future.
-
-Here we need to restrict access to that `Hash` that's acting as our underlying storage, thereby removing from
-use methods like `#[]=`. Does that method even really belong in our `Config` class? Probably not. It's
-something we'll look at removing right away.
-
-To wrap this up, while primitives are rich in functionality in Ruby, and extensible with libraries like
-`ActiveSupport`, that doesn't mean you should use them for everything. `ValueObject` and collection classes
-(collections of `ValueObject`s) are powerful tools in your toolbox. When you use them, be careful of the API
-you expose though, and make sure to not leak the underlying collection.
-
-
-
+This got a bit longer than I expected, so I'll kick the actual production bug to a separate post.
