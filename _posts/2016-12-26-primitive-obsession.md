@@ -56,7 +56,7 @@ it comes to "good OO". `ActiveSupport` is a rad library, and I fondly remember r
 and being blown away by the ability to do `2.days.from_now`.
 
 One of the things I appreciate from `Arel` is that when you make a query you get back an instance of
-`ActiveRecord::Relation` not an `Array`. You can ask this relation questions you couldn't, and shouldn't, ask
+`ActiveRecord_Relation` not an `Array`. You can ask this relation questions you couldn't, and shouldn't, ask
 an `Array`. This brings me to something I don't often see in Ruby... collection classes.
 
 A collection class is a class that represents a collection of objects. Why might you use a collection class
