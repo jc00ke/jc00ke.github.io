@@ -122,4 +122,8 @@ log(a_message) if WidgetCollection::ERROR_MESSAGE.match(widgets.errors)
 
 That requires you to know way too much, and it's a sign that you're relying too heavily on primitives.
 
-This got a bit longer than I expected, so I'll kick the actual production bug to a separate post.
+Respecting the boundaries is an important part of practicing object oriented programming. When you don't
+create classes, especially for collections, you push responsibility out instead of pulling it in. This got
+a bit longer than I expected, so I'll kick the actual production bug to a separate post.
+
+Stay tuned!
