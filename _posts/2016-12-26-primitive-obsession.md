@@ -43,7 +43,7 @@ array includes an object is `O(n)` where checking to see if a `Set` includes an 
 
 Let me clarify: at _best_ and at _worst_ an array is `O(n)` because it's always `O(n)` for search. At _best_ a
 `Set`, [backed by a
-`Hash`](https://github.com/ruby/ruby/blob/7e8b910a5629fe025137e890ec6d57e538fd7811/lib/set.rb#L84), is `O(1)` which is quite good, `O(n)` at _worst.
+`Hash`](https://github.com/ruby/ruby/blob/7e8b910a5629fe025137e890ec6d57e538fd7811/lib/set.rb#L84), is `O(1)` which is quite good, `O(n)` at _worst_.
 
 So there are consequences to using the wrong type, not just from a congnitive point of view but performance as
 well. Ok, let's leave `Array/Set` alone for now. If you're curious, read up on the [Atomic
