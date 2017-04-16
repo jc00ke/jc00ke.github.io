@@ -194,3 +194,21 @@ end
 ```
 
 I'm really happy with the way that turned out.
+
+## Update
+
+[Kelvin Stinghen](https://github.com/kelvinst) [clarified](https://elixirforum.com/t/testing-mix-tasks/4471/2?u=jc00ke)
+how one might use this `Mix.shell(Mix.Shell.Process)` from an
+[umbrella](http://elixir-lang.org/getting-started/mix-otp/dependencies-and-umbrella-apps.html#umbrella-projects)
+application.
+
+```elixir
+setup do
+  Mix.shell(Mix.Shell.Process)
+  on_exit fn ->
+    Mix.shell(Mix.Shell.IO)
+  end
+
+  :ok
+end
+```
