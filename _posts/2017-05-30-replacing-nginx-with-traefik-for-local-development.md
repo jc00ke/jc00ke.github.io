@@ -213,4 +213,4 @@ not some system-wide thing that's in `/etc`. While `Nginx` has served me well fo
 local development I feel that Træfik is easier to set up and more powerful. It has fantastic Docker
 integration too, so one day I may need to explore that. Until then, I'm happy with this.
 
-If you have any comments or suggestions, ping me on [Twitter](https://twitter.com/jc00ke].
+If you have any comments or suggestions, ping me on [Twitter](https://twitter.com/jc00ke).
