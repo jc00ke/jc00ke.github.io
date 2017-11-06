@@ -80,3 +80,59 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/jc00ke
 
 ==================================================================
+
+==================================================================
+https://keybase.io/jc00ke
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://jc00ke.com
+  * I am jc00ke (https://keybase.io/jc00ke) on keybase.
+  * I have a public key ASCaBgDoYucWcbm61fBmWbSoqAOircWofAqeIfSe8aDIjAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0101efea26fcadc0f9a65300fd4db88b79d0226f7d9d9226b253fda236937af5d0150a",
+      "host": "keybase.io",
+      "kid": "01209a0600e862e71671b9bad5f06659b4a8a803a2adc5a87c0a9e21f49ef1a0c88c0a",
+      "uid": "f36d11b9bc87a78121a2d4c7068e4c00",
+      "username": "jc00ke"
+    },
+    "merkle_root": {
+      "ctime": 1509947350,
+      "hash": "b81a2da9b6db2ade59276f55e83e07a2fe13917225ba8d3d201ff47e63c2b010f8a902a31c42fcf65996fac1ef5769f194e400578f99cfaa6b903333e3370a5e",
+      "hash_meta": "cc1acae7fb14d064669a368cf8f2509e079ba3dd4394bf0ee88f066ac3c3cd91",
+      "seqno": 1670926
+    },
+    "service": {
+      "hostname": "jc00ke.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.34"
+  },
+  "ctime": 1509947405,
+  "expire_in": 504576000,
+  "prev": "b662f73b40a197f9831b06fcde1d43caf8d81fefd60fb73659d565781a539bf0",
+  "seqno": 107,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgmgYA6GLnFnG5utXwZlm0qKgDoq3FqHwKniH0nvGgyIwKp3BheWxvYWTFA0J7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxZWZlYTI2ZmNhZGMwZjlhNjUzMDBmZDRkYjg4Yjc5ZDAyMjZmN2Q5ZDkyMjZiMjUzZmRhMjM2OTM3YWY1ZDAxNTBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwOWEwNjAwZTg2MmU3MTY3MWI5YmFkNWYwNjY1OWI0YThhODAzYTJhZGM1YTg3YzBhOWUyMWY0OWVmMWEwYzg4YzBhIiwidWlkIjoiZjM2ZDExYjliYzg3YTc4MTIxYTJkNGM3MDY4ZTRjMDAiLCJ1c2VybmFtZSI6ImpjMDBrZSJ9LCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTUwOTk0NzM1MCwiaGFzaCI6ImI4MWEyZGE5YjZkYjJhZGU1OTI3NmY1NWU4M2UwN2EyZmUxMzkxNzIyNWJhOGQzZDIwMWZmNDdlNjNjMmIwMTBmOGE5MDJhMzFjNDJmY2Y2NTk5NmZhYzFlZjU3NjlmMTk0ZTQwMDU3OGY5OWNmYWE2YjkwMzMzM2UzMzcwYTVlIiwiaGFzaF9tZXRhIjoiY2MxYWNhZTdmYjE0ZDA2NDY2OWEzNjhjZjhmMjUwOWUwNzliYTNkZDQzOTRiZjBlZTg4ZjA2NmFjM2MzY2Q5MSIsInNlcW5vIjoxNjcwOTI2fSwic2VydmljZSI6eyJob3N0bmFtZSI6ImpjMDBrZS5jb20iLCJwcm90b2NvbCI6Imh0dHBzOiJ9LCJ0eXBlIjoid2ViX3NlcnZpY2VfYmluZGluZyIsInZlcnNpb24iOjF9LCJjbGllbnQiOnsibmFtZSI6ImtleWJhc2UuaW8gZ28gY2xpZW50IiwidmVyc2lvbiI6IjEuMC4zNCJ9LCJjdGltZSI6MTUwOTk0NzQwNSwiZXhwaXJlX2luIjo1MDQ1NzYwMDAsInByZXYiOiJiNjYyZjczYjQwYTE5N2Y5ODMxYjA2ZmNkZTFkNDNjYWY4ZDgxZmVmZDYwZmI3MzY1OWQ1NjU3ODFhNTM5YmYwIiwic2Vxbm8iOjEwNywidGFnIjoic2lnbmF0dXJlIn2jc2lnxECoB3CSp2yDRmCfYGrRUdGaxSuIYZDBHEfDkIW22U+SqdUPUmHbD3VZ714LgjeaBqL8lNfr7xeC1byRh4JAUckMqHNpZ190eXBlIKRoYXNogqR0eXBlCKV2YWx1ZcQgS7VeTx1GbW3XA694MhEk5ltPvhc+Cg2Ykp3XSZhS12GjdGFnzQICp3ZlcnNpb24B
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jc00ke
+
+==================================================================
