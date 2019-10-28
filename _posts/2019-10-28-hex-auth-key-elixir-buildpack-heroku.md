@@ -40,12 +40,15 @@ Luckily, I had already set up a `postdeploy` script for Heroku's `app.json` so I
 however, there wasn't a hook in that lifecycle that made sense for me to use. But, mixing the two approaches
 did seem like something worth trying, and this is what ended up working.
 
+In `./bin/predeps`
+
 ```bash
 #!/bin/bash
-# ./bin/predeps
 
 mix hex.organization auth acme --key "$HEX_ORG_KEY_FOR_ACME"
 ```
+
+In `elixir_buildpack.config`
 
 ```bash
 hook_pre_fetch_dependencies="./bin/predeps"
