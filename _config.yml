@@ -1,7 +1,7 @@
 # Site settings
 title: Musings of something or another
 email: info@jc00ke.com
-description: "On a mission. Not sure what the mission is yet, but I'm on it."
+description: "Technology for good, like yesterday."
 baseurl: ""
 url: "http://jc00ke.com"
 username: jc00ke
@@ -15,4 +15,4 @@ sass:
   sass_dir: css
 
 # custom settings
-feedurl: "http://feedpress.me/jc00ke"
+feedurl: "https://feedpress.me/jc00ke"
