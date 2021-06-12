@@ -12,5 +12,9 @@ first non-profit. I'm also a contributor to several open source projects,
 most notably [Rubinius](http://rubini.us) and [MagLev](http://maglev.github.io),
 but that feels like a lifetime ago. I've focused on Elixir and its ecosystem since 2017, bringing it to
 interesting places like [basic income](https://www.openresearchlab.org/basic-income) and
-the COVID-19 pandemic response (links soon).
+the COVID-19 pandemic response:
 
+* [Epi Contacts](https://github.com/RatioPBC/epi-contacts)
+* [Epi Locator](https://github.com/RatioPBC/epi-locator)
+* [Epi Viaduct (NY)](https://github.com/RatioPBC/epi-viaduct-nys)
+* [Epi Viewpoint](https://github.com/RatioPBC/epi-viewpoint)
