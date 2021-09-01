@@ -30,6 +30,10 @@ from](https://www.xfinity.com/support/internet/connect-manually-secure-xfinity-w
 Well, initially I had `No CA certificate is required` but that didn't feel right, so, more googlin' and I
 found [this AskUbuntu answer](https://askubuntu.com/a/781026) that suggested the `AddTrust_External_Root.ca`.
 
+_Update_ - Thanks to [@variuxdavid](https://twitter.com/variuxdavid/status/1433208622901772288) for letting
+me know there's a new `CA certificate` for later versions of Ubuntu: `COMODO_RSA_Certification_Authority.crt`.
+Screenshot updated!
+
 Lo and behold, it worked!
 
 Now, am I 100% certain this is the same security level as what XFINITY is claiming on other platforms? No, but
