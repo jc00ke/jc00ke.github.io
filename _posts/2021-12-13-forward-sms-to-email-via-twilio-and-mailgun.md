@@ -1,5 +1,5 @@
 ---
-title: Forward SMS to email via Twilio and Mailgin
+title: Forward SMS to email via Twilio and Mailgun
 layout: post
 description: Don't use SendGrid
 author: Jesse
