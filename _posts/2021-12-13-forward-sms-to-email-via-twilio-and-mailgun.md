@@ -39,7 +39,7 @@ Under `Dependencies` add `mailgun.js` version 4.1.1 and `form-data` version 4.0.
 Under `Environment Variables` add `MAILGUN_DOMAIN`, `MAILGUN_API_KEY`, `FROM_EMAIL_ADDRESS`, and 
 `TO_EMAIL_ADDRESS`.
 
-I based this on the [Mailgun 
+I based this function body on the [Mailgun 
 example](https://documentation.mailgun.com/en/latest/quickstart-sending.html#send-via-api):
 
 {% highlight javascript %}
