@@ -26,7 +26,7 @@ and that the `XFINITY` has a secure connection capability. Some googlin' brings 
 page](https://www.xfinity.com/support/internet/about-xfinity-wifi-internet/#secure_support). Well shit, Linux
 isn't supported. I decide to give it a go anyway, and I'm presented with this screen:
 
-![Network settings dialog in GNOME](/assets/posts/securely-connecting-to-xfinity-hotspot-on-linux/network-settings-dialog.png)
+<img alt="Network settings dialog in GNOME" src="/assets/posts/securely-connecting-to-xfinity-hotspot-on-linux/network-settings-dialog.png" style="width: 100%;" />
 
 I filled in those values based on the [suggestions for Android
 from](https://www.xfinity.com/support/internet/connect-manually-secure-xfinity-wifi-hotspots/).
