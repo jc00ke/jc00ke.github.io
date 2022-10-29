@@ -1,7 +1,5 @@
 <footer class="site-footer">
-
   <div class="wrap">
-
     <div class="footer-col-1 column">
       <ul>
         <li>{{ site.title }}</li>
@@ -13,18 +11,20 @@
       <ul>
         <li>
           <a href="https://github.com/{{ site.username }}">
-            <span class="icon github">
-              {% include github.svg %}
-            </span>
+            <span class="icon github"> {% include github.svg %} </span>
             <span class="username">{{ site.username }}</span>
           </a>
         </li>
         <li>
           <a href="https://twitter.com/{{ site.username }}">
-            <span class="icon twitter">
-              {% include twitter.svg %}
-            </span>
+            <span class="icon twitter"> {% include twitter.svg %} </span>
             <span class="username">{{ site.username }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://mathstodon.xyz/@{{ site.username }}" rel="me">
+            <span class="icon mastodon"> {% include mastodon.svg %} </span>
+            <span class="username">@{{ site.username }} on Mathstodon</span>
           </a>
         </li>
       </ul>
@@ -33,7 +33,5 @@
     <div class="footer-col-3 column">
       <p class="text">{{ site.description }}</p>
     </div>
-
   </div>
-
 </footer>
