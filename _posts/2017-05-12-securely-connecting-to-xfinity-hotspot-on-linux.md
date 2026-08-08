@@ -71,3 +71,20 @@ Some terms that I hope help you find your way here according to Chris:
 - [Passpoint / Hotspot 2.0](<https://en.wikipedia.org/wiki/Hotspot_(Wi-Fi)#Hotspot_2.0>)
 
 I love receiving updates for this post! You keep sending them and I'll keep updating.
+
+_Update 2026_ - Wow, Chris reached out again, I love this! Here's what he said, which I hope helps you out:
+
+> Starting this month (August 2026), Comcast changed the CA that they use for their certificates to "USERTrust RSA Certification Authority".
+> Also since we last spoke, the name of their secure network is now "Xfinity Mobile" (used to be "XFINITY").
+> Also just for even higher security, it is best to set the domain so that the client not only checks the network's certificate chain but also verifies it's an authentic comcast/xfinity domain.
+>
+> So the current configuration I recommend is:
+
+- Network SSID: Xfinity Mobile
+- Security: WPA & WPA2 Enterprise
+- Authentication: Tunneled TLS
+- Domain: secure.aaa.wifi.comcast.com
+- CA Certificate: /etc/ssl/certs/USERTrust_RSA_Certification_Authority.pem (should exist on most distros)
+- Inner authentication: PAP
+
+<img alt="Network settings dialog in GNOME" src="/assets/posts/securely-connecting-to-xfinity-hotspot-on-linux/xfinity-hotspot-linux-2026.png" style="width: 100%;" />
